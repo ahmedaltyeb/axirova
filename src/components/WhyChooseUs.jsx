@@ -1,26 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { WHY_CHOOSE } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function WhyChooseUs() {
+  const { t, pick } = useLanguage();
+
   return (
     <section style={{ padding: '140px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>
-            Why AXIROVA
+            {t('whyChoose.secLabel')}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}
           >
-            Built Different — <span style={{ color: 'var(--blue2)' }}>For the Gulf</span>
+            {t('whyChoose.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('whyChoose.h2b')}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
             style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto' }}
           >
-            Eight reasons enterprise and mid-market GCC businesses choose Axirova over global outsourcing firms.
+            {t('whyChoose.sub')}
           </motion.p>
         </div>
 
@@ -42,14 +45,14 @@ export default function WhyChooseUs() {
                 transition: 'all .4s cubic-bezier(.22,1,.36,1)',
               }}
             >
-              <div style={{ fontSize: '32px', marginBottom: '16px', lineHeight: 1 }} role="img" aria-label={item.title}>
+              <div style={{ fontSize: '32px', marginBottom: '16px', lineHeight: 1 }} role="img" aria-label={pick(item.title)}>
                 {item.icon}
               </div>
               <div style={{ fontFamily: 'var(--font-d)', fontSize: '17px', fontWeight: 700, marginBottom: '10px', lineHeight: 1.3 }}>
-                {item.title}
+                {pick(item.title)}
               </div>
               <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.75 }}>
-                {item.desc}
+                {pick(item.desc)}
               </div>
             </motion.div>
           ))}

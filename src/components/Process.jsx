@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROCESS_STEPS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Process() {
+  const { t, pick } = useLanguage();
   const [active, setActive] = useState(0);
   const step = PROCESS_STEPS[active];
 
@@ -11,19 +13,19 @@ export default function Process() {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>
-            How We Work
+            {t('process.secLabel')}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}
           >
-            From Idea to <span style={{ color: 'var(--blue2)' }}>Live Product</span>
+            {t('process.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('process.h2b')}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
             style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '540px', margin: '0 auto' }}
           >
-            A structured, transparent process — you know exactly what happens, when, and what you get at every stage.
+            {t('process.sub')}
           </motion.p>
         </div>
 
@@ -46,8 +48,8 @@ export default function Process() {
               }}
             >
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '6px' }}>{s.num}</div>
-              <div style={{ fontFamily: 'var(--font-d)', fontSize: '15px', fontWeight: 700 }}>{s.title}</div>
-              <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: active === i ? s.color : 'var(--dim)', marginTop: '4px', letterSpacing: '.08em' }}>{s.duration}</div>
+              <div style={{ fontFamily: 'var(--font-d)', fontSize: '15px', fontWeight: 700 }}>{pick(s.title)}</div>
+              <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: active === i ? s.color : 'var(--dim)', marginTop: '4px', letterSpacing: '.08em' }}>{pick(s.duration)}</div>
             </button>
           ))}
         </div>
@@ -80,21 +82,21 @@ export default function Process() {
                   {step.icon}
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--dim)', letterSpacing: '.18em' }}>{step.num} / {step.title.toUpperCase()}</div>
-                  <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 800, marginTop: '2px' }}>{step.title} Phase</div>
+                  <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--dim)', letterSpacing: '.18em' }}>{step.num} / {pick(step.title).toUpperCase()}</div>
+                  <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 800, marginTop: '2px' }}>{pick(step.title)}</div>
                 </div>
               </div>
-              <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.85 }}>{step.desc}</p>
+              <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.85 }}>{pick(step.desc)}</p>
             </div>
 
             {/* Right — deliverables */}
             <div>
-              <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '20px' }}>DELIVERABLES</div>
+              <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '20px' }}>{t('process.delivLabel')}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {step.deliverables.map((d, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: step.color, flexShrink: 0 }} />
-                    <span style={{ fontSize: '14px', color: 'var(--text)' }}>{d}</span>
+                    <span style={{ fontSize: '14px', color: 'var(--text)' }}>{pick(d)}</span>
                   </div>
                 ))}
               </div>
@@ -115,7 +117,7 @@ export default function Process() {
                   fontFamily: 'var(--font-b)',
                 }}
               >
-                Start Discovery Call →
+                {t('process.discoveryCta')}
               </motion.button>
             </div>
           </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PARTNERS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 const CATEGORY_COLOR = {
   Cloud: '#3b9eff',
@@ -12,6 +13,8 @@ const CATEGORY_COLOR = {
 };
 
 export default function Partners() {
+  const { t, pick } = useLanguage();
+
   return (
     <section style={{ padding: '80px 0', borderTop: '1px solid var(--border)' }}>
       <div className="container">
@@ -21,7 +24,7 @@ export default function Partners() {
           viewport={{ once: true }}
           style={{ textAlign: 'center', fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.18em', textTransform: 'uppercase', marginBottom: '40px' }}
         >
-          Technology Partners & Integrations
+          {t('partners.label')}
         </motion.p>
 
         <div className="partners-grid">
@@ -32,7 +35,7 @@ export default function Partners() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: .5, delay: i * .05 }}
-              whileHover={{ y: -6, borderColor: CATEGORY_COLOR[p.category] + '60', boxShadow: `0 12px 30px ${CATEGORY_COLOR[p.category]}15` }}
+              whileHover={{ y: -6, borderColor: CATEGORY_COLOR[p.category.en] + '60', boxShadow: `0 12px 30px ${CATEGORY_COLOR[p.category.en]}15` }}
               style={{
                 background: 'var(--glass)',
                 border: '1px solid var(--border)',
@@ -42,13 +45,13 @@ export default function Partners() {
                 cursor: 'default',
                 transition: 'all .35s cubic-bezier(.22,1,.36,1)',
               }}
-              title={p.full}
+              title={pick(p.full)}
             >
-              <div style={{ fontFamily: 'var(--font-d)', fontSize: '16px', fontWeight: 800, color: CATEGORY_COLOR[p.category], marginBottom: '6px' }}>
+              <div style={{ fontFamily: 'var(--font-d)', fontSize: '16px', fontWeight: 800, color: CATEGORY_COLOR[p.category.en], marginBottom: '6px' }}>
                 {p.name}
               </div>
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '9px', color: 'var(--dim)', letterSpacing: '.1em' }}>
-                {p.category}
+                {pick(p.category)}
               </div>
             </motion.div>
           ))}

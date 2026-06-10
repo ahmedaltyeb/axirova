@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TECH_NODES, CAT_COLOR } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function TechStack() {
+  const { t } = useLanguage();
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -59,26 +61,26 @@ export default function TechStack() {
   }, []);
 
   const legend = [
-    { color: '#3b9eff', label: 'Mobile / Frontend' },
-    { color: '#1a6fe8', label: 'Backend' },
-    { color: '#00d4a0', label: 'AI & Computer Vision' },
-    { color: '#6bbfff', label: 'Cloud' },
-    { color: '#8fa3c0', label: 'APIs & Infrastructure' },
-    { color: '#7060e0', label: 'Databases' },
+    { color: '#3b9eff', labelKey: 'techStack.l1' },
+    { color: '#1a6fe8', labelKey: 'techStack.l2' },
+    { color: '#00d4a0', labelKey: 'techStack.l3' },
+    { color: '#6bbfff', labelKey: 'techStack.l4' },
+    { color: '#8fa3c0', labelKey: 'techStack.l5' },
+    { color: '#7060e0', labelKey: 'techStack.l6' },
   ];
 
   return (
     <section style={{ padding: '140px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>Technology Stack</motion.div>
+          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>{t('techStack.secLabel')}</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}>
-            Built on <span style={{ color: 'var(--blue2)' }}>World-Class</span> Infrastructure
+            {t('techStack.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('techStack.h2b')}</span> {t('techStack.h2c')}
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
             style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '540px', margin: '0 auto' }}>
-            Our architecture spans modern frontend frameworks, powerful backends, cloud infrastructure, and leading AI platforms.
+            {t('techStack.sub')}
           </motion.p>
         </div>
 
@@ -99,10 +101,10 @@ export default function TechStack() {
           transition={{ delay: .4 }}
           style={{ display: 'flex', gap: '32px', justifyContent: 'center', marginTop: '36px', flexWrap: 'wrap' }}
         >
-          {legend.map(({ color, label }) => (
-            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-m)', fontSize: '12px', color: 'var(--muted)', letterSpacing: '.08em' }}>
+          {legend.map(({ color, labelKey }) => (
+            <div key={labelKey} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-m)', fontSize: '12px', color: 'var(--muted)', letterSpacing: '.08em' }}>
               <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: color, flexShrink: 0 }} />
-              {label}
+              {t(labelKey)}
             </div>
           ))}
         </motion.div>

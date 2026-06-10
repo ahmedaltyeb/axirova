@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Cursor from './components/Cursor';
 import ScrollProgress from './components/ScrollProgress';
 import PageEnter from './components/PageEnter';
@@ -27,7 +28,7 @@ const Divider = () => <div className="section-divider" />;
 
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <PageEnter />
       <Cursor />
       <ScrollProgress />
@@ -103,6 +104,6 @@ export default function App() {
           <Footer />
         </Suspense>
       </main>
-    </>
+    </LanguageProvider>
   );
 }

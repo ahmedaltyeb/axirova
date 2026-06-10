@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FAQ_ITEMS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 function ChevronIcon({ open }) {
   return (
@@ -12,6 +13,7 @@ function ChevronIcon({ open }) {
 }
 
 export default function FAQ() {
+  const { t, pick } = useLanguage();
   const [open, setOpen] = useState(0);
 
   const toggle = (i) => setOpen(prev => prev === i ? null : i);
@@ -21,19 +23,19 @@ export default function FAQ() {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>
-            FAQ
+            {t('faq.secLabel')}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}
           >
-            Common <span style={{ color: 'var(--blue2)' }}>Questions</span>
+            {t('faq.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('faq.h2b')}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
             style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto' }}
           >
-            Everything you need to know before starting a project with Axirova.
+            {t('faq.sub')}
           </motion.p>
         </div>
 
@@ -47,10 +49,7 @@ export default function FAQ() {
           {FAQ_ITEMS.map((item, i) => (
             <div
               key={i}
-              style={{
-                borderBottom: '1px solid var(--border)',
-                overflow: 'hidden',
-              }}
+              style={{ borderBottom: '1px solid var(--border)', overflow: 'hidden' }}
             >
               <button
                 onClick={() => toggle(i)}
@@ -73,7 +72,7 @@ export default function FAQ() {
                 onMouseLeave={(e) => { if (open !== i) e.currentTarget.style.color = 'var(--muted)'; }}
               >
                 <span style={{ fontFamily: 'var(--font-d)', fontSize: '16px', fontWeight: 600, lineHeight: 1.4 }}>
-                  {item.q}
+                  {pick(item.q)}
                 </span>
                 <span style={{ color: open === i ? 'var(--blue2)' : 'var(--dim)', transition: 'color .2s' }}>
                   <ChevronIcon open={open === i} />
@@ -91,7 +90,7 @@ export default function FAQ() {
                     style={{ overflow: 'hidden' }}
                   >
                     <p style={{ paddingBottom: '26px', fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, maxWidth: '680px' }}>
-                      {item.a}
+                      {pick(item.a)}
                     </p>
                   </motion.div>
                 )}
@@ -100,7 +99,6 @@ export default function FAQ() {
           ))}
         </motion.div>
 
-        {/* Still have questions CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +107,7 @@ export default function FAQ() {
           style={{ textAlign: 'center', marginTop: '64px' }}
         >
           <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '20px' }}>
-            Still have questions? We&apos;re happy to help.
+            {t('faq.still')}
           </p>
           <motion.button
             whileHover={{ y: -3, boxShadow: '0 12px 36px rgba(26,111,232,0.45)' }}
@@ -127,7 +125,7 @@ export default function FAQ() {
               fontFamily: 'var(--font-b)',
             }}
           >
-            Ask Us Anything →
+            {t('faq.ask')}
           </motion.button>
         </motion.div>
       </div>

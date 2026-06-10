@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useRef as uR } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { INDUSTRIES } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 function IndustryCard({ ind }) {
+  const { pick } = useLanguage();
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -43,10 +45,10 @@ function IndustryCard({ ind }) {
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, opacity: .5, width: '100%', height: '100%' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '32px', background: 'linear-gradient(to top,rgba(5,13,26,.97) 60%,transparent)' }}>
         <span style={{ fontSize: '38px', marginBottom: '14px', display: 'block' }}>{ind.icon}</span>
-        <div style={{ fontFamily: 'var(--font-d)', fontSize: '21px', fontWeight: 700, marginBottom: '6px' }}>{ind.title}</div>
-        <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>{ind.subtitle}</div>
+        <div style={{ fontFamily: 'var(--font-d)', fontSize: '21px', fontWeight: 700, marginBottom: '6px' }}>{pick(ind.title)}</div>
+        <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5 }}>{pick(ind.subtitle)}</div>
         <span style={{ display: 'inline-block', marginTop: '12px', fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--blue2)', letterSpacing: '.1em', padding: '4px 10px', border: '1px solid rgba(59,158,255,0.25)', borderRadius: '4px' }}>
-          {ind.tag}
+          {pick(ind.tag)}
         </span>
       </div>
     </motion.div>
@@ -54,19 +56,21 @@ function IndustryCard({ ind }) {
 }
 
 export default function Industries() {
+  const { t, dir } = useLanguage();
   const trackRef = useRef(null);
-  const wrapRef = useRef(null);
+  const wrapRef  = useRef(null);
   const scrollLeft = useRef(0);
-  const isDown = useRef(false);
-  const startX = useRef(0);
+  const isDown  = useRef(false);
+  const startX  = useRef(0);
 
   const onMouseDown = (e) => { isDown.current = true; startX.current = e.pageX; wrapRef.current.style.cursor = 'grabbing'; };
-  const onMouseUp = () => { isDown.current = false; if (wrapRef.current) wrapRef.current.style.cursor = 'grab'; };
+  const onMouseUp   = () => { isDown.current = false; if (wrapRef.current) wrapRef.current.style.cursor = 'grab'; };
   const onMouseMove = (e) => {
     if (!isDown.current) return;
     e.preventDefault();
     const dx = e.pageX - startX.current;
-    scrollLeft.current -= dx * 1.2;
+    /* In RTL the drag delta is inverted */
+    scrollLeft.current -= dx * (dir === 'rtl' ? -1.2 : 1.2);
     startX.current = e.pageX;
     const max = trackRef.current.scrollWidth - wrapRef.current.offsetWidth + 40;
     scrollLeft.current = Math.max(-40, Math.min(scrollLeft.current, max));
@@ -81,14 +85,14 @@ export default function Industries() {
   return (
     <section style={{ padding: '140px 0' }}>
       <div className="container">
-        <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Industries We Serve</motion.div>
+        <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>{t('industries.secLabel')}</motion.div>
         <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
           style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}>
-          Built for <span style={{ color: 'var(--blue2)' }}>Your Sector</span>
+          {t('industries.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('industries.h2b')}</span>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
           style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '540px', marginBottom: '48px' }}>
-          Deep domain expertise across the industries that matter most.
+          {t('industries.sub')}
         </motion.p>
       </div>
 
@@ -100,7 +104,7 @@ export default function Industries() {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: '28px', fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.1em' }}>
-        ← DRAG TO EXPLORE →
+        {t('industries.drag')}
       </div>
     </section>
   );

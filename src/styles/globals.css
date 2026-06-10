@@ -417,6 +417,7 @@ body::before {
 @media (max-width: 768px) {
   .hamburger { display: flex !important; }
   .nav-cta { display: none !important; }
+  .lang-toggle { display: none !important; }
 }
 
 /* ── CLIENT LOGOS MARQUEE ── */
@@ -599,4 +600,84 @@ textarea::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2
 @media (max-width: 640px) {
   .cf-success-actions { flex-direction: column !important; align-items: stretch !important; }
   .cf-success-actions button { width: 100% !important; }
+}
+
+/* ══════════════════════════════════════════
+   ARABIC / RTL OVERRIDES
+   Applied whenever <html dir="rtl"> is set
+══════════════════════════════════════════ */
+
+/* Arabic font for all body text in RTL */
+[dir="rtl"] body,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] button {
+  font-family: 'Cairo', 'DM Sans', sans-serif;
+  letter-spacing: 0;
+}
+
+/* Headings keep Syne but also fall back to Cairo */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] .sec-label {
+  font-family: 'Cairo', 'Syne', sans-serif;
+  letter-spacing: 0;
+}
+
+/* Monospace labels use Cairo in RTL (no JetBrains for Arabic script) */
+[dir="rtl"] .logo-pill-sector,
+[dir="rtl"] .lang-toggle {
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0;
+}
+
+/* ── Flip left/right fade masks on ClientLogos marquee ── */
+[dir="rtl"] .logos-track-wrap > div:first-child {
+  background: linear-gradient(270deg, var(--bg), transparent) !important;
+}
+[dir="rtl"] .logos-track-wrap > div:last-child {
+  background: linear-gradient(90deg, var(--bg), transparent) !important;
+}
+
+/* ── Reverse marquee scroll direction for RTL ── */
+[dir="rtl"] .logos-track {
+  animation-name: logos-scroll-rtl;
+}
+@keyframes logos-scroll-rtl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
+}
+
+/* ── Hamburger mobile drawer items — arrow reversal ── */
+[dir="rtl"] .hamburger + div a span[style*="→"] {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ── Footer link hover — indent goes right in RTL ── */
+[dir="rtl"] footer a:hover {
+  padding-left: 0 !important;
+  padding-right: 4px;
+}
+
+/* ── Process tabs — active border direction unchanged (bottom only) ── */
+
+/* ── About metrics grid — no change needed (flexbox reverses automatically) ── */
+
+/* ── Select dropdown arrow position in RTL ── */
+[dir="rtl"] select {
+  padding-right: 16px !important;
+  padding-left: 36px !important;
+}
+[dir="rtl"] .cf-row div[style*="position: relative"] > span[style*="right: 12px"] {
+  right: auto !important;
+  left: 12px !important;
+}
+
+/* ── Nav lang toggle — readable in both directions ── */
+[dir="rtl"] .nav-links {
+  direction: rtl;
 }

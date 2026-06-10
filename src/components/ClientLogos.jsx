@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { CLIENT_LOGOS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 const doubled = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export default function ClientLogos() {
+  const { t, pick } = useLanguage();
+
   return (
     <section
-      aria-label="Trusted by companies across the GCC"
+      aria-label={t('clientLogos.label')}
       style={{ padding: '56px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', overflow: 'hidden', position: 'relative' }}
     >
       {/* Fade edges */}
@@ -21,7 +24,7 @@ export default function ClientLogos() {
           viewport={{ once: true }}
           style={{ textAlign: 'center', fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.18em', textTransform: 'uppercase' }}
         >
-          Trusted by companies across the GCC
+          {t('clientLogos.label')}
         </motion.p>
       </div>
 
@@ -29,7 +32,7 @@ export default function ClientLogos() {
         <div className="logos-track">
           {doubled.map((client, i) => (
             <div key={i} className="logo-pill">
-              <span className="logo-pill-sector">{client.sector}</span>
+              <span className="logo-pill-sector">{pick(client.sector)}</span>
               <span className="logo-pill-name">{client.name}</span>
             </div>
           ))}

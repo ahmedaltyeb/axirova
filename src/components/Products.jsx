@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 function MockScreen({ prod }) {
   return (
@@ -21,6 +22,7 @@ function MockScreen({ prod }) {
 }
 
 export default function Products() {
+  const { t, pick } = useLanguage();
   const [cur, setCur] = useState(0);
   const timerRef = useRef(null);
 
@@ -38,14 +40,14 @@ export default function Products() {
     <section style={{ padding: '140px 0', background: 'linear-gradient(180deg,transparent,rgba(8,15,30,.9),transparent)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>Core Products</motion.div>
+          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>{t('products.secLabel')}</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em', marginBottom: '16px' }}>
-            Platforms Built for <span style={{ color: 'var(--blue2)' }}>Your Industry</span>
+            {t('products.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('products.h2b')}</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .18 }}
             style={{ color: 'var(--muted)', fontSize: '17px', lineHeight: 1.7, maxWidth: '540px', margin: '0 auto' }}>
-            Five production-ready SaaS platforms spanning healthcare, F&B, real estate, AI automation, and enterprise operations.
+            {t('products.sub')}
           </motion.p>
         </div>
 
@@ -72,11 +74,11 @@ export default function Products() {
                 <MockScreen prod={prod} />
                 <div style={{ padding: '28px 28px 32px' }}>
                   <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--blue2)', letterSpacing: '.14em', padding: '4px 10px', border: '1px solid rgba(59,158,255,0.25)', borderRadius: '4px', display: 'inline-block', marginBottom: '14px' }}>
-                    {prod.tag}
+                    {pick(prod.tag)}
                   </span>
-                  <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>{prod.name}</div>
-                  <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{prod.desc}</div>
-                  <div style={{ marginTop: '18px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 500 }}>View Platform →</div>
+                  <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>{pick(prod.name)}</div>
+                  <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{pick(prod.desc)}</div>
+                  <div style={{ marginTop: '18px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 500 }}>{t('products.view')}</div>
                 </div>
               </motion.div>
             ))}

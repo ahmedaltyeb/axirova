@@ -1,21 +1,15 @@
 import React from 'react';
 import logoSVG from '../assets/icons/logo_text.svg';
 import { SITE } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const cols = [
-    {
-      title: 'Services',
-      links: ['Software Development', 'Artificial Intelligence', 'Business Automation', 'SaaS Platforms', 'Smart GCC Solutions'],
-    },
-    {
-      title: 'Products',
-      links: ['PharmaX', 'Restaurant Hub', 'Real Estate Hub', 'AI Automation Hub', 'ERP Suite'],
-    },
-    {
-      title: 'Company',
-      links: ['About AXIROVA', 'Industries', 'Careers', 'Contact', 'Privacy Policy'],
-    },
+    { titleKey: 'footer.col1', links: t('footer.services') },
+    { titleKey: 'footer.col2', links: t('footer.products') },
+    { titleKey: 'footer.col3', links: t('footer.company') },
   ];
 
   return (
@@ -30,7 +24,7 @@ export default function Footer() {
             <img src={logoSVG} alt="Axirova" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
           </a>
           <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7, marginTop: '16px' }}>
-            AI-Powered Solutions &amp; Digital<br />Transformation for the GCC.
+            {t('footer.tagline')}
           </p>
           <div style={{ marginTop: '20px' }}>
             <p style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.08em', marginBottom: '6px' }}>
@@ -44,8 +38,8 @@ export default function Footer() {
 
         {/* Link columns */}
         {cols.map((col) => (
-          <div key={col.title}>
-            <h4 style={{ fontFamily: 'var(--font-d)', fontSize: '14px', fontWeight: 700, marginBottom: '20px', color: 'var(--text)' }}>{col.title}</h4>
+          <div key={col.titleKey}>
+            <h4 style={{ fontFamily: 'var(--font-d)', fontSize: '14px', fontWeight: 700, marginBottom: '20px', color: 'var(--text)' }}>{t(col.titleKey)}</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {col.links.map((link) => (
                 <li key={link}>
@@ -66,8 +60,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{ maxWidth: '1160px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '36px', borderTop: '1px solid var(--border)', fontSize: '13px', color: 'var(--dim)', flexWrap: 'wrap', gap: '16px' }}>
-        <span>© 2025 Axirova Technology. All rights reserved.</span>
-        <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', letterSpacing: '.15em' }}>UAE · AI · AUTOMATION · GCC</span>
+        <span>{t('footer.copyright')}</span>
+        <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', letterSpacing: '.15em' }}>{t('footer.geo')}</span>
         <div style={{ display: 'flex', gap: '10px' }}>
           {[
             { label: 'in', href: SITE.social.linkedin },

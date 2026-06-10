@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import useCounter from '../hooks/useCounter';
 import { COUNTER_STATS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 function CounterBox({ stat, delay }) {
+  const { pick } = useLanguage();
   const { ref, count } = useCounter(stat.target || 0);
   return (
     <motion.div
@@ -28,7 +30,7 @@ function CounterBox({ stat, delay }) {
         )}
       </div>
       <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--muted)', letterSpacing: '.12em', marginTop: '10px' }}>
-        {stat.label}
+        {pick(stat.label)}
       </div>
     </motion.div>
   );

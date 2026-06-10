@@ -1,16 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { VALUES } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Values() {
+  const { t, pick } = useLanguage();
+
   return (
     <section style={{ padding: '140px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>What Drives Us</motion.div>
+          <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ justifyContent: 'center' }}>{t('values.secLabel')}</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
             style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(32px,4.5vw,54px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-.03em' }}>
-            Our <span style={{ color: 'var(--blue2)' }}>Core Values</span>
+            {t('values.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('values.h2b')}</span>
           </motion.h2>
         </div>
 
@@ -30,8 +33,8 @@ export default function Values() {
               }}
             >
               <span style={{ fontSize: '36px', marginBottom: '18px', display: 'block' }}>{v.icon}</span>
-              <div style={{ fontFamily: 'var(--font-d)', fontSize: '17px', fontWeight: 700, marginBottom: '10px' }}>{v.name}</div>
-              <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.7 }}>{v.desc}</div>
+              <div style={{ fontFamily: 'var(--font-d)', fontSize: '17px', fontWeight: 700, marginBottom: '10px' }}>{pick(v.name)}</div>
+              <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.7 }}>{pick(v.desc)}</div>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { STATS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 const fadeRise = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -15,6 +16,7 @@ const lineReveal = (delay = 0) => ({
 });
 
 export default function Hero() {
+  const { t, pick } = useLanguage();
   const canvasRef = useRef(null);
   const inner3dRef = useRef(null);
   const particleLayerRef = useRef(null);
@@ -243,7 +245,7 @@ export default function Hero() {
               <span style={{ position: 'absolute', width: '14px', height: '14px', borderRadius: '50%', border: '1px solid var(--emerald)', animation: 'pulse-ring 2s ease infinite', opacity: 0 }} />
               <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--emerald)', boxShadow: '0 0 10px var(--emerald)', animation: 'pulse-live 2s ease infinite', position: 'relative', zIndex: 1 }} />
             </span>
-            UAE-BASED · AI &amp; AUTOMATION COMPANY
+            {t('hero.badge')}
             <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,transparent,rgba(59,158,255,0.12),transparent)', transform: 'translateX(-100%)', animation: 'badge-shine 3.5s ease-in-out 2s infinite' }} />
           </div>
         </motion.div>
@@ -254,15 +256,15 @@ export default function Hero() {
           style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(2.4rem,5.5vw,5.2rem)', fontWeight: 800, lineHeight: 1.06, letterSpacing: '-.04em', marginBottom: '20px' }}
         >
           <span style={{ display: 'block', overflow: 'hidden' }}>
-            <motion.span style={{ display: 'block' }} {...lineReveal(0.5)}>Building</motion.span>
+            <motion.span style={{ display: 'block' }} {...lineReveal(0.5)}>{t('hero.line1')}</motion.span>
           </span>
           <span style={{ display: 'block', overflow: 'hidden' }}>
             <motion.span style={{ display: 'block' }} {...lineReveal(0.68)}>
-              <span className="glitch-word" data-text="Intelligent" style={{ color: 'var(--blue2)' }}>Intelligent</span> Systems
+              <span className="glitch-word" data-text={t('hero.glitch')} style={{ color: 'var(--blue2)' }}>{t('hero.line2')}</span>
             </motion.span>
           </span>
           <span style={{ display: 'block', overflow: 'hidden' }}>
-            <motion.span style={{ display: 'block' }} {...lineReveal(0.86)}>for Modern Business</motion.span>
+            <motion.span style={{ display: 'block' }} {...lineReveal(0.86)}>{t('hero.line3')}</motion.span>
           </span>
         </h1>
 
@@ -271,7 +273,7 @@ export default function Hero() {
           {...fadeRise(1.2)}
           style={{ fontSize: 'clamp(1rem,1.4vw,1.15rem)', color: 'var(--muted)', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 28px' }}
         >
-          Axirova Technology is a UAE-based company specializing in AI-powered solutions, intelligent automation, and digital transformation — built specifically for businesses across the GCC region.
+          {t('hero.sub')}
         </motion.p>
 
         {/* Actions */}
@@ -290,7 +292,7 @@ export default function Hero() {
             }}
             onClick={() => document.getElementById('cta-sec')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Start a Project <span>→</span>
+            {t('hero.cta1')}
           </motion.button>
           <motion.button
             whileHover={{ y: -4, borderColor: 'var(--blue2)' }}
@@ -302,7 +304,7 @@ export default function Hero() {
             }}
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Explore Solutions
+            {t('hero.cta2')}
           </motion.button>
         </motion.div>
 
@@ -328,7 +330,7 @@ export default function Hero() {
                 )}
               </div>
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--muted)', letterSpacing: '.12em', marginTop: '7px' }}>
-                {s.label}
+                {pick(s.label)}
               </div>
             </div>
           ))}
@@ -345,7 +347,7 @@ export default function Hero() {
         <div style={{ width: '22px', height: '34px', border: '1.5px solid rgba(59,158,255,0.3)', borderRadius: '11px', display: 'flex', justifyContent: 'center', paddingTop: '5px' }}>
           <div style={{ width: '3px', height: '7px', background: 'linear-gradient(180deg,var(--blue2),var(--emerald))', borderRadius: '2px', animation: 'mouse-scroll 1.8s ease infinite' }} />
         </div>
-        <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--dim)', letterSpacing: '.15em' }}>SCROLL TO EXPLORE</span>
+        <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--dim)', letterSpacing: '.15em' }}>{t('hero.scroll')}</span>
       </motion.div>
 
       <style>{`

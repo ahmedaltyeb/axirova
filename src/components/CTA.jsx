@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CALENDLY_URL } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function CTA() {
+  const { t } = useLanguage();
   const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   const openCalendly = () => window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
 
@@ -41,10 +43,10 @@ export default function CTA() {
           }} />
 
           <h2 style={{ fontFamily: 'var(--font-d)', fontSize: 'clamp(36px,5vw,64px)', fontWeight: 800, letterSpacing: '-.03em', lineHeight: 1.08, marginBottom: '20px', position: 'relative' }}>
-            Ready to <span style={{ color: 'var(--blue2)' }}>Transform</span><br />Your Business?
+            {t('cta.h2a')} <span style={{ color: 'var(--blue2)' }}>{t('cta.h2b')}</span><br />{t('cta.h2c')}
           </h2>
           <p style={{ color: 'var(--muted)', fontSize: '17px', marginBottom: '44px', position: 'relative' }}>
-            Let&apos;s build your next AI-powered system together — GCC-ready, Arabic-first, enterprise-grade.
+            {t('cta.sub')}
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
             <motion.button
@@ -53,7 +55,7 @@ export default function CTA() {
               onClick={scrollToContact}
               style={{ background: 'linear-gradient(135deg,var(--blue),var(--blue2))', color: '#fff', border: 'none', padding: '15px 36px', borderRadius: '10px', fontSize: '15px', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-b)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}
             >
-              Start a Project →
+              {t('cta.btn1')}
             </motion.button>
             <motion.button
               whileHover={{ y: -4, borderColor: 'var(--blue2)', color: 'var(--text)' }}
@@ -61,7 +63,7 @@ export default function CTA() {
               onClick={openCalendly}
               style={{ background: 'transparent', color: 'var(--muted)', border: '1px solid rgba(255,255,255,0.15)', padding: '15px 36px', borderRadius: '10px', fontSize: '15px', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-b)', transition: 'all .3s' }}
             >
-              Schedule a Call
+              {t('cta.btn2')}
             </motion.button>
           </div>
         </motion.div>

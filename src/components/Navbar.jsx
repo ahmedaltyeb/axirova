@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoSVG from '../assets/icons/logo_text.svg';
 import { NAV_LINKS } from '../utils/siteData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const { lang, setLang, t } = useLanguage();
+  const [scrolled, setScrolled]   = useState(false);
   const [activeHref, setActiveHref] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -14,7 +16,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -27,10 +28,7 @@ export default function Navbar() {
     setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), menuOpen ? 300 : 0);
   };
 
-  const allLinks = [
-    ...NAV_LINKS,
-    { label: 'Contact', href: '#contact' },
-  ];
+  const toggleLang = () => setLang(lang === 'en' ? 'ar' : 'en');
 
   return (
     <>
@@ -73,7 +71,7 @@ export default function Navbar() {
 
         {/* Desktop nav links */}
         <ul className="nav-links" style={{ display: 'flex', gap: '36px', listStyle: 'none', margin: 0, padding: 0 }} role="list">
-          {allLinks.map(({ label, href }) => (
+          {NAV_LINKS.map(({ labelKey, href }) => (
             <li key={href}>
               <a
                 href={href}
@@ -89,33 +87,61 @@ export default function Navbar() {
                 onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = activeHref === href ? 'var(--text)' : 'var(--muted)'; }}
               >
-                {label}
+                {t(labelKey)}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        <motion.button
-          className="nav-cta"
-          whileHover={{ y: -2, scale: 1.03, boxShadow: '0 10px 36px rgba(26,111,232,0.55)' }}
-          whileTap={{ scale: 0.97 }}
-          style={{
-            background: 'linear-gradient(135deg, var(--blue), var(--blue2))',
-            color: '#fff',
-            border: 'none',
-            padding: '10px 24px',
-            borderRadius: '8px',
-            fontSize: '14px',
-            fontWeight: 500,
-            cursor: 'pointer',
-            fontFamily: 'var(--font-b)',
-          }}
-          onClick={() => handleNav('#contact')}
-          aria-label="Get in touch"
-        >
-          Get in Touch
-        </motion.button>
+        {/* Desktop right side: lang toggle + CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Language toggle */}
+          <button
+            className="lang-toggle"
+            onClick={toggleLang}
+            aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+            style={{
+              background: 'transparent',
+              border: '1px solid var(--border)',
+              borderRadius: '6px',
+              color: 'var(--muted)',
+              padding: '6px 12px',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              letterSpacing: '0.04em',
+              transition: 'all 0.2s',
+              fontFamily: 'var(--font-b)',
+              minWidth: '48px',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--blue)'; e.currentTarget.style.color = 'var(--text)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
+          >
+            {lang === 'en' ? 'ع' : 'EN'}
+          </button>
+
+          {/* CTA */}
+          <motion.button
+            className="nav-cta"
+            whileHover={{ y: -2, scale: 1.03, boxShadow: '0 10px 36px rgba(26,111,232,0.55)' }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              background: 'linear-gradient(135deg, var(--blue), var(--blue2))',
+              color: '#fff',
+              border: 'none',
+              padding: '10px 24px',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-b)',
+            }}
+            onClick={() => handleNav('#contact')}
+            aria-label="Get in touch"
+          >
+            {t('nav.getInTouch')}
+          </motion.button>
+        </div>
 
         {/* Hamburger */}
         <button
@@ -170,7 +196,7 @@ export default function Navbar() {
             role="navigation"
             aria-label="Mobile navigation"
           >
-            {allLinks.map(({ label, href }, i) => (
+            {NAV_LINKS.map(({ labelKey, href }, i) => (
               <motion.a
                 key={href}
                 href={href}
@@ -194,17 +220,41 @@ export default function Navbar() {
                 onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted)'; }}
               >
-                {label}
+                {t(labelKey)}
                 <span style={{ fontSize: '16px', color: 'var(--dim)' }}>→</span>
               </motion.a>
             ))}
+
+            {/* Mobile lang toggle */}
             <motion.button
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: allLinks.length * .05 }}
+              transition={{ delay: NAV_LINKS.length * .05 }}
+              onClick={toggleLang}
+              style={{
+                marginTop: '12px',
+                background: 'transparent',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                color: 'var(--muted)',
+                padding: '12px',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontFamily: 'var(--font-b)',
+                width: '100%',
+              }}
+            >
+              {lang === 'en' ? 'العربية' : 'English'}
+            </motion.button>
+
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: (NAV_LINKS.length + 1) * .05 }}
               onClick={() => handleNav('#contact')}
               style={{
-                marginTop: '20px',
+                marginTop: '8px',
                 background: 'linear-gradient(135deg, var(--blue), var(--blue2))',
                 color: '#fff',
                 border: 'none',
@@ -217,7 +267,7 @@ export default function Navbar() {
                 width: '100%',
               }}
             >
-              Start a Project →
+              {t('nav.getInTouch')}
             </motion.button>
           </motion.div>
         )}
