@@ -79,7 +79,6 @@ axirova-website/
 | Field | Value |
 |-------|-------|
 | **Company** | Axirova Technology |
-| **CEO** | Altyeb Khalifa & Ahmed Eltyeb Khalifa  |
 | **Email** | info@axirova.ae |
 | **Phone** | +971 52 930 7250 |
 | **Twitter** | @axirovaa |
