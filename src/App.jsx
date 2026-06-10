@@ -5,6 +5,8 @@ import ScrollProgress from './components/ScrollProgress';
 import PageEnter from './components/PageEnter';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ChatbotWidget from './components/ChatbotWidget';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const ClientLogos   = lazy(() => import('./components/ClientLogos'));
 const About         = lazy(() => import('./components/About'));
@@ -104,6 +106,10 @@ export default function App() {
           <Footer />
         </Suspense>
       </main>
+
+      {/* ── Floating widgets ── */}
+      <ChatbotWidget />
+      <WhatsAppButton />
     </LanguageProvider>
   );
 }

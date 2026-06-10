@@ -28,7 +28,7 @@ export default function Values() {
               whileHover={{ y: -10, scale: 1.03, boxShadow: '0 20px 50px rgba(26,111,232,0.15)', borderColor: 'var(--border2)' }}
               style={{
                 flex: '0 0 calc(20% - 16px)', minWidth: '180px', background: 'var(--glass)',
-                border: '1px solid var(--border)', borderRadius: '20px', padding: '36px 28px',
+                border: '1px solid var(--border)', borderRadius: '20px', padding: '24px 28px',
                 textAlign: 'center', cursor: 'default',
               }}
             >

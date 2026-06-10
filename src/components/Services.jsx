@@ -27,12 +27,12 @@ export default function Services() {
           {SERVICES.map((s, i) => (
             <div
               key={i}
-              style={{ background: 'var(--bg)', padding: '44px 36px', position: 'relative', overflow: 'hidden', cursor: 'default', transition: 'background .35s' }}
+              style={{ background: 'var(--bg)', padding: '28px 36px', position: 'relative', overflow: 'hidden', cursor: 'default', transition: 'background .35s' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--bg3)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--bg)'; }}
             >
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '10px' }}>{s.num}</div>
-              <div style={{ width: '54px', height: '54px', borderRadius: '14px', background: 'rgba(26,111,232,0.1)', border: '1px solid rgba(26,111,232,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '26px', color: 'var(--blue2)', transition: 'all .4s cubic-bezier(.22,1,.36,1)' }}>
+              <div style={{ width: '54px', height: '54px', borderRadius: '14px', background: 'rgba(26,111,232,0.1)', border: '1px solid rgba(26,111,232,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px', color: 'var(--blue2)', transition: 'all .4s cubic-bezier(.22,1,.36,1)' }}>
                 {s.icon}
               </div>
               <div style={{ fontFamily: 'var(--font-d)', fontSize: '19px', fontWeight: 700, marginBottom: '12px', lineHeight: 1.2 }}>{pick(s.title)}</div>

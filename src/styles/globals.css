@@ -53,6 +53,17 @@ body::before {
   z-index: 9997;
 }
 
+/* ── FLOATING WIDGETS ── */
+@keyframes chatSlideUp {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@media (max-width: 480px) {
+  .wa-float-btn   { padding: 0 !important; width: 52px; justify-content: center; }
+  .wa-float-label { display: none; }
+}
+
 /* ── SECTION DIVIDER ── */
 .section-divider {
   height: 1px;

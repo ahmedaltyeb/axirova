@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
                 background: 'var(--glass)',
                 border: '1px solid var(--border)',
                 borderRadius: '20px',
-                padding: '36px 32px',
+                padding: '24px 32px',
                 cursor: 'default',
                 transition: 'all .4s cubic-bezier(.22,1,.36,1)',
               }}
