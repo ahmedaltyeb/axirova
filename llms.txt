@@ -1,0 +1,51 @@
+# Axirova Technology — AI & Digital Transformation Company (UAE)
+
+## Company
+
+Axirova Technology is a UAE-based software and AI company that builds intelligent digital solutions for businesses across the GCC (Gulf Cooperation Council) region. Founded by Ahmed Eltyeb Khalifa, Axirova specialises in AI-powered applications, business automation, custom SaaS platforms, mobile app development, and enterprise digital transformation.
+
+Website: https://axirova.ae
+Location: United Arab Emirates
+Email: info@axirova.ae
+Phone: +971 52 930 7250
+
+## What Axirova Does
+
+Axirova builds end-to-end technology solutions including:
+
+- Custom iOS and Android mobile applications (Flutter, React Native)
+- AI assistants, computer vision systems, and predictive analytics
+- Business process automation and workflow optimisation
+- Multi-tenant SaaS platforms and cloud infrastructure
+- ERP, CRM, and POS systems for GCC businesses
+- Arabic-first UX design and localised digital products for the Gulf market
+- Enterprise systems for healthcare, F&B, real estate, retail, and government sectors
+
+## Core Products
+
+1. PharmaX — Cloud-based pharmacy management system (inventory, billing, prescriptions, multi-branch)
+2. Restaurant Insight Hub — Operations, orders, kitchen management, and analytics for restaurants
+3. Real Estate Hub — Property listings, client management, and deal pipeline tracking
+4. AI Automation Hub — Centralised platform for deploying AI agents and automating workflows
+5. AXIROVA ERP Suite — Integrated ERP covering inventory, finance, HR, and procurement
+
+## Industries Served
+
+Healthcare, Food & Beverage, Real Estate, Retail & Commerce, Professional Services, Government & Public Sector
+
+## Technology Stack
+
+Frontend: Flutter, React Native, React
+Backend: Django, Laravel, Node.js
+AI: OpenAI, LangChain, Computer Vision, Audio AI
+Cloud: AWS, GCP, Firebase
+Databases: PostgreSQL, MongoDB, Redis
+Infrastructure: Docker, REST APIs, CI/CD
+
+## Contact
+
+To start a project: https://axirova.ae/#contact
+To schedule a call: https://axirova.ae/#contact
+LinkedIn: https://linkedin.com/company/axirova
+Twitter/X: https://twitter.com/axirovaa
+GitHub: https://github.com/axirova
