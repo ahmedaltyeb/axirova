@@ -1,0 +1,227 @@
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import logoSVG from '../assets/icons/logo_text.svg';
+import { NAV_LINKS } from '../utils/siteData';
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const handleNav = (href) => {
+    setActiveHref(href);
+    setMenuOpen(false);
+    const id = href.replace('#', '');
+    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), menuOpen ? 300 : 0);
+  };
+
+  const allLinks = [
+    ...NAV_LINKS,
+    { label: 'Contact', href: '#contact' },
+  ];
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -72, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0,
+          zIndex: 400,
+          padding: '0 5%',
+          height: '72px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          transition: 'all 0.5s cubic-bezier(.22,1,.36,1)',
+          background: scrolled || menuOpen ? 'rgba(5,13,26,0.95)' : 'transparent',
+          backdropFilter: scrolled || menuOpen ? 'blur(24px)' : 'none',
+          WebkitBackdropFilter: scrolled || menuOpen ? 'blur(24px)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+        }}
+        aria-label="Main navigation"
+      >
+        {/* Logo */}
+        <a
+          href="#hero-section"
+          onClick={(e) => { e.preventDefault(); handleNav('#hero-section'); }}
+          style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', zIndex: 1 }}
+          aria-label="Axirova Technology — Home"
+        >
+          <div
+            style={{ display: 'flex', alignItems: 'center', transition: 'transform 0.3s cubic-bezier(.22,1,.36,1)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = ''; }}
+          >
+            <img src={logoSVG} alt="Axirova" style={{ height: '34px', width: 'auto', objectFit: 'contain' }} />
+          </div>
+        </a>
+
+        {/* Desktop nav links */}
+        <ul className="nav-links" style={{ display: 'flex', gap: '36px', listStyle: 'none', margin: 0, padding: 0 }} role="list">
+          {allLinks.map(({ label, href }) => (
+            <li key={href}>
+              <a
+                href={href}
+                onClick={(e) => { e.preventDefault(); handleNav(href); }}
+                style={{
+                  color: activeHref === href ? 'var(--text)' : 'var(--muted)',
+                  fontSize: '14px',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                  transition: 'color 0.2s',
+                  paddingBottom: '2px',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = activeHref === href ? 'var(--text)' : 'var(--muted)'; }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Desktop CTA */}
+        <motion.button
+          className="nav-cta"
+          whileHover={{ y: -2, scale: 1.03, boxShadow: '0 10px 36px rgba(26,111,232,0.55)' }}
+          whileTap={{ scale: 0.97 }}
+          style={{
+            background: 'linear-gradient(135deg, var(--blue), var(--blue2))',
+            color: '#fff',
+            border: 'none',
+            padding: '10px 24px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontWeight: 500,
+            cursor: 'pointer',
+            fontFamily: 'var(--font-b)',
+          }}
+          onClick={() => handleNav('#contact')}
+          aria-label="Get in touch"
+        >
+          Get in Touch
+        </motion.button>
+
+        {/* Hamburger */}
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          style={{
+            display: 'none',
+            background: 'none',
+            border: '1px solid var(--border)',
+            borderRadius: '8px',
+            width: '40px',
+            height: '40px',
+            cursor: 'pointer',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            gap: '5px',
+            padding: '0',
+            zIndex: 1,
+          }}
+        >
+          <span style={{ display: 'block', width: '18px', height: '1.5px', background: 'var(--text)', transition: 'all .3s', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+          <span style={{ display: 'block', width: '18px', height: '1.5px', background: 'var(--text)', transition: 'all .3s', opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ display: 'block', width: '18px', height: '1.5px', background: 'var(--text)', transition: 'all .3s', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+        </button>
+      </motion.nav>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: .3, ease: [.22,1,.36,1] }}
+            style={{
+              position: 'fixed',
+              top: '72px', left: 0, right: 0,
+              zIndex: 399,
+              background: 'rgba(5,13,26,0.97)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              borderBottom: '1px solid var(--border)',
+              padding: '24px 5% 36px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+            }}
+            role="navigation"
+            aria-label="Mobile navigation"
+          >
+            {allLinks.map(({ label, href }, i) => (
+              <motion.a
+                key={href}
+                href={href}
+                onClick={(e) => { e.preventDefault(); handleNav(href); }}
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * .05 }}
+                style={{
+                  color: 'var(--muted)',
+                  fontSize: '18px',
+                  fontFamily: 'var(--font-d)',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  padding: '14px 0',
+                  borderBottom: '1px solid var(--border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  transition: 'color .2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted)'; }}
+              >
+                {label}
+                <span style={{ fontSize: '16px', color: 'var(--dim)' }}>→</span>
+              </motion.a>
+            ))}
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: allLinks.length * .05 }}
+              onClick={() => handleNav('#contact')}
+              style={{
+                marginTop: '20px',
+                background: 'linear-gradient(135deg, var(--blue), var(--blue2))',
+                color: '#fff',
+                border: 'none',
+                padding: '14px',
+                borderRadius: '10px',
+                fontSize: '15px',
+                fontWeight: 500,
+                cursor: 'pointer',
+                fontFamily: 'var(--font-b)',
+                width: '100%',
+              }}
+            >
+              Start a Project →
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
