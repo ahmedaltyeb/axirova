@@ -1,0 +1,14 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3b9eff"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" fill="#050d1a"/>
+  <g transform="translate(-4, 6) scale(0.83)">
+    <path d="M34.554 164.882L90.9627 72.0537L117.545 113.288L105.928 121.66L90.9627 99.7871L60.9269 150.963L74.3226 146.777C85.5341 140.616 92.4514 136.54 105.928 128.148L180.442 72.0537H198.338L120.58 130.66C101.23 146.891 88.8825 154.7 60.9269 163.522C50.8192 166.551 45.0322 166.713 34.554 164.882Z" fill="url(#iconGrad)" transform="translate(-28,-65)"/>
+    <path d="M117.545 138.3L129.79 130.66L152.918 164.882H135.336L117.545 138.3Z" fill="url(#iconGrad)" transform="translate(-28,-65)"/>
+    <path d="M136.173 122.602L147.999 113.288L194.466 163.522L175.628 164.882L136.173 122.602Z" fill="url(#iconGrad)" transform="translate(-28,-65)"/>
+  </g>
+</svg>

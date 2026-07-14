@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { prefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const fadeUp = { initial: { opacity: 0, y: 50 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' } };
 const fadeRight = { initial: { opacity: 0, x: 60 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, margin: '-50px' } };
@@ -14,6 +14,7 @@ export default function About() {
     const c = canvasRef.current;
     if (!c) return;
     const ctx = c.getContext('2d');
+    const reduced = prefersReducedMotion();
     let W, H, t = 0, animId;
     const resize = () => { W = c.width = c.offsetWidth; H = c.height = c.offsetHeight; };
     resize();
@@ -58,7 +59,7 @@ export default function About() {
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(n.lbl, x, y);
       });
-      animId = requestAnimationFrame(draw);
+      if (!reduced) animId = requestAnimationFrame(draw);
     };
     draw();
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };

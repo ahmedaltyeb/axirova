@@ -89,6 +89,28 @@ body {
 }
 body.touch-device { cursor: auto; }
 
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html, body { scroll-behavior: auto !important; }
+}
+
+/* ── FOCUS VISIBLE ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--blue2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* ── NOISE OVERLAY ── */
 body::before {
   content: '';

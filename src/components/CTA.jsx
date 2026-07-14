@@ -2,11 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CALENDLY_URL } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+import { trackEvent } from '../utils/analytics';
 
 export default function CTA() {
   const { t } = useLanguage();
   const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  const openCalendly = () => window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+  const openCalendly = () => {
+    trackEvent('calendly_click', { source: 'cta' });
+    window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section style={{ padding: '140px 0' }}>

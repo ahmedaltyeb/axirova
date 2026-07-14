@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TECH_NODES, CAT_COLOR } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+import { prefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 export default function TechStack() {
   const { t } = useLanguage();
@@ -11,6 +12,7 @@ export default function TechStack() {
     const c = canvasRef.current;
     if (!c) return;
     const ctx = c.getContext('2d');
+    const reduced = prefersReducedMotion();
     let W, H, t = 0, animId;
     let nodes = [];
 
@@ -54,7 +56,7 @@ export default function TechStack() {
         if (n.lbl.includes('\n')) { const [a, b] = n.lbl.split('\n'); ctx.fillText(a, n.px, n.py - 7); ctx.fillText(b, n.px, n.py + 7); }
         else ctx.fillText(n.lbl, n.px, n.py);
       });
-      animId = requestAnimationFrame(draw);
+      if (!reduced) animId = requestAnimationFrame(draw);
     };
     draw();
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };

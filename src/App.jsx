@@ -1,115 +1,45 @@
 import React, { Suspense, lazy } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Cursor from './components/Cursor';
-import ScrollProgress from './components/ScrollProgress';
-import PageEnter from './components/PageEnter';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import ChatbotWidget from './components/ChatbotWidget';
 import WhatsAppButton from './components/WhatsAppButton';
+import CookieConsent from './components/CookieConsent';
+import Home from './pages/Home';
 
-const ClientLogos   = lazy(() => import('./components/ClientLogos'));
-const About         = lazy(() => import('./components/About'));
-const WhyChooseUs   = lazy(() => import('./components/WhyChooseUs'));
-const Services      = lazy(() => import('./components/Services'));
-const Process       = lazy(() => import('./components/Process'));
-const Industries    = lazy(() => import('./components/Industries'));
-const Products      = lazy(() => import('./components/Products'));
-const Testimonials  = lazy(() => import('./components/Testimonials'));
-const Counters      = lazy(() => import('./components/Counters'));
-const TechStack     = lazy(() => import('./components/TechStack'));
-const Partners      = lazy(() => import('./components/Partners'));
-const Vision        = lazy(() => import('./components/Vision'));
-const Values        = lazy(() => import('./components/Values'));
-const FAQ           = lazy(() => import('./components/FAQ'));
-const Contact       = lazy(() => import('./components/Contact'));
-const CTA           = lazy(() => import('./components/CTA'));
-const Footer        = lazy(() => import('./components/Footer'));
-
-const Divider = () => <div className="section-divider" />;
+const Footer            = lazy(() => import('./components/Footer'));
+const Privacy           = lazy(() => import('./pages/Privacy'));
+const Terms             = lazy(() => import('./pages/Terms'));
+const BlogIndex         = lazy(() => import('./pages/BlogIndex'));
+const BlogPost          = lazy(() => import('./pages/BlogPost'));
+const CaseStudiesIndex  = lazy(() => import('./pages/CaseStudiesIndex'));
+const CaseStudyDetail   = lazy(() => import('./pages/CaseStudyDetail'));
 
 export default function App() {
   return (
     <LanguageProvider>
-      <PageEnter />
-      <Cursor />
-      <ScrollProgress />
-      <Navbar />
+      <HashRouter>
+        <Cursor />
+        <Navbar />
 
-      <main>
-        {/* ── Above fold ── */}
-        <section id="hero-section"><Hero /></section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
+          <Route path="/terms" element={<Suspense fallback={null}><Terms /></Suspense>} />
+          <Route path="/blog" element={<Suspense fallback={null}><BlogIndex /></Suspense>} />
+          <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
+          <Route path="/case-studies" element={<Suspense fallback={null}><CaseStudiesIndex /></Suspense>} />
+          <Route path="/case-studies/:slug" element={<Suspense fallback={null}><CaseStudyDetail /></Suspense>} />
+        </Routes>
 
-        <Suspense fallback={null}>
-          {/* ── Trust bar ── */}
-          <ClientLogos />
+        <Suspense fallback={null}><Footer /></Suspense>
 
-          {/* ── About ── */}
-          <Divider />
-          <section id="about"><About /></section>
-
-          {/* ── Why AXIROVA ── */}
-          <Divider />
-          <section id="why"><WhyChooseUs /></section>
-
-          {/* ── Services ── */}
-          <Divider />
-          <section id="services"><Services /></section>
-
-          {/* ── How We Work ── */}
-          <Divider />
-          <section id="process"><Process /></section>
-
-          {/* ── Industries ── */}
-          <Divider />
-          <section id="industries"><Industries /></section>
-
-          {/* ── Products ── */}
-          <Divider />
-          <section id="products"><Products /></section>
-
-          {/* ── Testimonials ── */}
-          <Divider />
-          <section id="testimonials"><Testimonials /></section>
-
-          {/* ── Stats ── */}
-          <Divider />
-          <section id="counters"><Counters /></section>
-
-          {/* ── Tech Stack ── */}
-          <Divider />
-          <section id="tech"><TechStack /></section>
-
-          {/* ── Partners (borderTop handled inside) ── */}
-          <section id="partners"><Partners /></section>
-
-          {/* ── Vision & Mission ── */}
-          <Divider />
-          <section id="vision"><Vision /></section>
-
-          {/* ── Core Values ── */}
-          <Divider />
-          <section id="values"><Values /></section>
-
-          {/* ── FAQ ── */}
-          <Divider />
-          <FAQ />
-
-          {/* ── Contact ── */}
-          <Divider />
-          <Contact />
-
-          {/* ── Pre-footer CTA ── */}
-          <Divider />
-          <section id="cta-sec"><CTA /></section>
-
-          <Footer />
-        </Suspense>
-      </main>
-
-      {/* ── Floating widgets ── */}
-      <ChatbotWidget />
-      <WhatsAppButton />
+        {/* ── Floating widgets ── */}
+        <ChatbotWidget />
+        <WhatsAppButton />
+        <CookieConsent />
+      </HashRouter>
     </LanguageProvider>
   );
 }

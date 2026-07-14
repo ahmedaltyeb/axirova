@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glowA" cx="15%" cy="-5%" r="60%">
+      <stop offset="0%" stop-color="#1a6fe8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#1a6fe8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="90%" cy="105%" r="60%">
+      <stop offset="0%" stop-color="#00d4a0" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#00d4a0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="topLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b9eff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#3b9eff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#3b9eff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3b9eff"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1a6fe8" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#050d1a"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+  <rect x="370" y="0" width="460" height="3" fill="url(#topLine)"/>
+
+  <text x="64" y="90" font-family="monospace" font-size="16" letter-spacing="4" fill="#3b9eff">UAE · AI &amp; AUTOMATION COMPANY</text>
+
+  <g transform="translate(510, 195) scale(0.95)">
+    <path d="M34.554 164.882L90.9627 72.0537L117.545 113.288L105.928 121.66L90.9627 99.7871L60.9269 150.963L74.3226 146.777C85.5341 140.616 92.4514 136.54 105.928 128.148L180.442 72.0537H198.338L120.58 130.66C101.23 146.891 88.8825 154.7 60.9269 163.522C50.8192 166.551 45.0322 166.713 34.554 164.882Z" fill="url(#iconGrad)" transform="translate(-34,-72)"/>
+    <path d="M117.545 138.3L129.79 130.66L152.918 164.882H135.336L117.545 138.3Z" fill="url(#iconGrad)" transform="translate(-34,-72)"/>
+    <path d="M136.173 122.602L147.999 113.288L194.466 163.522L175.628 164.882L136.173 122.602Z" fill="url(#iconGrad)" transform="translate(-34,-72)"/>
+  </g>
+
+  <text x="600" y="400" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="800" font-size="76" letter-spacing="-1" fill="#f0f4ff">AXIROVA</text>
+  <text x="600" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" fill="#7090b0">AI-Powered Solutions &amp; Digital Transformation for the GCC</text>
+</svg>
