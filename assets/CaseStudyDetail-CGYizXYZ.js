@@ -1,0 +1,1 @@
+import{j as t}from"./framer-motion-DICsYjIq.js";import{C as e}from"./ContentDetailPage-CWqiaDbR.js";import{C as s}from"./caseStudyData--Bkvpxfg.js";import"./index-D3waPI6Z.js";import"./react-vendor-_fOXvgsl.js";function n(){return t.jsx(e,{items:s,basePath:"/case-studies",contentKey:"caseStudies"})}export{n as default};

@@ -1,0 +1,1 @@
+import{j as r}from"./framer-motion-DICsYjIq.js";import{L as t}from"./LegalPage-biuPwJLW.js";import"./index-D3waPI6Z.js";import"./react-vendor-_fOXvgsl.js";function m(){return r.jsx(t,{contentKey:"privacy"})}export{m as default};

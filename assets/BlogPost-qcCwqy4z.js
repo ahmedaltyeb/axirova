@@ -1,0 +1,1 @@
+import{j as t}from"./framer-motion-DICsYjIq.js";import{C as o}from"./ContentDetailPage-CWqiaDbR.js";import{B as r}from"./blogData-DpM43ZiX.js";import"./index-D3waPI6Z.js";import"./react-vendor-_fOXvgsl.js";function n(){return t.jsx(o,{items:r,basePath:"/blog",contentKey:"blog"})}export{n as default};

@@ -1,0 +1,1 @@
+import{j as t}from"./framer-motion-DICsYjIq.js";import{L as r}from"./LegalPage-biuPwJLW.js";import"./index-D3waPI6Z.js";import"./react-vendor-_fOXvgsl.js";function a(){return t.jsx(r,{contentKey:"terms"})}export{a as default};

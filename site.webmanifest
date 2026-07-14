@@ -1,0 +1,12 @@
+{
+  "name": "Axirova Technology",
+  "short_name": "Axirova",
+  "description": "AI-Powered Solutions & Digital Transformation for the GCC.",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "theme_color": "#1a6fe8",
+  "background_color": "#050d1a",
+  "display": "standalone",
+  "start_url": "/"
+}
