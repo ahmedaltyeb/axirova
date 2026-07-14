@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { trackEvent } from '../utils/analytics';
 
 const WA_NUMBER = '971529307250';
 const WA_TEXT   = encodeURIComponent('Hi Axirova Team, I would like to schedule a product demo.');
@@ -13,6 +14,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       title="Talk to a Demo Specialist on WhatsApp"
+      onClick={() => trackEvent('whatsapp_click')}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{

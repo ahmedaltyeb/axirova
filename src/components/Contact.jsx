@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
 import { SITE } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+import { trackEvent } from '../utils/analytics';
 
 const FORM_ID  = 'mgobzkoq';
 const CALENDLY = 'https://calendly.com/axirova/consultation';
@@ -188,6 +189,10 @@ export default function Contact() {
     if (nameField) setSubmittedName(nameField.value);
     handleSubmit(e);
   };
+
+  useEffect(() => {
+    if (state.succeeded) trackEvent('generate_lead', { form: 'contact' });
+  }, [state.succeeded]);
 
   const hasGeneralError = state.errors?.some?.(e => !e.field);
 

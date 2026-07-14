@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logoSVG from '../assets/icons/logo_text.svg';
 import { NAV_LINKS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+import { scrollToSection } from '../utils/scrollToSection';
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled]   = useState(false);
   const [activeHref, setActiveHref] = useState('');
   const [menuOpen, setMenuOpen]   = useState(false);
@@ -35,7 +39,7 @@ export default function Navbar() {
     setActiveHref(href);
     setMenuOpen(false);
     const id = href.replace('#', '');
-    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), menuOpen ? 300 : 0);
+    setTimeout(() => scrollToSection(navigate, location, id), menuOpen ? 300 : 0);
   };
 
   const toggleLang = () => setLang(lang === 'en' ? 'ar' : 'en');

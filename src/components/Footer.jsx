@@ -1,7 +1,37 @@
 import React from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logoSVG from '../assets/icons/logo_text.svg';
 import { SITE } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+import { scrollToSection } from '../utils/scrollToSection';
+
+const linkStyle = {
+  color: 'var(--muted)', fontSize: '14px', textDecoration: 'none',
+  transition: 'color .2s, padding-left .2s', display: 'inline-block',
+};
+const onLinkEnter = (e) => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.paddingLeft = '4px'; };
+const onLinkLeave = (e) => { e.currentTarget.style.color = 'var(--muted)'; e.currentTarget.style.paddingLeft = '0'; };
+
+/** Renders the right link type for a footer href: in-page anchor, router path, or mailto/external. */
+function FooterLink({ href, children }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  if (href.startsWith('#')) {
+    const id = href.slice(1);
+    const onClick = (e) => {
+      e.preventDefault();
+      scrollToSection(navigate, location, id);
+    };
+    return <a href={href} onClick={onClick} style={linkStyle} onMouseEnter={onLinkEnter} onMouseLeave={onLinkLeave}>{children}</a>;
+  }
+
+  if (href.startsWith('/')) {
+    return <Link to={href} style={linkStyle} onMouseEnter={onLinkEnter} onMouseLeave={onLinkLeave}>{children}</Link>;
+  }
+
+  return <a href={href} style={linkStyle} onMouseEnter={onLinkEnter} onMouseLeave={onLinkLeave}>{children}</a>;
+}
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -20,9 +50,9 @@ export default function Footer() {
       <div className="footer-grid" style={{ maxWidth: '1160px', margin: '0 auto' }}>
         {/* Brand */}
         <div>
-          <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <img src={logoSVG} alt="Axirova" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
-          </a>
+          </Link>
           <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7, marginTop: '16px' }}>
             {t('footer.tagline')}
           </p>
@@ -42,15 +72,8 @@ export default function Footer() {
             <h4 style={{ fontFamily: 'var(--font-d)', fontSize: '14px', fontWeight: 700, marginBottom: '20px', color: 'var(--text)' }}>{t(col.titleKey)}</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {col.links.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    style={{ color: 'var(--muted)', fontSize: '14px', textDecoration: 'none', transition: 'color .2s, padding-left .2s' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.paddingLeft = '4px'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted)'; e.currentTarget.style.paddingLeft = '0'; }}
-                  >
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>

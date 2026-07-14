@@ -56,8 +56,8 @@ export default function ChatbotWidget() {
                 AI Axirova
               </div>
               <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.82)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '3px' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00f0b5', flexShrink: 0, display: 'inline-block' }} />
-                Tech Demo Assistant
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f0b429', flexShrink: 0, display: 'inline-block' }} />
+                Scripted Demo Preview
               </div>
             </div>
             <button
@@ -69,6 +69,14 @@ export default function ChatbotWidget() {
                 color: '#fff', fontSize: '12px', flexShrink: 0,
               }}
             >✕</button>
+          </div>
+
+          {/* Disclaimer */}
+          <div style={{
+            padding: '9px 14px', fontSize: '11px', lineHeight: 1.5, color: 'var(--dim)',
+            background: 'var(--bg3)', borderBottom: '1px solid var(--border)', flexShrink: 0,
+          }}>
+            This is a scripted preview, not a live AI session. For real answers, book a call or message us on WhatsApp below.
           </div>
 
           {/* Messages */}
@@ -109,7 +117,7 @@ export default function ChatbotWidget() {
               padding: '8px 12px', fontSize: '12px', color: 'var(--dim)',
               fontFamily: 'var(--font-b)', userSelect: 'none',
             }}>
-              Ask AI Axirova…
+              Preview only — not a live chat
             </div>
             <a
               href={CALENDLY_URL}
@@ -130,7 +138,7 @@ export default function ChatbotWidget() {
       {/* Toggle Button */}
       <button
         onClick={() => setOpen(o => !o)}
-        title={open ? 'Close chat' : 'Chat with AI Axirova'}
+        title={open ? 'Close demo preview' : 'View scripted demo preview'}
         style={{
           width: '56px', height: '56px', borderRadius: '50%',
           background: open
