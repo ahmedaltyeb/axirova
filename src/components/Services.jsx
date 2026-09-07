@@ -3,8 +3,22 @@ import { motion } from 'framer-motion';
 import { SERVICES } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
 
+const QUALITY_ASSURANCE_SERVICE = {
+  num: '07',
+  icon: '✓',
+  title: {
+    en: 'Quality Assurance & Software Testing',
+    ar: 'ضمان الجودة واختبار البرمجيات',
+  },
+  desc: {
+    en: 'End-to-end software quality assurance covering QA strategy, functional and regression testing, API and integration testing, test automation, defect management, retesting, quality reporting, and release readiness.',
+    ar: 'ضمان جودة شامل للبرمجيات يغطي استراتيجية الجودة، الاختبارات الوظيفية واختبارات الانحدار، اختبار API والتكامل، أتمتة الاختبارات، إدارة العيوب، إعادة الاختبار، تقارير الجودة، وجاهزية الإصدار.',
+  },
+};
+
 export default function Services() {
   const { t, pick } = useLanguage();
+  const services = [...SERVICES, QUALITY_ASSURANCE_SERVICE];
 
   return (
     <section style={{ padding: '140px 0', background: 'linear-gradient(180deg,transparent,rgba(10,22,40,.7),transparent)' }}>
@@ -24,7 +38,7 @@ export default function Services() {
         </div>
 
         <motion.div className="srv-grid" initial={{ opacity: 0, scale: .88 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .9, delay: .25, ease: [.22,1,.36,1] }}>
-          {SERVICES.map((s, i) => (
+          {services.map((s, i) => (
             <div
               key={i}
               style={{ background: 'var(--bg)', padding: '28px 36px', position: 'relative', overflow: 'hidden', cursor: 'default', transition: 'background .35s' }}
