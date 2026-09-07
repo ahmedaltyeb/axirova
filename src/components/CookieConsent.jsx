@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { loadGA } from '../utils/analytics';
+import logoSVG from '../assets/icons/logo_text.svg';
 
 const STORAGE_KEY = 'axirova-cookie-consent';
 const EXIT_MS = 400;
@@ -18,7 +19,6 @@ export default function CookieConsent() {
       loadGA();
     } else if (stored !== 'declined') {
       setMounted(true);
-      // Mount off-screen first, then animate in on the next frame.
       requestAnimationFrame(() => setShown(true));
     }
   }, []);
@@ -47,11 +47,28 @@ export default function CookieConsent() {
         pointerEvents: shown ? 'auto' : 'none',
       }}
     >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+        <img
+          src={logoSVG}
+          alt="AXIROVA"
+          style={{ height: '34px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
+        />
+        <span
+          style={{
+            color: 'var(--blue2)', fontSize: '11px', fontWeight: 700,
+            letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap'
+          }}
+        >
+          Privacy
+        </span>
+      </div>
+
       <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.6, margin: 0 }}>
         {t('cookieConsent.message')}{' '}
         <Link to="/privacy" style={{ color: 'var(--blue2)' }}>{t('cookieConsent.privacyLink')}</Link>
       </p>
-      <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+
+      <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
         <button
           onClick={() => dismiss('declined')}
           style={{
