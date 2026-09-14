@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import splashLogo from '../assets/icons/axirova-logo-splash.png';
+import fullLogo from '../assets/icons/axirova-logo-horizontal.png';
 
 export default function PageEnter() {
   const [visible, setVisible] = useState(true);
@@ -27,7 +27,7 @@ export default function PageEnter() {
             style={{ width: 'min(86vw, 720px)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
           >
             <motion.img
-              src={splashLogo}
+              src={fullLogo}
               alt="AXIROVA"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
