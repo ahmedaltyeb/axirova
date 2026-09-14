@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logoSVG from '../assets/icons/logo_text.svg';
+import BrandLogo from './BrandLogo';
 import { NAV_LINKS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
 import { scrollToSection } from '../utils/scrollToSection';
@@ -79,7 +79,7 @@ export default function Navbar() {
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = ''; }}
           >
-            <img src={logoSVG} alt="Axirova" style={{ height: '34px', width: 'auto', objectFit: 'contain' }} />
+            <BrandLogo height={44} />
           </div>
         </a>
 

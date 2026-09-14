@@ -77,6 +77,17 @@
   --color-scheme: light;
 }
 
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.brand-logo__light { display: none; }
+
+[data-theme="light"] .brand-logo__dark { display: none; }
+[data-theme="light"] .brand-logo__light { display: block; }
+
 /* ── BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: hidden; }

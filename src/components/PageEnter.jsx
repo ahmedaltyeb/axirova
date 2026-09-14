@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import fullLogo from '../assets/icons/logo.svg';
+import fullLogo from '../assets/icons/axirova-logo-horizontal.png';
 
 export default function PageEnter() {
   const [visible, setVisible] = useState(true);
