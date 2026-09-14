@@ -5,19 +5,18 @@ import { useLanguage } from '../context/LanguageContext';
 
 function MockScreen({ prod, index }) {
   return (
-    <div style={{ height: '190px', background: 'var(--bg2)', position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)' }}>
-      <img src={`/images/placeholders/product-0${index + 1}.svg`} alt="" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-      <div style={{ position: 'absolute', inset: '18px', borderRadius: '10px', background: 'color-mix(in srgb, var(--bg) 82%, transparent)', border: '1px solid var(--border)', overflow: 'hidden', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px', backdropFilter: 'blur(8px)' }}>
-        <div className="mock-bar" style={{ width: prod.barWidth, background: prod.barColor }} />
-        <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', width: '100%' }} />
-        <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', width: '60%' }} />
-        <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
-          {[true, false, true].map((hi, i) => (
-            <div key={i} style={{ flex: 1, height: '48px', borderRadius: '6px', background: hi ? 'linear-gradient(135deg,rgba(26,111,232,0.25),rgba(59,158,255,0.1))' : 'var(--border)', border: hi ? '1px solid var(--border2)' : 'none' }} />
-          ))}
-        </div>
+    <div className="product-media" style={{ height: '220px', background: 'var(--bg2)', position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)' }}>
+      <img
+        src={`/images/placeholders/product-0${index + 1}.svg`}
+        alt={`${prod.name.en} example visual`}
+        loading="lazy"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform .65s var(--ease)' }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 36%,rgba(5,8,22,.88) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', insetInlineStart: '20px', insetInlineEnd: '20px', bottom: '18px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '12px' }}>
+        <strong style={{ color: '#fff', fontFamily: 'var(--font-d)', fontSize: '18px', lineHeight: 1.2 }}>{prod.name.en}</strong>
+        <span style={{ flexShrink: 0, color: '#dff8ff', fontFamily: 'var(--font-m)', fontSize: '8px', letterSpacing: '.12em', padding: '5px 8px', border: '1px solid rgba(255,255,255,.24)', borderRadius: '5px', background: 'rgba(5,8,22,.52)', backdropFilter: 'blur(8px)' }}>REPLACEABLE IMAGE</span>
       </div>
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 0%,rgba(26,111,232,0.12),transparent 70%)', pointerEvents: 'none' }} />
     </div>
   );
 }
