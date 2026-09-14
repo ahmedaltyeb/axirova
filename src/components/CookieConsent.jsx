@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { loadGA } from '../utils/analytics';
-import logoSVG from '../assets/icons/logo_text.svg';
+import BrandLogo from './BrandLogo';
 
 const STORAGE_KEY = 'axirova-cookie-consent';
 const EXIT_MS = 400;
@@ -48,11 +48,7 @@ export default function CookieConsent() {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
-        <img
-          src={logoSVG}
-          alt="AXIROVA"
-          style={{ height: '34px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
-        />
+        <BrandLogo height={34} maxWidth="180px" />
         <span
           style={{
             color: 'var(--blue2)', fontSize: '11px', fontWeight: 700,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import logoSVG from '../assets/icons/logo_text.svg';
+import BrandLogo from './BrandLogo';
 import { SITE } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
 import { scrollToSection } from '../utils/scrollToSection';
@@ -51,7 +51,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <img src={logoSVG} alt="Axirova" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+            <BrandLogo height={48} />
           </Link>
           <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7, marginTop: '16px' }}>
             {t('footer.tagline')}

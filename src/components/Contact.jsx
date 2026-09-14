@@ -11,7 +11,7 @@ const CALENDLY = 'https://calendly.com/axirova/consultation';
 /* ─── Shared design tokens (inline) ─── */
 const BASE_INPUT = {
   width: '100%',
-  background: 'rgba(255,255,255,0.04)',
+  background: 'var(--input-bg)',
   borderRadius: '10px',
   padding: '13px 16px',
   color: 'var(--text)',
@@ -31,7 +31,7 @@ const inputStyle = (field, focused, errors) => {
     border: `1px solid ${
       hasError        ? 'rgba(248,113,113,0.7)' :
       focused === field ? 'var(--blue2)' :
-      'rgba(255,255,255,0.07)'
+      'var(--input-border)'
     }`,
     ...(focused === field && !hasError && { boxShadow: '0 0 0 3px rgba(26,111,232,0.12)' }),
     ...(hasError && { background: 'rgba(248,113,113,0.06)' }),

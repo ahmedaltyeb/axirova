@@ -65,7 +65,7 @@ export default function CTA() {
               whileHover={{ y: -4, borderColor: 'var(--blue2)', color: 'var(--text)' }}
               whileTap={{ scale: 0.98 }}
               onClick={openCalendly}
-              style={{ background: 'transparent', color: 'var(--muted)', border: '1px solid rgba(255,255,255,0.15)', padding: '15px 36px', borderRadius: '10px', fontSize: '15px', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-b)', transition: 'all .3s' }}
+              style={{ background: 'transparent', color: 'var(--muted)', border: '1px solid var(--secondary-border)', padding: '15px 36px', borderRadius: '10px', fontSize: '15px', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-b)', transition: 'all .3s' }}
             >
               {t('cta.btn2')}
             </motion.button>
