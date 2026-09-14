@@ -410,6 +410,31 @@ body::before {
   border-radius: 22px;
   overflow: hidden;
 }
+.card-media {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+.card-media img {
+  transition: transform .6s var(--ease), filter .6s var(--ease);
+}
+.srv-grid > div:hover .card-media img { transform: scale(1.045); }
+.card-media__hint {
+  position: absolute;
+  inset-inline-start: 16px;
+  bottom: 14px;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  background: rgba(5,8,22,.58);
+  color: rgba(255,255,255,.86);
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
 @media (max-width: 1024px) { .srv-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .srv-grid { grid-template-columns: 1fr; } }
 

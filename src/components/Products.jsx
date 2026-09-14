@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { PRODUCTS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
 
-function MockScreen({ prod }) {
+function MockScreen({ prod, index }) {
   return (
     <div style={{ height: '190px', background: 'var(--bg2)', position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)' }}>
-      <div style={{ position: 'absolute', inset: '16px', borderRadius: '8px', background: 'var(--bg)', border: '1px solid var(--border)', overflow: 'hidden', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <img src={`/images/placeholders/product-0${index + 1}.svg`} alt="" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div style={{ position: 'absolute', inset: '18px', borderRadius: '10px', background: 'color-mix(in srgb, var(--bg) 82%, transparent)', border: '1px solid var(--border)', overflow: 'hidden', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px', backdropFilter: 'blur(8px)' }}>
         <div className="mock-bar" style={{ width: prod.barWidth, background: prod.barColor }} />
         <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', width: '100%' }} />
         <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', width: '60%' }} />
@@ -71,7 +72,7 @@ export default function Products() {
                   transition: 'border-color .35s, box-shadow .35s',
                 }}
               >
-                <MockScreen prod={prod} />
+                <MockScreen prod={prod} index={i} />
                 <div style={{ padding: '28px 28px 32px' }}>
                   <span style={{ fontFamily: 'var(--font-m)', fontSize: '10px', color: 'var(--blue2)', letterSpacing: '.14em', padding: '4px 10px', border: '1px solid rgba(59,158,255,0.25)', borderRadius: '4px', display: 'inline-block', marginBottom: '14px' }}>
                     {pick(prod.tag)}

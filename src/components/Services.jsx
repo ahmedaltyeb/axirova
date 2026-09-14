@@ -45,6 +45,15 @@ export default function Services() {
               onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--bg3)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--bg)'; }}
             >
+              <div className="card-media" style={{ margin: '-28px -36px 22px', height: '142px' }}>
+                <img
+                  src={`/images/placeholders/service-${s.num}.svg`}
+                  alt=""
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <span className="card-media__hint">{t('services.secLabel')}</span>
+              </div>
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '10px' }}>{s.num}</div>
               <div style={{ width: '54px', height: '54px', borderRadius: '14px', background: 'var(--accent-soft)', border: '1px solid var(--accent-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px', color: 'var(--blue2)', transition: 'all .4s cubic-bezier(.22,1,.36,1)' }}>
                 {s.icon}

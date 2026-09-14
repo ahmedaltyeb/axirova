@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import { INDUSTRIES } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
 
-function IndustryCard({ ind }) {
+function IndustryCard({ ind, index }) {
   const { pick } = useLanguage();
   const canvasRef = useRef(null);
 
@@ -47,6 +47,7 @@ function IndustryCard({ ind }) {
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       style={{ width: '280px', height: '280px', borderRadius: '22px', border: '1px solid var(--border)', position: 'relative', overflow: 'hidden', background: 'var(--bg3)', cursor: 'grab' }}
     >
+      <img src={`/images/placeholders/industry-0${index + 1}.svg`} alt="" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, opacity: .4, width: '100%', height: '100%' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,13,26,0.82)' }} />
       <div style={{ position: 'absolute', inset: 0, padding: '24px', display: 'flex', flexDirection: 'column' }}>
@@ -102,7 +103,7 @@ export default function Industries() {
         >
           {INDUSTRIES.map((ind, i) => (
             <SwiperSlide key={i} style={{ width: 'auto' }}>
-              <IndustryCard ind={ind} />
+              <IndustryCard ind={ind} index={i} />
             </SwiperSlide>
           ))}
         </Swiper>
