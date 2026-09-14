@@ -44,36 +44,48 @@
   --badge-float-bg: rgba(8, 15, 30, 0.9);
   --select-option-bg: #0a1525;
   --input-autofill-bg: rgba(10, 21, 37, 0.95);
+  --accent-soft: rgba(26, 111, 232, 0.10);
+  --accent-border: rgba(59, 158, 255, 0.22);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.07);
+  --card-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+  --secondary-border: rgba(255, 255, 255, 0.15);
   --color-scheme: dark;
 }
 
 /* ── LIGHT MODE TOKENS ── */
 [data-theme="light"] {
-  --bg: #f4f7ff;
-  --bg2: #eaeefc;
-  --bg3: #dfe5f5;
-  --bg4: #d3dcea;
-  --blue: #1a6fe8;
-  --blue2: #1a6fe8;
-  --blue3: #0d52b5;
-  --emerald: #00966e;
+  --bg: #f8fbff;
+  --bg2: #f0f6fc;
+  --bg3: #e7f0fa;
+  --bg4: #dce8f5;
+  --blue: #087bff;
+  --blue2: #087bff;
+  --blue3: #003566;
+  --emerald: #008d68;
   --emerald2: #007355;
-  --glass: rgba(255, 255, 255, 0.75);
-  --glass2: rgba(255, 255, 255, 0.9);
-  --border: rgba(26, 60, 120, 0.1);
-  --border2: rgba(26, 111, 232, 0.22);
-  --text: #0c1830;
-  --muted: #3d5575;
-  --dim: #7888a4;
-  --nav-bg-scrolled: rgba(244, 247, 255, 0.95);
-  --mobile-nav-bg: rgba(244, 247, 255, 0.98);
-  --section-overlay: linear-gradient(180deg, transparent, rgba(200, 215, 240, 0.25), transparent);
-  --section-overlay-deep: linear-gradient(180deg, transparent, rgba(200, 215, 240, 0.45), transparent);
-  --section-overlay-mid: linear-gradient(180deg, transparent, rgba(200, 215, 240, 0.3), transparent);
-  --section-overlay-soft: linear-gradient(180deg, transparent, rgba(200, 215, 240, 0.2), transparent);
-  --badge-float-bg: rgba(244, 247, 255, 0.96);
-  --select-option-bg: #eaeefc;
-  --input-autofill-bg: rgba(244, 247, 255, 0.98);
+  --glass: rgba(255, 255, 255, 0.86);
+  --glass2: rgba(255, 255, 255, 0.97);
+  --border: rgba(0, 53, 102, 0.13);
+  --border2: rgba(8, 123, 255, 0.34);
+  --text: #071b33;
+  --muted: #405e79;
+  --dim: #6d849a;
+  --nav-bg-scrolled: rgba(248, 251, 255, 0.94);
+  --mobile-nav-bg: rgba(248, 251, 255, 0.98);
+  --section-overlay: linear-gradient(180deg, transparent, rgba(8, 123, 255, 0.045), transparent);
+  --section-overlay-deep: linear-gradient(180deg, transparent, rgba(0, 53, 102, 0.09), transparent);
+  --section-overlay-mid: linear-gradient(180deg, transparent, rgba(8, 123, 255, 0.065), transparent);
+  --section-overlay-soft: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.035), transparent);
+  --badge-float-bg: rgba(255, 255, 255, 0.96);
+  --select-option-bg: #f0f6fc;
+  --input-autofill-bg: rgba(255, 255, 255, 0.98);
+  --accent-soft: rgba(8, 123, 255, 0.09);
+  --accent-border: rgba(8, 123, 255, 0.22);
+  --input-bg: rgba(255, 255, 255, 0.92);
+  --input-border: rgba(0, 53, 102, 0.16);
+  --card-shadow: 0 18px 48px rgba(0, 53, 102, 0.08);
+  --secondary-border: rgba(0, 53, 102, 0.18);
   --color-scheme: light;
 }
 
@@ -638,6 +650,17 @@ input, textarea, select {
 [data-theme="light"] #scroll-bar { box-shadow: 0 0 10px var(--blue2); }
 /* Noise overlay lighter in light mode */
 [data-theme="light"] body::before { opacity: 0.012; }
+[data-theme="light"] .srv-grid {
+  background: rgba(0, 53, 102, 0.10);
+  border-color: rgba(0, 53, 102, 0.12);
+  box-shadow: var(--card-shadow);
+}
+[data-theme="light"] .testimonials-grid > div,
+[data-theme="light"] .why-grid > div,
+[data-theme="light"] .process-tabs,
+[data-theme="light"] .process-panel {
+  box-shadow: var(--card-shadow);
+}
 /* Logo marquee fade masks follow bg in light mode */
 [data-theme="light"] .logos-track-wrap > div:first-child {
   background: linear-gradient(90deg, var(--bg), transparent) !important;

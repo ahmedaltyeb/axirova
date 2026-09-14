@@ -21,7 +21,7 @@ export default function Services() {
   const services = [...SERVICES, QUALITY_ASSURANCE_SERVICE];
 
   return (
-    <section style={{ padding: '140px 0', background: 'linear-gradient(180deg,transparent,rgba(10,22,40,.7),transparent)' }}>
+    <section style={{ padding: '140px 0', background: 'var(--section-overlay-mid)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <motion.div className="sec-label" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }} style={{ justifyContent: 'center' }}>
@@ -46,7 +46,7 @@ export default function Services() {
               onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--bg)'; }}
             >
               <div style={{ fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--dim)', letterSpacing: '.15em', marginBottom: '10px' }}>{s.num}</div>
-              <div style={{ width: '54px', height: '54px', borderRadius: '14px', background: 'rgba(26,111,232,0.1)', border: '1px solid rgba(26,111,232,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px', color: 'var(--blue2)', transition: 'all .4s cubic-bezier(.22,1,.36,1)' }}>
+              <div style={{ width: '54px', height: '54px', borderRadius: '14px', background: 'var(--accent-soft)', border: '1px solid var(--accent-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', marginBottom: '16px', color: 'var(--blue2)', transition: 'all .4s cubic-bezier(.22,1,.36,1)' }}>
                 {s.icon}
               </div>
               <div style={{ fontFamily: 'var(--font-d)', fontSize: '19px', fontWeight: 700, marginBottom: '12px', lineHeight: 1.2 }}>{pick(s.title)}</div>
