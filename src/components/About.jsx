@@ -1,69 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { prefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const fadeUp = { initial: { opacity: 0, y: 50 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-50px' } };
 const fadeRight = { initial: { opacity: 0, x: 60 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, margin: '-50px' } };
 
 export default function About() {
   const { t } = useLanguage();
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const c = canvasRef.current;
-    if (!c) return;
-    const ctx = c.getContext('2d');
-    const reduced = prefersReducedMotion();
-    let W, H, t = 0, animId;
-    const resize = () => { W = c.width = c.offsetWidth; H = c.height = c.offsetHeight; };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const nodes = [
-      { lbl: 'CRM', x: .15, y: .2, c: '#1a6fe8' }, { lbl: 'ERP', x: .15, y: .5, c: '#1a6fe8' }, { lbl: 'POS', x: .15, y: .8, c: '#1a6fe8' },
-      { lbl: 'AI Core', x: .5, y: .5, r: 32, c: '#3b9eff' }, { lbl: 'Analytics', x: .5, y: .18, c: '#00d4a0' },
-      { lbl: 'Automation', x: .85, y: .3, c: '#00d4a0' }, { lbl: 'Reports', x: .85, y: .6, c: '#3b9eff' }, { lbl: 'API', x: .85, y: .85, c: '#1a6fe8' },
-    ];
-    const edges = [[0,3],[1,3],[2,3],[3,4],[3,5],[3,6],[3,7],[4,5]];
-
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H); t += .007;
-      edges.forEach(([a, b], i) => {
-        const na = nodes[a], nb = nodes[b];
-        const x1 = na.x * W, y1 = na.y * H, x2 = nb.x * W, y2 = nb.y * H;
-        ctx.setLineDash([4, 8]);
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
-        ctx.strokeStyle = 'rgba(59,158,255,0.18)'; ctx.lineWidth = 1.5; ctx.stroke();
-        ctx.setLineDash([]);
-        const p = (t * 1.2 + i * .3) % 1;
-        const px = x1 + (x2 - x1) * p, py = y1 + (y2 - y1) * p;
-        const g2 = ctx.createRadialGradient(px, py, 0, px, py, 6);
-        g2.addColorStop(0, 'rgba(0,240,181,1)'); g2.addColorStop(1, 'rgba(0,240,181,0)');
-        ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.fillStyle = g2; ctx.fill();
-      });
-      nodes.forEach((n) => {
-        const x = n.x * W, y = n.y * H, r = n.r || 22;
-        const g = ctx.createRadialGradient(x, y, 0, x, y, r * 3);
-        g.addColorStop(0, n.c + '20'); g.addColorStop(1, 'transparent');
-        ctx.beginPath(); ctx.arc(x, y, r * 3, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
-        if (n.r) {
-          const pr = r * 1.6 + Math.sin(t * 2) * 4;
-          ctx.beginPath(); ctx.arc(x, y, pr, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(59,158,255,0.12)'; ctx.lineWidth = 1; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = n.c + '20'; ctx.strokeStyle = n.c; ctx.lineWidth = 1.5; ctx.fill(); ctx.stroke();
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || '#f0f4ff';
-        ctx.font = `500 ${Math.max(10, r * .55)}px DM Sans,sans-serif`;
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(n.lbl, x, y);
-      });
-      if (!reduced) animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };
-  }, []);
 
   const metrics = [
     { n: '150+', lk: 'about.m1l', em: true },
@@ -108,9 +51,10 @@ export default function About() {
           </div>
 
           {/* Visual */}
-          <motion.div {...fadeRight} transition={{ duration: 1, delay: .2, ease: [.22,1,.36,1] }}
-            style={{ position: 'relative', height: '500px' }}>
-            <canvas ref={canvasRef} style={{ width: '100%', height: '100%', borderRadius: '20px', border: '1px solid var(--border2)', background: 'var(--bg3)' }} />
+          <motion.div className="about-visual-collage" {...fadeRight} transition={{ duration: 1, delay: .2, ease: [.22,1,.36,1] }}>
+            <img className="about-visual-main" src="/images/about-axirova.webp" alt="AXIROVA connected AI, software and automation ecosystem" loading="lazy" />
+            <div className="about-visual-crop about-visual-crop--top" aria-hidden="true" />
+            <div className="about-visual-crop about-visual-crop--bottom" aria-hidden="true" />
             {[
               { cls: 'ab1', color: 'var(--emerald)', labelKey: 'about.badge1', style: { bottom: '60px', left: '-24px', animation: 'float-badge-a 4s ease-in-out infinite alternate' } },
               { cls: 'ab2', color: 'var(--blue2)',   labelKey: 'about.badge2', style: { top: '60px', right: '-24px', animation: 'float-badge-b 4s ease-in-out infinite alternate' } },
