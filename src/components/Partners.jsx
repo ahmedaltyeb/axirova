@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PARTNERS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
@@ -14,6 +14,8 @@ const CATEGORY_COLOR = {
 
 export default function Partners() {
   const { t, pick } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
+  const visiblePartners = showAll ? PARTNERS : PARTNERS.slice(0, 4);
 
   return (
     <section style={{ padding: '80px 0', borderTop: '1px solid var(--border)' }}>
@@ -28,7 +30,7 @@ export default function Partners() {
         </motion.p>
 
         <div className="partners-grid">
-          {PARTNERS.map((p, i) => (
+          {visiblePartners.map((p, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: .88 }}
@@ -56,6 +58,15 @@ export default function Partners() {
             </motion.div>
           ))}
         </div>
+
+        {PARTNERS.length > 4 && (
+          <div className="show-more-wrap compact">
+            <button className="show-more-btn" type="button" onClick={() => setShowAll(value => !value)} aria-expanded={showAll}>
+              {showAll ? t('common.showLess') : t('common.showMore')}
+              <span aria-hidden="true" className={showAll ? 'show-more-arrow is-open' : 'show-more-arrow'}>↓</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
