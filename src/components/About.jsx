@@ -52,9 +52,8 @@ export default function About() {
 
           {/* Visual */}
           <motion.div className="about-visual-collage" {...fadeRight} transition={{ duration: 1, delay: .2, ease: [.22,1,.36,1] }}>
-            <img className="about-visual-main" src="/images/about-axirova.webp" alt="AXIROVA connected AI, software and automation ecosystem" loading="lazy" />
-            <div className="about-visual-crop about-visual-crop--top" aria-hidden="true" />
-            <div className="about-visual-crop about-visual-crop--bottom" aria-hidden="true" />
+            <img className="about-visual-main" src="/images/about-city.webp" alt="Modern blue glass business district architecture" loading="lazy" />
+            <img className="about-visual-secondary" src="/images/about-axirova-building.webp" alt="AXIROVA brand displayed on a modern technology building concept" loading="lazy" />
             {[
               { cls: 'ab1', color: 'var(--emerald)', labelKey: 'about.badge1', style: { bottom: '60px', left: '-24px', animation: 'float-badge-a 4s ease-in-out infinite alternate' } },
               { cls: 'ab2', color: 'var(--blue2)',   labelKey: 'about.badge2', style: { top: '60px', right: '-24px', animation: 'float-badge-b 4s ease-in-out infinite alternate' } },

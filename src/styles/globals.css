@@ -488,25 +488,24 @@ body::before {
   border: 1px solid var(--border2);
   box-shadow: var(--card-shadow);
 }
-.about-visual-crop {
+.about-visual-secondary {
   position: absolute;
-  width: 38%;
-  aspect-ratio: .82;
+  width: 48%;
+  height: 42%;
   right: 0;
-  background-image: url('/images/about-axirova.webp');
-  background-repeat: no-repeat;
-  background-size: 270%;
+  bottom: 8%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
   border: 8px solid var(--bg);
   border-radius: 22px;
   box-shadow: 0 18px 48px rgba(0,0,0,.24);
 }
-.about-visual-crop--top { top: 7%; background-position: 58% 18%; }
-.about-visual-crop--bottom { bottom: 7%; background-position: 18% 72%; }
 @media (max-width: 768px) {
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .about-visual-collage { min-height: 500px; padding: 16px 34px 20px 8px; }
   .about-visual-main { min-height: 464px; }
-  .about-visual-crop { width: 36%; border-width: 6px; border-radius: 18px; }
+  .about-visual-secondary { width: 52%; height: 40%; border-width: 6px; border-radius: 18px; }
 }
 
 /* ── VISION INNER ── */
