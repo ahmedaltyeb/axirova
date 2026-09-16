@@ -736,6 +736,39 @@ input, textarea, select {
 }
 .theme-toggle svg { width: 16px; height: 16px; }
 
+/* ── PROGRESSIVE CARD DISCLOSURE ── */
+.show-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.show-more-wrap.compact { margin-top: 28px; }
+.show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 160px;
+  padding: 12px 22px;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  background: var(--glass);
+  color: var(--blue2);
+  font-family: var(--font-b);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.show-more-btn:hover {
+  transform: translateY(-2px);
+  background: var(--glass2);
+  border-color: var(--blue2);
+  box-shadow: 0 12px 30px rgba(26,111,232,.14);
+}
+.show-more-arrow { transition: transform .25s var(--ease); }
+.show-more-arrow.is-open { transform: rotate(180deg); }
+
 /* ══════════════════════════════════════════
    CONTACT FORM — Production styles
 ══════════════════════════════════════════ */
