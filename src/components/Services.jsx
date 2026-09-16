@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
@@ -18,7 +18,9 @@ const QUALITY_ASSURANCE_SERVICE = {
 
 export default function Services() {
   const { t, pick } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
   const services = [...SERVICES, QUALITY_ASSURANCE_SERVICE];
+  const visibleServices = showAll ? services : services.slice(0, 6);
 
   return (
     <section style={{ padding: '140px 0', background: 'var(--section-overlay-mid)' }}>
@@ -38,7 +40,7 @@ export default function Services() {
         </div>
 
         <motion.div className="srv-grid" initial={{ opacity: 0, scale: .88 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .9, delay: .25, ease: [.22,1,.36,1] }}>
-          {services.map((s, i) => (
+          {visibleServices.map((s, i) => (
             <div
               key={i}
               style={{ background: 'var(--bg)', padding: '28px 36px', position: 'relative', overflow: 'hidden', cursor: 'default', transition: 'background .35s' }}
@@ -68,6 +70,15 @@ export default function Services() {
             </div>
           ))}
         </motion.div>
+
+        {services.length > 6 && (
+          <div className="show-more-wrap">
+            <button className="show-more-btn" type="button" onClick={() => setShowAll(value => !value)} aria-expanded={showAll}>
+              {showAll ? t('common.showLess') : t('common.showMore')}
+              <span aria-hidden="true" className={showAll ? 'show-more-arrow is-open' : 'show-more-arrow'}>↓</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
