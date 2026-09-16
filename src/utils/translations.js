@@ -6,6 +6,10 @@
 export const translations = {
   /* ─────────────────── ENGLISH ─────────────────── */
   en: {
+    common: {
+      showMore: 'Show More',
+      showLess: 'Show Less',
+    },
     nav: {
       about:      'About',
       services:   'Services',
@@ -309,6 +313,10 @@ export const translations = {
 
   /* ─────────────────── ARABIC ─────────────────── */
   ar: {
+    common: {
+      showMore: 'إظهار المزيد',
+      showLess: 'عرض أقل',
+    },
     nav: {
       about:      'من نحن',
       services:   'خدماتنا',
