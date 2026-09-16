@@ -50,7 +50,7 @@ export default function TechStack() {
         ctx.beginPath(); ctx.arc(n.px, n.py, n.r, 0, Math.PI * 2);
         ctx.fillStyle = col + (n.core ? '28' : '1a'); ctx.strokeStyle = col + (n.core ? 'ee' : '88');
         ctx.lineWidth = n.core ? 2 : 1.2; ctx.fill(); ctx.stroke();
-        ctx.fillStyle = '#f0f4ff';
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || '#f0f4ff';
         ctx.font = `${n.core ? 600 : 500} ${n.core ? 12 : 11}px DM Sans,sans-serif`;
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         if (n.lbl.includes('\n')) { const [a, b] = n.lbl.split('\n'); ctx.fillText(a, n.px, n.py - 7); ctx.fillText(b, n.px, n.py + 7); }
