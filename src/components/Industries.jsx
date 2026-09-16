@@ -50,10 +50,10 @@ function IndustryCard({ ind, index }) {
       <img src={`/images/placeholders/industry-0${index + 1}.svg`} alt="" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, opacity: .4, width: '100%', height: '100%' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,13,26,0.82)' }} />
-      <div style={{ position: 'absolute', inset: 0, padding: '24px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ position: 'absolute', inset: 0, padding: '24px', display: 'flex', flexDirection: 'column', color: 'var(--media-text)' }}>
         <span style={{ fontSize: '32px', marginBottom: '10px', display: 'block', lineHeight: 1 }}>{ind.icon}</span>
         <div style={{ fontFamily: 'var(--font-d)', fontSize: '20px', fontWeight: 700, marginBottom: '6px', lineHeight: 1.2 }}>{pick(ind.title)}</div>
-        <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5, flex: 1 }}>{pick(ind.subtitle)}</div>
+        <div style={{ fontSize: '13px', color: 'var(--media-muted)', lineHeight: 1.5, flex: 1 }}>{pick(ind.subtitle)}</div>
         <span style={{ display: 'inline-block', alignSelf: 'flex-start', fontFamily: 'var(--font-m)', fontSize: '11px', color: 'var(--blue2)', letterSpacing: '.1em', padding: '4px 10px', border: '1px solid rgba(59,158,255,0.25)', borderRadius: '4px' }}>
           {pick(ind.tag)}
         </span>
