@@ -200,7 +200,7 @@ export default function Hero() {
           padding-bottom: 60px;
           overflow: hidden;
           box-sizing: border-box;
-          background: #050d1a;
+          background: var(--hero-bg);
         }
 
         /* ── Video background ── */
@@ -220,12 +220,7 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           z-index: 1;
-          background: linear-gradient(
-            150deg,
-            rgba(5,13,26,0.85) 0%,
-            rgba(5,13,26,0.70) 45%,
-            rgba(8,18,36,0.90) 100%
-          );
+          background: var(--hero-overlay);
         }
 
         /* ── Glow orbs ── */
@@ -389,13 +384,13 @@ export default function Hero() {
           justify-content: space-between;
           padding: 30px 30px 26px;
           border-radius: 20px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(59,158,255,0.16);
+          background: var(--card-bg);
+          border: 1px solid var(--accent-border);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           box-shadow:
             0 8px 40px rgba(0,0,0,0.35),
-            inset 0 1px 0 rgba(255,255,255,0.06),
+            inset 0 1px 0 var(--card-highlight),
             0 0 0 0.5px rgba(59,158,255,0.06);
           opacity: 0;
           transform: translateY(14px) scale(0.98);
