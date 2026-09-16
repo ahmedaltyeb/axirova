@@ -54,7 +54,7 @@ export default function About() {
         }
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = n.c + '20'; ctx.strokeStyle = n.c; ctx.lineWidth = 1.5; ctx.fill(); ctx.stroke();
-        ctx.fillStyle = '#f0f4ff';
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || '#f0f4ff';
         ctx.font = `500 ${Math.max(10, r * .55)}px DM Sans,sans-serif`;
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(n.lbl, x, y);
