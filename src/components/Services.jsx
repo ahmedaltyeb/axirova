@@ -49,8 +49,8 @@ export default function Services() {
             >
               <div className="card-media" style={{ margin: '-28px -36px 22px', height: '142px' }}>
                 <img
-                  src={`/images/placeholders/service-${s.num}.svg`}
-                  alt=""
+                  src={`/images/services/service-${s.num}.webp`}
+                  alt={`${pick(s.title)} — AXIROVA service`}
                   loading="lazy"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
