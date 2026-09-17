@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+
+const SERVICE_SLUGS = ['software-development', 'artificial-intelligence', 'business-automation', 'saas-platforms', 'gcc-solutions', 'ui-ux-design'];
 
 const QUALITY_ASSURANCE_SERVICE = {
   num: '07',
@@ -10,6 +13,7 @@ const QUALITY_ASSURANCE_SERVICE = {
     en: 'Quality Assurance & Software Testing',
     ar: 'ضمان الجودة واختبار البرمجيات',
   },
+  slug: 'quality-assurance',
   desc: {
     en: 'End-to-end software quality assurance covering QA strategy, functional and regression testing, API and integration testing, test automation, defect management, retesting, quality reporting, and release readiness.',
     ar: 'ضمان جودة شامل للبرمجيات يغطي استراتيجية الجودة، الاختبارات الوظيفية واختبارات الانحدار، اختبار API والتكامل، أتمتة الاختبارات، إدارة العيوب، إعادة الاختبار، تقارير الجودة، وجاهزية الإصدار.',
@@ -19,7 +23,7 @@ const QUALITY_ASSURANCE_SERVICE = {
 export default function Services() {
   const { t, pick } = useLanguage();
   const [showAll, setShowAll] = useState(false);
-  const services = [...SERVICES, QUALITY_ASSURANCE_SERVICE];
+  const services = [...SERVICES.map((service, index) => ({ ...service, slug: SERVICE_SLUGS[index] })), QUALITY_ASSURANCE_SERVICE];
   const visibleServices = showAll ? services : services.slice(0, 6);
 
   return (
@@ -62,11 +66,13 @@ export default function Services() {
               </div>
               <div style={{ fontFamily: 'var(--font-d)', fontSize: '19px', fontWeight: 700, marginBottom: '12px', lineHeight: 1.2 }}>{pick(s.title)}</div>
               <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.75 }}>{pick(s.desc)}</div>
-              <div style={{ marginTop: '22px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '6px', opacity: 0, transition: 'all .35s cubic-bezier(.22,1,.36,1)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; }}
+              <Link
+                to={`/services/${s.slug}`}
+                style={{ marginTop: '22px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+                aria-label={`${t('services.explore')} — ${pick(s.title)}`}
               >
-                {t('services.explore')}
-              </div>
+                {t('services.explore')} <span aria-hidden="true">↗</span>
+              </Link>
             </div>
           ))}
         </motion.div>
