@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+
+const PRODUCT_SLUGS = ['pharmax', 'restaurant-insight-hub', 'real-estate-hub', 'ai-automation-hub', 'erp-suite'];
 
 function MockScreen({ prod, index }) {
   return (
@@ -78,24 +81,23 @@ export default function Products() {
                   </span>
                   <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>{pick(prod.name)}</div>
                   <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{pick(prod.desc)}</div>
-                  <button
-                    type="button"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  <Link
+                    to={`/products/${PRODUCT_SLUGS[i]}`}
                     aria-label={`${t('products.view')} — ${pick(prod.name)}`}
                     style={{
                       marginTop: '20px',
-                      padding: 0,
-                      border: 0,
-                      background: 'transparent',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
                       color: 'var(--blue2)',
                       fontFamily: 'var(--font-b)',
                       fontSize: '13px',
                       fontWeight: 700,
-                      cursor: 'pointer',
+                      textDecoration: 'none',
                     }}
                   >
                     {t('products.view')}
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
