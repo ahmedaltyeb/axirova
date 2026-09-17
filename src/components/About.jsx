@@ -9,10 +9,10 @@ export default function About() {
   const { t } = useLanguage();
 
   const metrics = [
-    { n: '150+', lk: 'about.m1l', em: true },
-    { n: '60+',  lk: 'about.m2l', em: false },
-    { n: '5',    lk: 'about.m3l', em: false },
-    { n: 'AI',   lk: 'about.m4l', em: true },
+    { n: 'AI',  lk: 'about.m1l', em: true },
+    { n: 'QA',  lk: 'about.m2l', em: false },
+    { n: 'RTL', lk: 'about.m3l', em: false },
+    { n: 'GCC', lk: 'about.m4l', em: true },
   ];
 
   return (
