@@ -44,10 +44,10 @@ export const translations = {
       profileDownload: 'Download PDF',
       badge1:   'Live AI Processing',
       badge2:   'Real-Time Automation',
-      m1: '150+', m1l: 'Projects Delivered',
-      m2: '60+',  m2l: 'Global Clients',
-      m3: '5',    m3l: 'Core Products',
-      m4: 'AI',   m4l: 'Powered Platform',
+      m1: 'AI',   m1l: 'AI & Automation',
+      m2: 'QA',   m2l: 'Quality Assurance',
+      m3: 'RTL',  m3l: 'Arabic-First UX',
+      m4: 'GCC',  m4l: 'UAE & GCC Focus',
     },
 
     services: {
@@ -86,8 +86,8 @@ export const translations = {
       secLabel: 'Core Products',
       h2a:      'Platforms Built for',
       h2b:      'Your Industry',
-      sub:      'Five production-ready SaaS platforms spanning healthcare, F&B, real estate, AI automation, and enterprise operations.',
-      view:     'View Platform →',
+      sub:      'Five adaptable platform concepts for healthcare, F&B, real estate, AI automation, and enterprise operations.',
+      view:     'Request a Demo →',
     },
 
     testimonials: {
@@ -242,8 +242,6 @@ export const translations = {
       company: [
         { label: 'About AXIROVA',    href: '#about' },
         { label: 'Industries',       href: '#industries' },
-        { label: 'Blog',             href: '/blog' },
-        { label: 'Case Studies',     href: '/case-studies' },
         { label: 'Careers',          href: 'mailto:info@axirova.ae?subject=Careers%20at%20Axirova' },
         { label: 'Contact',          href: '#contact' },
         { label: 'Privacy Policy',   href: '/privacy' },
@@ -353,10 +351,10 @@ export const translations = {
       profileDownload: 'تحميل PDF',
       badge1:   'معالجة ذكاء اصطناعي حية',
       badge2:   'أتمتة في الوقت الفعلي',
-      m1: '150+', m1l: 'مشروع منجز',
-      m2: '60+',  m2l: 'عميل حول العالم',
-      m3: '5',    m3l: 'منتجات أساسية',
-      m4: 'AI',   m4l: 'منصة مدعومة بالذكاء الاصطناعي',
+      m1: 'AI',   m1l: 'الذكاء الاصطناعي والأتمتة',
+      m2: 'QA',   m2l: 'ضمان الجودة والاختبار',
+      m3: 'RTL',  m3l: 'تجربة عربية أولاً',
+      m4: 'GCC',  m4l: 'تركيز الإمارات والخليج',
     },
 
     services: {
@@ -395,8 +393,8 @@ export const translations = {
       secLabel: 'منتجاتنا الأساسية',
       h2a:      'منصات مبنية',
       h2b:      'لقطاعك',
-      sub:      'خمس منصات SaaS جاهزة للإنتاج تغطي الرعاية الصحية والمطاعم والعقارات وأتمتة الذكاء الاصطناعي والعمليات المؤسسية.',
-      view:     'عرض المنصة ←',
+      sub:      'خمسة مفاهيم منصات قابلة للتخصيص للرعاية الصحية والمطاعم والعقارات وأتمتة الذكاء الاصطناعي والعمليات المؤسسية.',
+      view:     'اطلب عرضاً تجريبياً ←',
     },
 
     testimonials: {
@@ -551,8 +549,6 @@ export const translations = {
       company: [
         { label: 'عن AXIROVA',        href: '#about' },
         { label: 'القطاعات',           href: '#industries' },
-        { label: 'المدونة',            href: '/blog' },
-        { label: 'دراسات الحالة',       href: '/case-studies' },
         { label: 'الوظائف',            href: 'mailto:info@axirova.ae?subject=Careers%20at%20Axirova' },
         { label: 'تواصل معنا',         href: '#contact' },
         { label: 'سياسة الخصوصية',      href: '/privacy' },
