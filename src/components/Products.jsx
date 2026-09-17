@@ -78,7 +78,24 @@ export default function Products() {
                   </span>
                   <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>{pick(prod.name)}</div>
                   <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{pick(prod.desc)}</div>
-                  <div style={{ marginTop: '18px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 500 }}>{t('products.view')}</div>
+                  <button
+                    type="button"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    aria-label={`${t('products.view')} — ${pick(prod.name)}`}
+                    style={{
+                      marginTop: '20px',
+                      padding: 0,
+                      border: 0,
+                      background: 'transparent',
+                      color: 'var(--blue2)',
+                      fontFamily: 'var(--font-b)',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {t('products.view')}
+                  </button>
                 </div>
               </motion.div>
             ))}
