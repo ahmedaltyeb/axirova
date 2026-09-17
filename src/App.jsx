@@ -11,6 +11,7 @@ import Home from './pages/Home';
 const Footer            = lazy(() => import('./components/Footer'));
 const Privacy           = lazy(() => import('./pages/Privacy'));
 const Terms             = lazy(() => import('./pages/Terms'));
+const OfferingDetail    = lazy(() => import('./pages/OfferingDetail'));
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
           <Route path="/terms" element={<Suspense fallback={null}><Terms /></Suspense>} />
+          <Route path="/services/:slug" element={<Suspense fallback={null}><OfferingDetail type="service" /></Suspense>} />
+          <Route path="/products/:slug" element={<Suspense fallback={null}><OfferingDetail type="product" /></Suspense>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
