@@ -18,7 +18,6 @@ function MockScreen({ prod, index }) {
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 36%,rgba(5,8,22,.88) 100%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', insetInlineStart: '20px', insetInlineEnd: '20px', bottom: '18px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '12px' }}>
         <strong style={{ color: '#fff', fontFamily: 'var(--font-d)', fontSize: '18px', lineHeight: 1.2 }}>{prod.name.en}</strong>
-        <span style={{ flexShrink: 0, color: '#dff8ff', fontFamily: 'var(--font-m)', fontSize: '8px', letterSpacing: '.12em', padding: '5px 8px', border: '1px solid rgba(255,255,255,.24)', borderRadius: '5px', background: 'rgba(5,8,22,.52)', backdropFilter: 'blur(8px)' }}>REPLACEABLE IMAGE</span>
       </div>
     </div>
   );
