@@ -9,6 +9,7 @@ const Services      = lazy(() => import('../components/Services'));
 const Process       = lazy(() => import('../components/Process'));
 const Industries    = lazy(() => import('../components/Industries'));
 const Products      = lazy(() => import('../components/Products'));
+const SelectedWork  = lazy(() => import('../components/SelectedWork'));
 const TechStack     = lazy(() => import('../components/TechStack'));
 const Partners      = lazy(() => import('../components/Partners'));
 const Vision        = lazy(() => import('../components/Vision'));
@@ -53,6 +54,10 @@ export default function Home() {
           {/* ── Products ── */}
           <Divider />
           <section id="products"><Products /></section>
+
+          {/* ── Selected Experience ── */}
+          <Divider />
+          <section id="work"><SelectedWork /></section>
 
           {/* ── Tech Stack ── */}
           <Divider />
