@@ -38,6 +38,16 @@ export default function About() {
               style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.85, marginBottom: '18px' }}>
               {t('about.p2')}
             </motion.p>
+            <motion.div {...fadeUp} transition={{ duration: .7, delay: .28, ease: [.22,1,.36,1] }} className="company-profile-actions">
+              <a href="/documents/AXIROVA-Company-Profile.pdf" target="_blank" rel="noopener noreferrer" className="company-profile-btn company-profile-btn--primary">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+                {t('about.profileView')}
+              </a>
+              <a href="/documents/AXIROVA-Company-Profile.pdf" download="AXIROVA-Company-Profile.pdf" className="company-profile-btn company-profile-btn--secondary">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+                {t('about.profileDownload')}
+              </a>
+            </motion.div>
             <div className="about-metrics">
               {metrics.map((m, i) => (
                 <motion.div key={i} {...fadeUp} transition={{ duration: .7, delay: .3 + i * .06, ease: [.22,1,.36,1] }}
@@ -66,6 +76,17 @@ export default function About() {
           </motion.div>
         </div>
       </div>
+      <style>{`
+        .company-profile-actions { display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 28px; }
+        .company-profile-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:46px; padding:11px 18px; border-radius:9px; font-family:var(--font-b); font-size:14px; font-weight:700; text-decoration:none; transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease; }
+        .company-profile-btn:hover { transform:translateY(-3px); }
+        .company-profile-btn svg { width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+        .company-profile-btn--primary { color:#fff; background:linear-gradient(135deg,var(--blue),var(--blue2)); box-shadow:0 10px 30px rgba(26,111,232,.28); }
+        .company-profile-btn--primary:hover { box-shadow:0 16px 38px rgba(26,111,232,.42); }
+        .company-profile-btn--secondary { color:var(--text); background:var(--glass); border:1px solid var(--border2); }
+        .company-profile-btn--secondary:hover { border-color:var(--blue2); }
+        @media (max-width:520px) { .company-profile-actions { display:grid; grid-template-columns:1fr; } .company-profile-btn { width:100%; } }
+      `}</style>
     </section>
   );
 }
