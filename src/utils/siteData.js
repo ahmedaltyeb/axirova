@@ -16,12 +16,13 @@ export const NAV_LINKS = [
   { labelKey: 'nav.services',   href: '#services' },
   { labelKey: 'nav.industries', href: '#industries' },
   { labelKey: 'nav.products',   href: '#products' },
+  { labelKey: 'nav.work',       href: '#work' },
   { labelKey: 'nav.tech',       href: '#tech' },
   { labelKey: 'nav.contact',    href: '#contact' },
 ];
 
 export const SECTIONS = [
-  'hero-section', 'about', 'services', 'industries', 'products', 'tech', 'vision', 'values',
+  'hero-section', 'about', 'services', 'industries', 'products', 'work', 'tech', 'vision', 'values',
 ];
 
 export const SERVICES = [
