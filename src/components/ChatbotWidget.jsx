@@ -303,7 +303,6 @@ export default function ChatbotWidget() {
 
       <style>{`
         .leadbot-shell{position:fixed;right:24px;bottom:24px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:var(--font-b)}
-        [dir="rtl"] .leadbot-shell{right:auto;left:24px;align-items:flex-start}
         .leadbot{width:min(410px,calc(100vw - 32px));height:min(680px,calc(100vh - 110px));background:var(--bg2);border:1px solid var(--border2);border-radius:22px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.55),0 0 0 1px rgba(26,111,232,.1)}
         .leadbot__header{padding:14px 15px;background:linear-gradient(135deg,#0f57c8,#3b9eff);display:flex;align-items:center;gap:10px;color:#fff}
         .leadbot__mark{width:40px;height:40px;border-radius:13px;background:rgba(255,255,255,.17);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:12px}
@@ -349,7 +348,7 @@ export default function ChatbotWidget() {
         .leadbot-toggle:hover{transform:translateY(-3px)}
         .leadbot-toggle svg{width:23px;height:23px}
         .leadbot-toggle--open{background:var(--bg3);color:var(--text);border-color:var(--border2)}
-        @media(max-width:560px){.leadbot-shell{right:16px;bottom:16px}.leadbot{height:min(650px,calc(100vh - 92px))}[dir="rtl"] .leadbot-shell{left:16px}.leadbot__fields{grid-template-columns:1fr}.leadbot__field--full{grid-column:auto}.leadbot__choices{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.leadbot-shell{right:16px;bottom:16px}.leadbot{height:min(650px,calc(100vh - 92px))}.leadbot__fields{grid-template-columns:1fr}.leadbot__field--full{grid-column:auto}.leadbot__choices{grid-template-columns:1fr 1fr}}
         @media(max-width:380px){.leadbot__choices{grid-template-columns:1fr}}
         @media(prefers-reduced-motion:reduce){.leadbot-shell *{scroll-behavior:auto!important;transition:none!important}}
       `}</style>
