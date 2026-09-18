@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../utils/siteData';
 import { useLanguage } from '../context/LanguageContext';
+
+const PRODUCT_SLUGS = ['pharmax', 'restaurant-insight-hub', 'real-estate-hub', 'ai-automation-hub', 'erp-suite'];
 
 function MockScreen({ prod, index }) {
   return (
@@ -15,7 +18,6 @@ function MockScreen({ prod, index }) {
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 36%,rgba(5,8,22,.88) 100%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', insetInlineStart: '20px', insetInlineEnd: '20px', bottom: '18px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '12px' }}>
         <strong style={{ color: '#fff', fontFamily: 'var(--font-d)', fontSize: '18px', lineHeight: 1.2 }}>{prod.name.en}</strong>
-        <span style={{ flexShrink: 0, color: '#dff8ff', fontFamily: 'var(--font-m)', fontSize: '8px', letterSpacing: '.12em', padding: '5px 8px', border: '1px solid rgba(255,255,255,.24)', borderRadius: '5px', background: 'rgba(5,8,22,.52)', backdropFilter: 'blur(8px)' }}>REPLACEABLE IMAGE</span>
       </div>
     </div>
   );
@@ -78,7 +80,23 @@ export default function Products() {
                   </span>
                   <div style={{ fontFamily: 'var(--font-d)', fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>{pick(prod.name)}</div>
                   <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{pick(prod.desc)}</div>
-                  <div style={{ marginTop: '18px', fontSize: '13px', color: 'var(--blue2)', fontWeight: 500 }}>{t('products.view')}</div>
+                  <Link
+                    to={`/products/${PRODUCT_SLUGS[i]}`}
+                    aria-label={`${t('products.view')} — ${pick(prod.name)}`}
+                    style={{
+                      marginTop: '20px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      color: 'var(--blue2)',
+                      fontFamily: 'var(--font-b)',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {t('products.view')}
+                  </Link>
                 </div>
               </motion.div>
             ))}

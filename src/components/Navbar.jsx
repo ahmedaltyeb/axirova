@@ -71,6 +71,7 @@ export default function Navbar() {
         <a
           href="#hero-section"
           onClick={(e) => { e.preventDefault(); handleNav('#hero-section'); }}
+          className="nav-brand-link"
           style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', zIndex: 1 }}
           aria-label="Axirova Technology — Home"
         >
@@ -79,7 +80,7 @@ export default function Navbar() {
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = ''; }}
           >
-            <BrandLogo height={44} />
+            <BrandLogo height={44} className="nav-brand-logo" />
           </div>
         </a>
 
@@ -108,7 +109,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop right side: theme + lang toggle + CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="nav-actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Theme toggle */}
           <button
             className="theme-toggle"
@@ -304,33 +305,10 @@ export default function Navbar() {
               )}
             </motion.button>
 
-            {/* Mobile lang toggle */}
             <motion.button
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: (NAV_LINKS.length + 1) * .05 }}
-              onClick={toggleLang}
-              style={{
-                marginTop: '12px',
-                background: 'transparent',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                color: 'var(--muted)',
-                padding: '12px',
-                fontSize: '14px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                fontFamily: 'var(--font-b)',
-                width: '100%',
-              }}
-            >
-              {lang === 'en' ? 'العربية' : 'English'}
-            </motion.button>
-
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: (NAV_LINKS.length + 2) * .05 }}
               onClick={() => handleNav('#contact')}
               style={{
                 marginTop: '8px',

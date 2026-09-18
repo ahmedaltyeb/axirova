@@ -27,9 +27,9 @@
   --muted: #7090b0;
   --dim: #3a5070;
   /* Fonts */
-  --font-d: 'Syne', sans-serif;
-  --font-b: 'DM Sans', sans-serif;
-  --font-m: 'JetBrains Mono', monospace;
+  --font-d: 'Thmanyah Sans', 'Syne', sans-serif;
+  --font-b: 'Thmanyah Sans', 'DM Sans', sans-serif;
+  --font-m: 'Thmanyah Sans', 'JetBrains Mono', sans-serif;
   /* Easing */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease2: cubic-bezier(0.4, 0, 0.2, 1);
@@ -590,7 +590,25 @@ body::before {
 @media (max-width: 768px) {
   .hamburger { display: flex !important; }
   .nav-cta { display: none !important; }
-  .lang-toggle { display: none !important; }
+  .nav-actions { gap: 7px !important; }
+  .lang-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+  }
+  .nav-brand-logo img {
+    height: 34px !important;
+    max-width: 170px !important;
+  }
+}
+@media (max-width: 390px) {
+  .nav-brand-logo img { max-width: 145px !important; }
+  .nav-actions { gap: 5px !important; }
 }
 
 /* ── CLIENT LOGOS MARQUEE ── */
@@ -871,30 +889,30 @@ textarea::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2
    Applied whenever <html dir="rtl"> is set
 ══════════════════════════════════════════ */
 
-/* Arabic font for all body text in RTL */
+/* Arabic text uses the same Thmanyah family with RTL spacing refinements */
 [dir="rtl"] body,
 [dir="rtl"] input,
 [dir="rtl"] textarea,
 [dir="rtl"] select,
 [dir="rtl"] button {
-  font-family: 'Cairo', 'DM Sans', sans-serif;
+  font-family: 'Thmanyah Sans', 'DM Sans', sans-serif;
   letter-spacing: 0;
 }
 
-/* Headings keep Syne but also fall back to Cairo */
+/* Use the bolder Thmanyah weights for Arabic headings */
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3,
 [dir="rtl"] h4,
 [dir="rtl"] .sec-label {
-  font-family: 'Cairo', 'Syne', sans-serif;
+  font-family: 'Thmanyah Sans', 'DM Sans', sans-serif;
   letter-spacing: 0;
 }
 
-/* Monospace labels use Cairo in RTL (no JetBrains for Arabic script) */
+/* Monospace labels use Thmanyah in RTL (no JetBrains for Arabic script) */
 [dir="rtl"] .logo-pill-sector,
 [dir="rtl"] .lang-toggle {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Thmanyah Sans', sans-serif;
   letter-spacing: 0;
 }
 

@@ -6,22 +6,22 @@ const SERVICES = [
   {
     title: 'Web Development',
     desc: 'Custom-built web platforms engineered for scale and performance.',
-    metric: '150+ Projects Shipped',
+    metric: 'Business-ready delivery',
   },
   {
     title: 'SaaS Systems',
     desc: 'End-to-end SaaS products — from architecture to deployment.',
-    metric: '60+ Active Clients',
+    metric: 'Scalable cloud architecture',
   },
   {
     title: 'UI & UX Design',
     desc: 'Interfaces that convert — designed for clarity and delight.',
-    metric: '100% Responsive',
+    metric: 'Bilingual responsive design',
   },
   {
     title: 'Automation Solutions',
     desc: 'AI-powered workflows that eliminate repetitive bottlenecks.',
-    metric: '10× Efficiency Gains',
+    metric: 'Workflow-first automation',
   },
 ];
 
@@ -62,19 +62,6 @@ export default function Hero() {
 
   return (
     <section className="hst-hero" id="hero-section">
-
-      {/* ── Background video ── */}
-      {/* Replace the src below with a real .mp4 URL for your background video */}
-      <video
-        className="hst-hero__video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-      >
-        <source src="" type="video/mp4" />
-      </video>
 
       {/* ── Dark overlay ── */}
       <div className="hst-hero__overlay" aria-hidden="true" />

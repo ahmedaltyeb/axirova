@@ -3,15 +3,13 @@ import PageEnter from '../components/PageEnter';
 import ScrollProgress from '../components/ScrollProgress';
 import Hero from '../components/Hero';
 
-const ClientLogos   = lazy(() => import('../components/ClientLogos'));
 const About         = lazy(() => import('../components/About'));
 const WhyChooseUs   = lazy(() => import('../components/WhyChooseUs'));
 const Services      = lazy(() => import('../components/Services'));
 const Process       = lazy(() => import('../components/Process'));
 const Industries    = lazy(() => import('../components/Industries'));
 const Products      = lazy(() => import('../components/Products'));
-const Testimonials  = lazy(() => import('../components/Testimonials'));
-const Counters      = lazy(() => import('../components/Counters'));
+const SelectedWork  = lazy(() => import('../components/SelectedWork'));
 const TechStack     = lazy(() => import('../components/TechStack'));
 const Partners      = lazy(() => import('../components/Partners'));
 const Vision        = lazy(() => import('../components/Vision'));
@@ -33,9 +31,6 @@ export default function Home() {
         <section id="hero-section"><Hero /></section>
 
         <Suspense fallback={null}>
-          {/* ── Trust bar ── */}
-          <ClientLogos />
-
           {/* ── About ── */}
           <Divider />
           <section id="about"><About /></section>
@@ -60,13 +55,9 @@ export default function Home() {
           <Divider />
           <section id="products"><Products /></section>
 
-          {/* ── Testimonials ── */}
+          {/* ── Selected Experience ── */}
           <Divider />
-          <section id="testimonials"><Testimonials /></section>
-
-          {/* ── Stats ── */}
-          <Divider />
-          <section id="counters"><Counters /></section>
+          <section id="work"><SelectedWork /></section>
 
           {/* ── Tech Stack ── */}
           <Divider />
