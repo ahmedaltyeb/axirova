@@ -590,7 +590,25 @@ body::before {
 @media (max-width: 768px) {
   .hamburger { display: flex !important; }
   .nav-cta { display: none !important; }
-  .lang-toggle { display: none !important; }
+  .nav-actions { gap: 7px !important; }
+  .lang-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+  }
+  .nav-brand-logo img {
+    height: 34px !important;
+    max-width: 170px !important;
+  }
+}
+@media (max-width: 390px) {
+  .nav-brand-logo img { max-width: 145px !important; }
+  .nav-actions { gap: 5px !important; }
 }
 
 /* ── CLIENT LOGOS MARQUEE ── */
