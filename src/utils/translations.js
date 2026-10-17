@@ -204,6 +204,7 @@ export const translations = {
     },
 
     clientLogos: {
+      title: 'The Brands That Trust Us',
       label: 'Trusted by companies across the GCC',
     },
 
@@ -511,6 +512,7 @@ export const translations = {
     },
 
     clientLogos: {
+      title: 'العلامات التجارية التي تثق بنا',
       label: 'موثوق به من شركات في منطقة الخليج',
     },
 

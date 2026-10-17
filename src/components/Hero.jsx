@@ -64,16 +64,16 @@ export default function Hero() {
     <section className="hst-hero" id="hero-section">
 
       {/* ── Background video ── */}
-      {/* Replace the src below with a real .mp4 URL for your background video */}
       <video
         className="hst-hero__video"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
         aria-hidden="true"
       >
-        <source src="" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}videos/hero-section.mp4`} type="video/mp4" />
       </video>
 
       {/* ── Dark overlay ── */}
@@ -211,16 +211,18 @@ export default function Hero() {
           height: 100%;
           object-fit: cover;
           z-index: 0;
-          opacity: 0.15;
           pointer-events: none;
         }
 
-        /* ── Dark gradient overlay ── */
+        /* ── Gradient overlay (lighter so the video stays visible) ── */
         .hst-hero__overlay {
           position: absolute;
           inset: 0;
           z-index: 1;
-          background: var(--hero-overlay);
+          background: linear-gradient(150deg, rgba(5,13,26,0.78) 0%, rgba(5,13,26,0.55) 50%, rgba(8,18,36,0.80) 100%);
+        }
+        [data-theme="light"] .hst-hero__overlay {
+          background: linear-gradient(150deg, rgba(248,251,255,0.82) 0%, rgba(240,246,252,0.62) 50%, rgba(231,240,250,0.84) 100%);
         }
 
         /* ── Glow orbs ── */
