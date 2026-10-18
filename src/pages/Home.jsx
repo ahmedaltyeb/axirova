@@ -36,6 +36,10 @@ export default function Home() {
           {/* ── Trust bar ── */}
           <ClientLogos />
 
+          {/* ── Testimonials ── */}
+          <Divider />
+          <section id="testimonials"><Testimonials /></section>
+
           {/* ── About ── */}
           <Divider />
           <section id="about"><About /></section>
@@ -59,10 +63,6 @@ export default function Home() {
           {/* ── Products ── */}
           <Divider />
           <section id="products"><Products /></section>
-
-          {/* ── Testimonials ── */}
-          <Divider />
-          <section id="testimonials"><Testimonials /></section>
 
           {/* ── Stats ── */}
           <Divider />
