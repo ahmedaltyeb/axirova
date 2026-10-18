@@ -33,12 +33,12 @@ export default function Home() {
         <section id="hero-section"><Hero /></section>
 
         <Suspense fallback={null}>
-          {/* ── Trust bar ── */}
-          <ClientLogos />
-
           {/* ── Testimonials ── */}
           <Divider />
           <section id="testimonials"><Testimonials /></section>
+
+          {/* ── Trust bar ── */}
+          <ClientLogos />
 
           {/* ── About ── */}
           <Divider />
