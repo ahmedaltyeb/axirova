@@ -33,13 +33,6 @@ export default function Home() {
         <section id="hero-section"><Hero /></section>
 
         <Suspense fallback={null}>
-          {/* ── Testimonials ── */}
-          <Divider />
-          <section id="testimonials"><Testimonials /></section>
-
-          {/* ── Trust bar ── */}
-          <ClientLogos />
-
           {/* ── About ── */}
           <Divider />
           <section id="about"><About /></section>
@@ -63,6 +56,13 @@ export default function Home() {
           {/* ── Products ── */}
           <Divider />
           <section id="products"><Products /></section>
+
+          {/* ── Testimonials ── */}
+          <Divider />
+          <section id="testimonials"><Testimonials /></section>
+
+          {/* ── Trust bar ── */}
+          <ClientLogos />
 
           {/* ── Stats ── */}
           <Divider />
