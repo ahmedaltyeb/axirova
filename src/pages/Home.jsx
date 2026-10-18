@@ -3,6 +3,7 @@ import PageEnter from '../components/PageEnter';
 import ScrollProgress from '../components/ScrollProgress';
 import Hero from '../components/Hero';
 
+const ClientLogos   = lazy(() => import('../components/ClientLogos'));
 const About         = lazy(() => import('../components/About'));
 const WhyChooseUs   = lazy(() => import('../components/WhyChooseUs'));
 const Services      = lazy(() => import('../components/Services'));
@@ -58,6 +59,9 @@ export default function Home() {
           {/* ── Selected Experience ── */}
           <Divider />
           <section id="work"><SelectedWork /></section>
+
+          {/* ── Brands that trust us ── */}
+          <ClientLogos />
 
           {/* ── Tech Stack ── */}
           <Divider />
