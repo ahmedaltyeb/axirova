@@ -6,7 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 const doubled = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export default function ClientLogos() {
-  const { t, pick } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <section className="brands-sec" aria-label={t('clientLogos.label')}>
@@ -26,8 +26,12 @@ export default function ClientLogos() {
         <div className="brands-track">
           {doubled.map((client, i) => (
             <div key={i} className="brand-card" aria-hidden={i >= CLIENT_LOGOS.length}>
-              <span className="brand-card-name">{client.name}</span>
-              <span className="brand-card-sector">{pick(client.sector)}</span>
+              <img
+                src={`${import.meta.env.BASE_URL}images/clients/${client.logo}`}
+                alt={client.name}
+                loading="lazy"
+                draggable="false"
+              />
             </div>
           ))}
         </div>
@@ -66,31 +70,16 @@ export default function ClientLogos() {
           flex-shrink: 0;
           width: 200px;
           height: 200px;
-          box-sizing: border-box;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          text-align: center;
+          overflow: hidden;
           background: #fff;
           border-radius: 18px;
           box-shadow: 0 2px 10px rgba(15, 30, 60, 0.05);
         }
-        .brand-card-name {
-          font-family: var(--font-d);
-          font-size: 17px;
-          font-weight: 800;
-          line-height: 1.25;
-          color: #0b2a5b;
-        }
-        .brand-card-sector {
-          font-family: var(--font-m);
-          font-size: 10px;
-          letter-spacing: .12em;
-          text-transform: uppercase;
-          color: #1a6fe8;
+        .brand-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
         [dir="rtl"] .brands-track { animation-direction: reverse; }
         @media (max-width: 768px) {
@@ -98,7 +87,6 @@ export default function ClientLogos() {
           .brands-title { margin-bottom: 36px; }
           .brands-track { gap: 20px; }
           .brand-card { width: 150px; height: 150px; }
-          .brand-card-name { font-size: 14px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .brands-track { animation: none; }

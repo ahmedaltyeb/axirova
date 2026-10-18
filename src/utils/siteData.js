@@ -169,14 +169,18 @@ export const CALENDLY_URL = 'https://calendly.com/axirova/consultation';
 export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgobzkoq';
 
 export const CLIENT_LOGOS = [
-  { name: 'Al Noor Pharmacy',      sector: { en: 'Healthcare',  ar: 'رعاية صحية' } },
-  { name: 'Gulf Restaurants Group', sector: { en: 'F&B',        ar: 'أغذية' } },
-  { name: 'Prime Properties UAE',   sector: { en: 'Real Estate', ar: 'عقارات' } },
-  { name: 'Emirates Retail Co.',    sector: { en: 'Retail',      ar: 'تجزئة' } },
-  { name: 'Dubai Smart Services',   sector: { en: 'Government',  ar: 'حكومة' } },
-  { name: 'GCC Logistics Hub',      sector: { en: 'Logistics',   ar: 'لوجستيات' } },
-  { name: 'Medica Clinics',         sector: { en: 'Healthcare',  ar: 'رعاية صحية' } },
-  { name: 'SkyDine Group',          sector: { en: 'F&B',         ar: 'أغذية' } },
+  { name: 'Al Arabi Falcons', logo: 'al-arabi-falcons.webp' },
+  { name: 'Baytak Home Service', logo: 'baytak.webp' },
+  { name: "Gold Signature Men's Tailoring", logo: 'gold-signature.webp' },
+  { name: 'Ismet Chef Steakhouse & Kebap', logo: 'ismet-chef.webp' },
+  { name: 'LSC Boutique', logo: 'lc-boutique.webp' },
+  { name: 'Ounda Technical Services', logo: 'ounda.webp' },
+  { name: 'ParkME', logo: 'parkme.webp' },
+  { name: 'Smart Lawyer', logo: 'smart-lawyer.webp' },
+  { name: 'Camel Brand', logo: 'camel-brand.webp' },
+  { name: 'Client', logo: 'client-tulip.webp' },
+  { name: 'Client', logo: 'green-star.webp' },
+  { name: 'Client', logo: 'aw-mark.webp' },
 ];
 
 export const PROCESS_STEPS = [
