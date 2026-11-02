@@ -1,0 +1,37 @@
+const pair = (en, ar) => ({ en, ar });
+export const services = [
+  ['custom-software', 'Custom software', 'البرمجيات المخصصة', 'Build', 'Replace disconnected tools with software shaped around your operations.', 'استبدل الأدوات المتفرقة ببرمجيات مصممة حول عملياتك.', ['Web & mobile applications', 'API integrations', 'Operational dashboards'], ['تطبيقات الويب والجوال', 'تكامل واجهات البرمجة', 'لوحات العمليات']],
+  ['web-design-ui-ux', 'Web design & UI/UX', 'تصميم الويب وتجربة المستخدم', 'Build', 'Make your first impression clear, useful, and easy to act on.', 'اجعل انطباعك الأول واضحاً ومفيداً وسهل التفاعل.', ['Bilingual websites', 'Design systems', 'Conversion journeys'], ['مواقع ثنائية اللغة', 'أنظمة التصميم', 'مسارات التحويل']],
+  ['saas-product-development', 'SaaS product development', 'تطوير منتجات SaaS', 'Build', 'Turn a focused idea into a product your customers can use and your team can grow.', 'حوّل فكرتك إلى منتج يستخدمه عملاؤك ويطوره فريقك.', ['Product discovery', 'Multi-tenant architecture', 'Release planning'], ['اكتشاف المنتج', 'بنية متعددة المستأجرين', 'تخطيط الإصدارات']],
+  ['erp-pos-systems', 'ERP & POS systems', 'أنظمة ERP ونقاط البيع', 'Build', 'Bring inventory, sales, and everyday operations into one connected workflow.', 'اجمع المخزون والمبيعات والعمليات اليومية في مسار مترابط.', ['Inventory workflows', 'Sales & billing', 'Management reporting'], ['سير عمل المخزون', 'المبيعات والفوترة', 'تقارير الإدارة']],
+  ['ai-automation', 'AI & automation', 'الذكاء الاصطناعي والأتمتة', 'Automate', 'Give repetitive work a reliable workflow, with people in control.', 'امنح المهام المتكررة مساراً موثوقاً مع بقاء القرار بيد الأشخاص.', ['n8n workflows', 'WhatsApp agents', 'Human review & handoff'], ['مسارات n8n', 'وكلاء واتساب', 'مراجعة بشرية وتسليم المهام']],
+  ['digital-marketing-seo', 'Digital marketing & SEO', 'التسويق الرقمي وتحسين البحث', 'Grow', 'Connect discovery, useful content, and a measurable path to enquiry.', 'اربط الظهور والمحتوى المفيد بمسار قابل للقياس نحو الاستفسار.', ['Technical SEO', 'Campaign strategy', 'Measurement planning'], ['تحسين البحث التقني', 'استراتيجية الحملات', 'تخطيط القياس']],
+  ['business-consulting', 'Business consulting', 'استشارات الأعمال', 'Grow', 'Find the operational bottleneck before investing in the next system.', 'حدد عائق العمليات قبل الاستثمار في النظام التالي.', ['Process mapping', 'Technology roadmap', 'Implementation priorities'], ['رسم العمليات', 'خارطة التقنية', 'أولويات التنفيذ']],
+].map(([slug,en,ar,group,de,da,fe,fa]) => ({ slug, title:pair(en,ar), desc:pair(de,da), group, features:pair(fe,fa) }));
+export const products = [
+ ['pharmexa','Pharmexa','فارمكسا','Pharmacy POS','نقاط بيع الصيدليات','pharmacy',['Sales workflow','Stock visibility','Billing'],['مسار المبيعات','رؤية المخزون','الفوترة']],
+ ['pharmaxpsm','PharmaxPSM','فارماكس PSM','Pharmacy management','إدارة الصيدليات','pharmacy',['Inventory coordination','Branch workflows','Reporting'],['تنسيق المخزون','عمليات الفروع','التقارير']],
+ ['udrive','UDrive','يو درايف','Arabic-first car rental','تأجير السيارات بالعربية أولاً','car-rental',['Rental agreements','Vehicle availability','RTL workspace'],['عقود التأجير','توفر المركبات','واجهة عربية']],
+ ['solarerp','SolarERP','سولار ERP','Field-service ERP','تخطيط موارد الخدمات الميدانية','solar-field-services',['Job scheduling','Field teams','Service records'],['جدولة المهام','الفرق الميدانية','سجلات الخدمة']],
+ ['mohamina','Mohamina','محامينا','Legal-tech SaaS','منصة تقنية قانونية','legal',['Matter organization','Document workflows','Team coordination'],['تنظيم الملفات','مسارات المستندات','تنسيق الفريق']],
+ ['axirova-fleet','AXIROVA Fleet','أسطول أكسيروفا','GPS fleet tracking','تتبع الأسطول عبر GPS','logistics-fleet',['Vehicle location','Trip visibility','Fleet operations'],['مواقع المركبات','رؤية الرحلات','عمليات الأسطول']],
+ ['axirova-os','Axirova OS','نظام أكسيروفا','Agency operating system','نظام تشغيل الوكالات','retail',['Project workflows','Team visibility','Delivery coordination'],['مسارات المشاريع','رؤية الفريق','تنسيق التسليم']],
+].map(([slug,en,ar,de,da,industry,fe,fa])=>({slug,title:pair(en,ar),desc:pair(de,da),industry,features:pair(fe,fa)}));
+export const industries = [
+ ['pharmacy','Pharmacy','الصيدليات','Connect the counter, stock room, and management team.','اربط نقطة البيع والمخزون وفريق الإدارة.'],
+ ['car-rental','Car rental','تأجير السيارات','Manage availability, contracts, and vehicle handovers.','نظم التوفر والعقود وتسليم المركبات.'],
+ ['solar-field-services','Solar & field services','الطاقة الشمسية والخدمات الميدانية','Connect office planning with work in the field.','اربط تخطيط المكتب بالعمل الميداني.'],
+ ['legal','Legal','القطاع القانوني','Organize matters, documents, and team responsibilities.','نظم الملفات والمستندات ومسؤوليات الفريق.'],
+ ['logistics-fleet','Logistics & fleet','الخدمات اللوجستية والأساطيل','Bring vehicle movements and operational decisions together.','اجمع حركة المركبات وقرارات التشغيل.'],
+ ['retail','Retail','التجزئة','Keep sales, stock, and customer journeys connected.','اربط المبيعات والمخزون ورحلة العميل.'],
+].map(([slug,en,ar,de,da])=>({slug,title:pair(en,ar),desc:pair(de,da)}));
+export const work = [
+ ['pharmacy-operations','A connected pharmacy workflow','مسار صيدلية مترابط','From separate stock and sales records to a shared operational view.','من سجلات مخزون ومبيعات منفصلة إلى رؤية تشغيلية مشتركة.'],
+ ['rental-workspace','An Arabic-first rental workspace','مساحة تأجير عربية أولاً','From scattered booking records to an organized rental journey.','من حجوزات متفرقة إلى رحلة تأجير منظمة.'],
+ ['field-service','Field teams, connected','فرق ميدانية مترابطة','From manual job updates to a coordinated service workflow.','من تحديثات يدوية إلى مسار خدمة منسق.'],
+].map(([slug,en,ar,de,da])=>({slug,title:pair(en,ar),desc:pair(de,da),placeholder:true}));
+export const insights = [
+ ['before-you-build','What to map before you build software','ما الذي ترسمه قبل بناء البرمجيات؟','Start with a single workflow. Document who owns each step, what information they need, and where work waits. Use that map to agree on a focused first release.','ابدأ بمسار واحد. وثّق مسؤولية كل خطوة والمعلومات المطلوبة ومواطن الانتظار. استخدم الخريطة لتحديد إصدار أول واضح.'],
+ ['automation-with-oversight','Automation needs a human handoff','الأتمتة تحتاج إلى تسليم بشري','Define the cases an agent can handle, then design a clear path for uncertainty. Logs, approvals, and a named owner make automation easier to operate.','حدد الحالات التي يعالجها الوكيل وصمم مساراً واضحاً عند عدم اليقين. السجلات والموافقات والمسؤول المحدد تسهّل التشغيل.'],
+ ['arabic-first','Why Arabic-first design starts early','لماذا يبدأ التصميم العربي مبكراً؟','Navigation, forms, dates, and mixed-language content all affect an Arabic interface. Test real tasks in both directions before the layout becomes expensive to change.','التنقل والنماذج والتواريخ والمحتوى المختلط تؤثر على الواجهة العربية. اختبر المهام الفعلية في الاتجاهين قبل أن يصبح التعديل مكلفاً.'],
+].map(([slug,en,ar,de,da])=>({slug,title:pair(en,ar),desc:pair(de,da),placeholder:true}));
