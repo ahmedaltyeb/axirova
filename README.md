@@ -1,6 +1,6 @@
 # Axirova Technology
 
-A bilingual, conversion-focused company website built with React 18, Vite 5, Tailwind CSS 3, Framer Motion 11, and React Router. Production uses Vercel with clean URLs. The existing GitHub Pages workflow remains available as a static hash-router preview.
+A bilingual, conversion-focused company website built with React 18, Vite 5, Tailwind CSS 3, Framer Motion 11, and React Router. Netlify and Vercel support clean URLs and enquiry functions. The existing GitHub Pages workflow remains available as a static hash-router preview.
 
 ## Development
 
@@ -45,6 +45,14 @@ The estimator uses explicitly illustrative rules: scope and integrations choose 
 
 `npm run build` generates `public/sitemap.xml` and `public/robots.txt` from the catalog. Each route sets title, description, canonical, Open Graph, Organization, and relevant Service/FAQ JSON-LD using Helmet. The language choice is stored locally; both languages share canonical URLs. This SPA uses client-rendered metadata; validate crawler requirements before relying on language-specific discovery or social unfurling. Dedicated locale URLs and prerendering are possible follow-up work within Vite.
 
+## Netlify deployment
+
+`netlify.toml` configures `npm run build`, the `dist` publish folder, the enquiry function rewrite, and the SPA fallback. `netlify/functions/enquiry.mjs` adapts Netlify requests to the same validated enquiry handler used by Vercel.
+
+Set `VITE_SITE_URL` to the public production origin in Netlify's production environment. Configure the same Resend or webhook delivery variables listed in `.env.example` with Functions scope. The booking URL remains optional. Deploy with the official Netlify CLI or connect the GitHub repository using these build settings. Never set `VITE_GH_PAGES=true` for Netlify.
+
+The existing Netlify project is `axirova-ai` (`https://axirova-ai.netlify.app`). Production deployments from the local feature branch do not merge the GitHub pull request; the connected repository's default deployment branch remains `main`.
+
 ## GitHub Actions
 
 The existing Pages workflow builds with `GH_PAGES=true` and `VITE_GH_PAGES=true`; asset paths and hash routing are compatible with `/axirova/`. GitHub Pages cannot execute Vercel functions, so use Vercel for working enquiry delivery. The quality workflow checks tests, lint, and production compilation on pull requests.
@@ -66,4 +74,4 @@ Automated verification covers bilingual content parity, all route templates and 
 - Legal review, retention periods, and provider details for privacy/terms drafts.
 - Browser/RTL checks across every route and a measured Lighthouse run on deployment. No Lighthouse 90+ claim is made without measurement.
 
-Work is on `feat/multipage-conversion`, separate from `main`. Changes are committed locally; pushing or deploying the user's production repository is a separate operation.
+Work is on `feat/multipage-conversion`, separate from `main`, with the changes tracked in GitHub PR #3. A manual Netlify deployment does not merge the pull request.

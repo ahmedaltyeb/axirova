@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://axirova.ae/sitemap.xml
+Sitemap: https://axirova-ai.netlify.app/sitemap.xml
