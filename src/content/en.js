@@ -226,6 +226,15 @@ export default {
   aboutText:
     "We bring software engineering, product thinking, and business consulting together to solve operational problems. Our approach starts with the people doing the work and grows through practical, focused releases.",
   founder: "Founders",
+  founderMessage: {
+    eyebrow: "A word from the founders",
+    title: "Better technology starts with understanding your business.",
+    paragraphs: [
+      "We believe the best technology gives people more time to do meaningful work. At Axirova, we start by understanding the challenges behind your daily operations, then build practical systems that help your team move forward.",
+      "Our commitment is simple: listen carefully, build with purpose, and take responsibility for the work we deliver. Whether you are improving one workflow or creating a new platform, we want to build a lasting partnership around your next stage of growth.",
+    ],
+    portraitAlt: "Portrait supplied for Axirova’s founder message",
+  },
   links: "Explore",
   contactUs: "Get in touch",
 };

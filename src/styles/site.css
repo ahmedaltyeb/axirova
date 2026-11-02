@@ -1553,3 +1553,68 @@ img {
 .product-gallery figcaption span {
   color: var(--blue2);
 }
+.founder-message {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 70px;
+  align-items: center;
+  padding-block: 45px 80px;
+  border-bottom: 1px solid var(--border);
+}
+.founder-portrait {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--border2);
+  background: #091426;
+}
+.founder-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.founder-message-copy h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  margin-block: 18px 25px;
+}
+.founder-message-copy > p {
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.founder-message-signature {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.founder-message-signature > span {
+  font-size: 11px;
+  color: var(--blue2);
+  margin-bottom: 6px;
+}
+.founder-message-signature > strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+@media (max-width: 960px) {
+  .founder-message {
+    gap: 35px;
+  }
+}
+@media (max-width: 640px) {
+  .founder-message {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding-block: 20px 55px;
+  }
+  .founder-portrait {
+    max-width: 400px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .founder-message-copy > p {
+    font-size: 15px;
+  }
+}
