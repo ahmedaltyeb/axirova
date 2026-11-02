@@ -47,6 +47,8 @@ The estimator uses explicitly illustrative rules: scope and integrations choose 
 
 ## Netlify deployment
 
+The homepage includes the original **The Brands That Trust Us** logo section. All enquiry forms share `/api/enquiry`. For combined Google Sheets storage and notification emails to `axirova26@gmail.com`, use the prepared script and setup instructions in `integrations/google-apps-script/`. Configure `GOOGLE_APPS_SCRIPT_URL` and `GOOGLE_APPS_SCRIPT_TOKEN` on the hosting platform after authorizing and publishing the Google web app. Until configured, this Google integration is not active.
+
 `netlify.toml` configures `npm run build`, the `dist` publish folder, the enquiry function rewrite, and the SPA fallback. `netlify/functions/enquiry.mjs` adapts Netlify requests to the same validated enquiry handler used by Vercel.
 
 Set `VITE_SITE_URL` to the public production origin in Netlify's production environment. Configure the same Resend or webhook delivery variables listed in `.env.example` with Functions scope. The booking URL remains optional. Deploy with the official Netlify CLI or connect the GitHub repository using these build settings. Never set `VITE_GH_PAGES=true` for Netlify.

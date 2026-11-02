@@ -1,4 +1,5 @@
 export default {
+  brands: { title: "علامات تجارية تثق بنا" },
   nav: {
     home: "الرئيسية",
     services: "الخدمات",

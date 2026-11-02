@@ -1,4 +1,5 @@
 import { createLeadSchema } from "../shared/leadSchema.js";
+import { deliverGoogleEnquiry } from "./google-enquiry.js";
 const attempts = new Map();
 const WINDOW = 10 * 60 * 1000;
 export default async function handler(req, res) {
@@ -51,6 +52,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid enquiry" });
   const lead = parsed.data;
   try {
+    if (
+      process.env.GOOGLE_APPS_SCRIPT_URL ||
+      process.env.GOOGLE_APPS_SCRIPT_TOKEN
+    ) {
+      const delivery = await deliverGoogleEnquiry(lead);
+      return res
+        .status(delivery.status)
+        .json(delivery.error ? { error: delivery.error } : { ok: true });
+    }
     let response;
     if (process.env.ENQUIRY_WEBHOOK_URL) {
       response = await fetch(process.env.ENQUIRY_WEBHOOK_URL, {

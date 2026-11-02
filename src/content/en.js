@@ -1,4 +1,5 @@
 export default {
+  brands: { title: "The Brands That Trust Us" },
   nav: {
     home: "Home",
     services: "Services",

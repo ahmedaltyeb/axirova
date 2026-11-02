@@ -6,6 +6,7 @@ import { Cards, Section, PricingCards, FAQs } from "../components/Marketing";
 import QuoteForm from "../components/QuoteForm";
 import SEO from "../components/SEO";
 import useRichEffects from "../hooks/useRichEffects";
+import ClientLogos from "../components/ClientLogos";
 const Particles = lazy(() => import("../components/Particles"));
 const TechStack = lazy(() => import("../components/TechStack"));
 export default function Home() {
@@ -104,6 +105,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ClientLogos />
       <Section title={c.home.problem} sub={c.home.problemSub} eyebrow="01 /">
         <Cards
           items={[services[0], services[3], services[4]]}

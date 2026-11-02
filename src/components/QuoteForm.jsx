@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React, { useId, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +8,7 @@ import { createLeadSchema } from "../../shared/leadSchema";
 export default function QuoteForm({ demo = false }) {
   const { c, lang, pick } = useContent();
   const id = useId();
+  const submission = useRef(null);
   const [status, setStatus] = useState("");
   const [params] = useSearchParams();
   const selected = params.get("product");
@@ -34,11 +35,15 @@ export default function QuoteForm({ demo = false }) {
   const submit = async (values) => {
     setStatus("");
     try {
+      const fingerprint = JSON.stringify({ ...values, lang, demo });
+      if (submission.current?.fingerprint !== fingerprint)
+        submission.current = { fingerprint, id: crypto.randomUUID() };
       const response = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
+          submissionId: submission.current.id,
           lang,
           type: demo ? "demo" : "project",
         }),
@@ -46,6 +51,7 @@ export default function QuoteForm({ demo = false }) {
       if (!response.ok) throw new Error();
       setStatus("success");
       reset();
+      submission.current = null;
     } catch {
       setStatus("error");
     }

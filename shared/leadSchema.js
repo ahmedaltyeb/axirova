@@ -29,6 +29,7 @@ export function createLeadSchema(
       consent: z.literal(true, { error: messages.invalid }),
       lang: z.enum(["en", "ar"]).optional(),
       type: z.enum(["project", "demo"]).optional(),
+      submissionId: z.string().uuid().optional(),
     })
     .refine((v) => v.email || v.whatsapp, {
       message: messages.contactRequired,
