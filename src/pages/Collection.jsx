@@ -56,6 +56,36 @@ export default function Collection({ type }) {
           {type === "products" && (
             <Section>
               <ProductVisual product={item} detail />
+              {item.gallery && (
+                <div className="product-gallery">
+                  <h2>{c.detail.gallery}</h2>
+                  <p>{pick(item.image.caption)}</p>
+                  <div className="two-grid">
+                    {item.gallery.map((screen) => (
+                      <figure key={screen.src.en}>
+                        <a
+                          href={`${import.meta.env.BASE_URL}${pick(screen.src)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={pick(screen.alt)}
+                        >
+                          <img
+                            src={`${import.meta.env.BASE_URL}${pick(screen.src)}`}
+                            alt={pick(screen.alt)}
+                            width={screen.width}
+                            height={screen.height}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </a>
+                        <figcaption>
+                          {pick(screen.title)} <span aria-hidden>↗</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              )}
               <p className="notice">{c.detail.productNote}</p>
             </Section>
           )}

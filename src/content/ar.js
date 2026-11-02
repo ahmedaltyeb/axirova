@@ -157,6 +157,7 @@ export default {
     website: "اترك هذا الحقل فارغاً",
   },
   detail: {
+    gallery: "من داخل النظام",
     artwork: "تصور توضيحي للمنتج",
     problem: "تحدي العمليات",
     solution: "طريق عملي للأمام",

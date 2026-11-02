@@ -107,16 +107,71 @@ const productArtwork = {
     "تصور توضيحي لمساحة عمل وكالة مع لوحات مشاريع مترابطة.",
   ),
 };
+const pharmexaImage = {
+  actual: true,
+  src: pair(
+    "images/products/pharmexa/overview-en.jpg",
+    "images/products/pharmexa/overview-ar.jpg",
+  ),
+  alt: pair(
+    "Pharmexa pharmacy management dashboard with illustrative demo data.",
+    "لوحة إدارة صيدلية Pharmexa ببيانات تجريبية للعرض.",
+  ),
+  width: 1200,
+  height: 900,
+  caption: pair(
+    "Actual application interface · illustrative demo data",
+    "واجهة فعلية من النظام · بيانات تجريبية للعرض",
+  ),
+  detail: {
+    src: pair(
+      "images/products/pharmexa/hero-en.jpg",
+      "images/products/pharmexa/hero-ar.jpg",
+    ),
+    alt: pair(
+      "Pharmexa sales, inventory, and reporting workspace, available in local Desktop or cloud browser editions.",
+      "مساحة Pharmexa للمبيعات والمخزون والتقارير بإصدار مكتبي محلي أو سحابي عبر المتصفح.",
+    ),
+    width: 1920,
+    height: 1080,
+  },
+};
+const pharmexaGallery = [
+  ["point-of-sale", "Point of sale", "نقطة البيع"],
+  ["inventory", "Inventory & expiry", "المخزون والصلاحية"],
+  ["purchases", "Purchasing", "المشتريات"],
+  ["reports", "Reporting", "التقارير"],
+].map(([screen, en, ar]) => ({
+  title: pair(en, ar),
+  src: pair(
+    `images/products/pharmexa/${screen}-en.png`,
+    `images/products/pharmexa/${screen}-ar.png`,
+  ),
+  alt: pair(
+    `Pharmexa ${en.toLowerCase()} screen with illustrative demo data.`,
+    `واجهة ${ar} في Pharmexa ببيانات تجريبية للعرض.`,
+  ),
+  width: 2400,
+  height: 1500,
+}));
 export const products = [
   [
     "pharmexa",
     "Pharmexa",
     "فارمكسا",
-    "Pharmacy POS",
-    "نقاط بيع الصيدليات",
+    "Pharmacy sales, inventory, purchasing, and reporting in one bilingual workspace. Local Desktop or cloud browser editions.",
+    "المبيعات والمخزون والمشتريات والتقارير في مساحة عمل واحدة بالعربية والإنجليزية. إصدار مكتبي محلي أو سحابي عبر المتصفح.",
     "pharmacy",
-    ["Sales workflow", "Stock visibility", "Billing"],
-    ["مسار المبيعات", "رؤية المخزون", "الفوترة"],
+    [
+      "Point of sale & returns",
+      "Inventory & purchasing",
+      "Reporting in Arabic & English",
+    ],
+    [
+      "نقطة البيع والمرتجعات",
+      "المخزون والمشتريات",
+      "التقارير بالعربية والإنجليزية",
+    ],
   ],
   [
     "pharmaxpsm",
@@ -184,7 +239,11 @@ export const products = [
   desc: pair(de, da),
   industry,
   features: pair(fe, fa),
-  image: { src: `images/products/${slug}.jpg`, alt: productArtwork[slug] },
+  image:
+    slug === "pharmexa"
+      ? pharmexaImage
+      : { src: `images/products/${slug}.jpg`, alt: productArtwork[slug] },
+  ...(slug === "pharmexa" ? { gallery: pharmexaGallery } : {}),
 }));
 export const industries = [
   [
