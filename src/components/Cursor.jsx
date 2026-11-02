@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { prefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+import React, { useEffect, useRef, useState } from "react";
+import { prefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 export default function Cursor() {
   const dotRef = useRef(null);
@@ -12,48 +12,47 @@ export default function Cursor() {
   const [cursorEnabled, setCursorEnabled] = useState(true);
 
   useEffect(() => {
-    const disableCursor = 'ontouchstart' in window || prefersReducedMotion();
+    const disableCursor = "ontouchstart" in window || prefersReducedMotion();
     setCursorEnabled(!disableCursor);
     if (disableCursor) {
-      document.body.classList.add('touch-device');
+      document.body.classList.add("touch-device");
     }
 
-    let onMove, onDown, onUp, mo;
+    let onMove, onDown, onUp, onOver, onOut;
 
     if (!disableCursor) {
       onMove = (e) => {
         mx.current = e.clientX;
         my.current = e.clientY;
         if (dotRef.current) {
-          dotRef.current.style.left = e.clientX + 'px';
-          dotRef.current.style.top = e.clientY + 'px';
+          dotRef.current.style.left = e.clientX + "px";
+          dotRef.current.style.top = e.clientY + "px";
         }
       };
-      onDown = () => document.body.classList.add('clicking');
-      onUp = () => document.body.classList.remove('clicking');
+      onDown = () => document.body.classList.add("clicking");
+      onUp = () => document.body.classList.remove("clicking");
 
-      document.addEventListener('mousemove', onMove);
-      document.addEventListener('mousedown', onDown);
-      document.addEventListener('mouseup', onUp);
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mousedown", onDown);
+      document.addEventListener("mouseup", onUp);
 
       // Hover targets
-      const addHover = () => {
-        document.querySelectorAll('button, a, [data-hover]').forEach((el) => {
-          el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-          el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-      };
-      addHover();
-      mo = new MutationObserver(addHover);
-      mo.observe(document.body, { childList: true, subtree: true });
+      onOver = (e) =>
+        document.body.classList.toggle(
+          "hovering",
+          !!e.target.closest("button, a, [data-hover]"),
+        );
+      onOut = () => document.body.classList.remove("hovering");
+      document.addEventListener("mouseover", onOver);
+      document.addEventListener("mouseout", onOut);
 
       // Lerp ring
       const lerpRing = () => {
         rx.current += (mx.current - rx.current) * 0.1;
         ry.current += (my.current - ry.current) * 0.1;
         if (ringRef.current) {
-          ringRef.current.style.left = Math.round(rx.current) + 'px';
-          ringRef.current.style.top = Math.round(ry.current) + 'px';
+          ringRef.current.style.left = Math.round(rx.current) + "px";
+          ringRef.current.style.top = Math.round(ry.current) + "px";
         }
         rafRef.current = requestAnimationFrame(lerpRing);
       };
@@ -61,23 +60,31 @@ export default function Cursor() {
     }
 
     // Scroll progress bar — independent of cursor state
-    const bar = document.getElementById('scroll-bar');
+    const bar = document.getElementById("scroll-bar");
     const onScroll = () => {
       if (bar) {
-        const p = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        bar.style.width = p + '%';
+        const p =
+          (window.scrollY /
+            Math.max(
+              1,
+              document.documentElement.scrollHeight - window.innerHeight,
+            )) *
+          100;
+        bar.style.width = p + "%";
       }
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener("scroll", onScroll);
       if (!disableCursor) {
-        document.removeEventListener('mousemove', onMove);
-        document.removeEventListener('mousedown', onDown);
-        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mousedown", onDown);
+        document.removeEventListener("mouseup", onUp);
         cancelAnimationFrame(rafRef.current);
-        mo.disconnect();
+        document.removeEventListener("mouseover", onOver);
+        document.removeEventListener("mouseout", onOut);
+        document.body.classList.remove("hovering", "clicking");
       }
     };
   }, []);
@@ -89,31 +96,36 @@ export default function Cursor() {
         <>
           <div
             ref={dotRef}
+            data-cursor-dot
+            aria-hidden="true"
             style={{
-              position: 'fixed',
-              width: '6px',
-              height: '6px',
-              background: 'var(--blue2)',
-              borderRadius: '50%',
-              transform: 'translate(-50%,-50%)',
-              pointerEvents: 'none',
+              position: "fixed",
+              width: "6px",
+              height: "6px",
+              background: "var(--blue2)",
+              borderRadius: "50%",
+              transform: "translate(-50%,-50%)",
+              pointerEvents: "none",
               zIndex: 9999,
-              transition: 'width .15s, height .15s, background .2s',
-              mixBlendMode: 'screen',
+              transition: "width .15s, height .15s, background .2s",
+              mixBlendMode: "screen",
             }}
           />
           <div
             ref={ringRef}
+            data-cursor-ring
+            aria-hidden="true"
             style={{
-              position: 'fixed',
-              width: '40px',
-              height: '40px',
-              border: '1.5px solid rgba(59,158,255,0.45)',
-              borderRadius: '50%',
-              transform: 'translate(-50%,-50%)',
-              pointerEvents: 'none',
+              position: "fixed",
+              width: "40px",
+              height: "40px",
+              border: "1.5px solid rgba(59,158,255,0.45)",
+              borderRadius: "50%",
+              transform: "translate(-50%,-50%)",
+              pointerEvents: "none",
               zIndex: 9998,
-              transition: 'width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), border-color .3s',
+              transition:
+                "width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), border-color .3s",
             }}
           />
           <style>{`

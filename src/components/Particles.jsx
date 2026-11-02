@@ -1,6 +1,56 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 export default function Particles() {
- const ref=useRef(null);
- useEffect(()=>{const canvas=ref.current;if(!canvas)return;const ctx=canvas.getContext('2d');if(!ctx)return;let frame;let w,h;const points=Array.from({length:32},()=>({x:Math.random(),y:Math.random(),v:(Math.random()-.5)*.0002}));const size=()=>{w=canvas.width=canvas.clientWidth;h=canvas.height=canvas.clientHeight;};size();window.addEventListener('resize',size);const draw=()=>{ctx.clearRect(0,0,w,h);points.forEach((p,i)=>{p.y=(p.y+p.v+1)%1;ctx.fillStyle='#3b9eff77';ctx.beginPath();ctx.arc(p.x*w,p.y*h,1.7,0,Math.PI*2);ctx.fill();points.slice(i+1).forEach(q=>{const d=Math.hypot((p.x-q.x)*w,(p.y-q.y)*h);if(d<150){ctx.strokeStyle=`rgba(59,158,255,${.12*(1-d/150)})`;ctx.beginPath();ctx.moveTo(p.x*w,p.y*h);ctx.lineTo(q.x*w,q.y*h);ctx.stroke();}});});frame=requestAnimationFrame(draw);};const visibility=()=>{cancelAnimationFrame(frame);if(!document.hidden)draw();};visibility();document.addEventListener('visibilitychange',visibility);return()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',size);document.removeEventListener('visibilitychange',visibility);};},[]);
- return <canvas className="particle-canvas" ref={ref} aria-hidden="true"/>;
+  const ref = useRef(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let frame;
+    let w, h;
+    const points = Array.from({ length: 32 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      v: (Math.random() - 0.5) * 0.0002,
+    }));
+    const size = () => {
+      w = canvas.width = canvas.clientWidth;
+      h = canvas.height = canvas.clientHeight;
+    };
+    size();
+    window.addEventListener("resize", size);
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      points.forEach((p, i) => {
+        p.y = (p.y + p.v + 1) % 1;
+        ctx.fillStyle = "#3b9eff77";
+        ctx.beginPath();
+        ctx.arc(p.x * w, p.y * h, 1.7, 0, Math.PI * 2);
+        ctx.fill();
+        points.slice(i + 1).forEach((q) => {
+          const d = Math.hypot((p.x - q.x) * w, (p.y - q.y) * h);
+          if (d < 150) {
+            ctx.strokeStyle = `rgba(59,158,255,${0.12 * (1 - d / 150)})`;
+            ctx.beginPath();
+            ctx.moveTo(p.x * w, p.y * h);
+            ctx.lineTo(q.x * w, q.y * h);
+            ctx.stroke();
+          }
+        });
+      });
+      frame = requestAnimationFrame(draw);
+    };
+    const visibility = () => {
+      cancelAnimationFrame(frame);
+      if (!document.hidden) draw();
+    };
+    visibility();
+    document.addEventListener("visibilitychange", visibility);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", size);
+      document.removeEventListener("visibilitychange", visibility);
+    };
+  }, []);
+  return <canvas className="particle-canvas" ref={ref} aria-hidden="true" />;
 }
