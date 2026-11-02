@@ -16,7 +16,7 @@ export default function AboutPage() {
         <p>{c.aboutText}</p>
         <div className="founder-note">
           <span>{c.founder}</span>
-          <strong>{SITE.ceo}</strong>
+          {SITE.founders.map(name => <strong key={name}>{name}</strong>)}
         </div>
       </div>
       <Vision />

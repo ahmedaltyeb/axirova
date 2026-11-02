@@ -931,6 +931,7 @@ img {
 }
 .founder-note {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   align-items: center;
   border-top: 1px solid var(--border);

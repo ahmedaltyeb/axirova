@@ -225,7 +225,7 @@ export default {
   rights: "All rights reserved.",
   aboutText:
     "We bring software engineering, product thinking, and business consulting together to solve operational problems. Our approach starts with the people doing the work and grows through practical, focused releases.",
-  founder: "Founder",
+  founder: "Founders",
   links: "Explore",
   contactUs: "Get in touch",
 };

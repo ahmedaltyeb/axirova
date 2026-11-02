@@ -2,6 +2,7 @@ export const SITE = {
   name: 'Axirova Technology',
   tagline: 'AI-Powered Solutions & Digital Transformation for the GCC.',
   ceo: 'Ahmed Eltyeb Khalifa',
+  founders: ['Ahmed Eltyeb Khalifa', 'Altyeb Khalifa'],
   email: 'info@axirova.ae',
   phone: '+971 52 930 7250',
   social: {
