@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <url>
-    <loc>https://axirova.ae/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axirova.ae/"/>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://axirova.ae/</loc></url>
+  <url><loc>https://axirova.ae/services</loc></url>
+  <url><loc>https://axirova.ae/products</loc></url>
+  <url><loc>https://axirova.ae/industries</loc></url>
+  <url><loc>https://axirova.ae/work</loc></url>
+  <url><loc>https://axirova.ae/insights</loc></url>
+  <url><loc>https://axirova.ae/pricing</loc></url>
+  <url><loc>https://axirova.ae/about</loc></url>
+  <url><loc>https://axirova.ae/contact</loc></url>
+  <url><loc>https://axirova.ae/request-demo</loc></url>
+  <url><loc>https://axirova.ae/calculator</loc></url>
+  <url><loc>https://axirova.ae/privacy</loc></url>
+  <url><loc>https://axirova.ae/terms</loc></url>
+  <url><loc>https://axirova.ae/services/custom-software</loc></url>
+  <url><loc>https://axirova.ae/services/web-design-ui-ux</loc></url>
+  <url><loc>https://axirova.ae/services/saas-product-development</loc></url>
+  <url><loc>https://axirova.ae/services/erp-pos-systems</loc></url>
+  <url><loc>https://axirova.ae/services/ai-automation</loc></url>
+  <url><loc>https://axirova.ae/services/digital-marketing-seo</loc></url>
+  <url><loc>https://axirova.ae/services/business-consulting</loc></url>
+  <url><loc>https://axirova.ae/products/pharmexa</loc></url>
+  <url><loc>https://axirova.ae/products/pharmaxpsm</loc></url>
+  <url><loc>https://axirova.ae/products/udrive</loc></url>
+  <url><loc>https://axirova.ae/products/solarerp</loc></url>
+  <url><loc>https://axirova.ae/products/mohamina</loc></url>
+  <url><loc>https://axirova.ae/products/axirova-fleet</loc></url>
+  <url><loc>https://axirova.ae/products/axirova-os</loc></url>
+  <url><loc>https://axirova.ae/industries/pharmacy</loc></url>
+  <url><loc>https://axirova.ae/industries/car-rental</loc></url>
+  <url><loc>https://axirova.ae/industries/solar-field-services</loc></url>
+  <url><loc>https://axirova.ae/industries/legal</loc></url>
+  <url><loc>https://axirova.ae/industries/logistics-fleet</loc></url>
+  <url><loc>https://axirova.ae/industries/retail</loc></url>
 </urlset>

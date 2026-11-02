@@ -22,7 +22,7 @@ export default function TechStack() {
       nodes = TECH_NODES.map(n => ({ ...n, px: n.x * W, py: n.y * H, r: n.r || 18, ox: n.x * W, oy: n.y * H }));
     };
     resize();
-    window.addEventListener('resize', () => { resize(); });
+    window.addEventListener('resize', resize);
 
     const draw = () => {
       ctx.clearRect(0, 0, W, H); t += .005;
