@@ -644,6 +644,21 @@ img {
 .service-group + .service-group {
   margin-top: 30px;
 }
+.service-group > .card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+.service-group > .card-grid > .feature-card:only-child {
+  grid-column: 1 / -1;
+}
+.service-group .feature-card h3 {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .service-group > .card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .group-title {
   font-size: 13px;
   color: var(--blue2);
