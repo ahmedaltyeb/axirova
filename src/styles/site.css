@@ -1562,6 +1562,7 @@ img {
   border-bottom: 1px solid var(--border);
 }
 .founder-portrait {
+  margin: 0;
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid var(--border2);
@@ -1571,6 +1572,34 @@ img {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+.founder-portraits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.founder-portrait figcaption {
+  padding: 14px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg2);
+}
+@media (min-width: 641px) and (max-width: 960px) {
+  .founder-message {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .founder-portraits {
+    max-width: 650px;
+  }
+}
+@media (max-width: 400px) {
+  .founder-portraits {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .founder-message-copy h2 {
   font-size: clamp(28px, 3.2vw, 42px);

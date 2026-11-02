@@ -16,8 +16,8 @@ export default function AboutPage() {
         <p>{c.aboutText}</p>
         <div className="founder-note">
           <span>{c.founder}</span>
-          {SITE.founders.map((name) => (
-            <strong key={name}>{name}</strong>
+          {SITE.founders.map((founder) => (
+            <strong key={founder.name}>{founder.name}</strong>
           ))}
         </div>
       </div>
@@ -25,15 +25,20 @@ export default function AboutPage() {
         className="shell founder-message"
         aria-labelledby="founder-message-title"
       >
-        <div className="founder-portrait">
-          <img
-            src={`${import.meta.env.BASE_URL}${SITE.founderPortrait}`}
-            alt={c.founderMessage.portraitAlt}
-            width="1122"
-            height="1402"
-            loading="lazy"
-            decoding="async"
-          />
+        <div className="founder-portraits">
+          {SITE.founders.map((founder) => (
+            <figure className="founder-portrait" key={founder.name}>
+              <img
+                src={`${import.meta.env.BASE_URL}${founder.portrait}`}
+                alt={founder.name}
+                width={founder.width}
+                height={founder.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>{founder.name}</figcaption>
+            </figure>
+          ))}
         </div>
         <div className="founder-message-copy">
           <span className="eyebrow">{c.founderMessage.eyebrow}</span>
@@ -43,8 +48,8 @@ export default function AboutPage() {
           ))}
           <div className="founder-message-signature">
             <span>{c.founder}</span>
-            {SITE.founders.map((name) => (
-              <strong key={name}>{name}</strong>
+            {SITE.founders.map((founder) => (
+              <strong key={founder.name}>{founder.name}</strong>
             ))}
           </div>
         </div>
