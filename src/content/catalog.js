@@ -77,6 +77,36 @@ export const services = [
   group,
   features: pair(fe, fa),
 }));
+const productArtwork = {
+  pharmexa: pair(
+    "Concept illustration of a pharmacy checkout terminal with medicine cartons.",
+    "تصور توضيحي لجهاز نقاط بيع صيدلية مع عبوات أدوية.",
+  ),
+  pharmaxpsm: pair(
+    "Concept illustration of a pharmacy inventory workspace and organized medicine stock.",
+    "تصور توضيحي لمساحة إدارة مخزون صيدلية وعبوات أدوية منظمة.",
+  ),
+  udrive: pair(
+    "Concept illustration of a rental car, booking phone, and vehicle key.",
+    "تصور توضيحي لسيارة تأجير وهاتف للحجز ومفتاح مركبة.",
+  ),
+  solarerp: pair(
+    "Concept illustration of solar panels and a field-service planning tablet.",
+    "تصور توضيحي لألواح شمسية وجهاز لوحي لتخطيط الخدمات الميدانية.",
+  ),
+  mohamina: pair(
+    "Concept illustration of legal scales, documents, and a digital workspace.",
+    "تصور توضيحي لميزان العدالة ومستندات ومساحة عمل رقمية.",
+  ),
+  "axirova-fleet": pair(
+    "Concept illustration of fleet vehicles with location pins on a route map.",
+    "تصور توضيحي لمركبات أسطول وعلامات مواقع على خريطة مسارات.",
+  ),
+  "axirova-os": pair(
+    "Concept illustration of an agency workspace with connected project boards.",
+    "تصور توضيحي لمساحة عمل وكالة مع لوحات مشاريع مترابطة.",
+  ),
+};
 export const products = [
   [
     "pharmexa",
@@ -154,6 +184,7 @@ export const products = [
   desc: pair(de, da),
   industry,
   features: pair(fe, fa),
+  image: { src: `images/products/${slug}.jpg`, alt: productArtwork[slug] },
 }));
 export const industries = [
   [

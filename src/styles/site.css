@@ -1414,3 +1414,74 @@ img {
     transform: none !important;
   }
 }
+
+/* Product artwork uses the same frame on cards and detail pages. */
+.product-visual {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  background: #050d1a;
+  isolation: isolate;
+}
+.product-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.product-visual figcaption {
+  position: absolute;
+  inset-inline-start: 16px;
+  bottom: 14px;
+  padding: 5px 10px;
+  border: 1px solid #ffffff24;
+  border-radius: 5px;
+  background: #050d1ad9;
+  color: #d1e4fa;
+  font: 10px/1.6 var(--font-b);
+  backdrop-filter: blur(10px);
+}
+.product-card {
+  padding: 0;
+  overflow: hidden;
+}
+.product-card > :not(.product-visual) {
+  margin-inline: 28px;
+}
+.product-card .card-top {
+  padding-top: 24px;
+  margin-bottom: 18px;
+}
+.product-card .card-link {
+  padding-bottom: 26px;
+}
+.product-card:hover .product-visual img {
+  transform: scale(1.035);
+}
+.product-visual--detail {
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+}
+.product-visual--detail img {
+  max-height: 560px;
+  object-fit: contain;
+  aspect-ratio: 3/2;
+}
+.product-visual--detail figcaption {
+  inset-inline-start: 24px;
+  bottom: 20px;
+  font-size: 12px;
+}
+@media (max-width: 640px) {
+  .product-card > :not(.product-visual) {
+    margin-inline: 25px;
+  }
+  .product-visual--detail figcaption {
+    font-size: 10px;
+    inset-inline-start: 12px;
+    bottom: 12px;
+  }
+}

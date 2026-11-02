@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { useContent } from "../content";
+import ProductVisual from "./ProductVisual";
 export function Section({ title, sub, eyebrow, children, className = "" }) {
   const reduced = useReducedMotion();
   return (
@@ -31,17 +32,13 @@ export function Cards({ items, base }) {
           key={item.slug}
           to={`/${base}/${item.slug}`}
         >
+          {base === "products" && <ProductVisual product={item} />}
           <div className="card-top">
             <span className="card-number">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span aria-hidden>↗</span>
           </div>
-          {base === "products" && (
-            <div className="product-symbol" aria-hidden>
-              {item.title.en.slice(0, 2)}
-            </div>
-          )}
           <h3>{pick(item.title)}</h3>
           <p>{pick(item.desc)}</p>
           {item.placeholder && (

@@ -5,6 +5,7 @@ import * as catalog from "../content/catalog";
 import { Cards, Section, CTA, FAQs } from "../components/Marketing";
 import SEO from "../components/SEO";
 import NotFound from "./NotFound";
+import ProductVisual from "../components/ProductVisual";
 export default function Collection({ type }) {
   const { slug } = useParams();
   const { c, pick } = useContent();
@@ -54,26 +55,7 @@ export default function Collection({ type }) {
           )}
           {type === "products" && (
             <Section>
-              <div className="screenshot-placeholder">
-                <div className="mock-toolbar">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <div className="mock-body">
-                  <div className="mock-sidebar" />
-                  <div className="mock-content">
-                    <strong>{pick(item.title)}</strong>
-                    <div className="mock-panels">
-                      <i />
-                      <i />
-                      <i />
-                    </div>
-                    <div className="mock-chart" />
-                  </div>
-                </div>
-                <p>{c.detail.screenshot}</p>
-              </div>
+              <ProductVisual product={item} detail />
               <p className="notice">{c.detail.productNote}</p>
             </Section>
           )}

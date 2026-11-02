@@ -165,6 +165,7 @@ export default {
     website: "Leave this field empty",
   },
   detail: {
+    artwork: "Product concept illustration",
     problem: "The operational challenge",
     solution: "A practical way forward",
     features: "Areas to explore",
