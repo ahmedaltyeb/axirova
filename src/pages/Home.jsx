@@ -105,7 +105,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ClientLogos />
       <Section title={c.home.problem} sub={c.home.problemSub} eyebrow="01 /">
         <Cards
           items={[services[0], services[3], services[4]]}
@@ -204,6 +203,7 @@ export default function Home() {
           </Suspense>
         )}
       </div>
+      <ClientLogos />
       <Section title={c.home.faq}>
         <FAQs />
       </Section>
