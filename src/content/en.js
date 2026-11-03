@@ -139,6 +139,12 @@ export default {
     ],
   ],
   form: {
+    urgency: "Issue priority",
+    priorities: [
+      "Low — general question",
+      "Normal — something is not working",
+      "High — operations are blocked",
+    ],
     name: "Name",
     company: "Company",
     email: "Email",
@@ -214,7 +220,7 @@ export default {
   legal: {
     draft: "Draft notice — owner review required before launch.",
     privacy:
-      "We use enquiry details to respond to your request. The form sends your name, company, contact details, and project information to the configured email or webhook provider. A short-lived rate-limit record helps reduce abuse. Language and theme preferences are stored in your browser. Do not send sensitive information. Contact us to ask about access, correction, or deletion. Retention periods and provider details must be confirmed before launch.",
+      "We use enquiry details to respond to your request. The form sends your name, company, contact details, and project information to the configured email or webhook provider. A short-lived rate-limit record helps reduce abuse. When AI mode is available, assistant messages are processed by OpenAI to generate replies. Chat history stays in page memory and is not saved by this website; provider retention policies may apply. Submitted assistant requests use the same enquiry pipeline. Language and theme preferences are stored in your browser. Do not send sensitive information. Contact us to ask about access, correction, or deletion. Retention periods and provider details must be confirmed before launch.",
     terms:
       "This website introduces Axirova’s services and product directions. Illustrative work, draft articles, product mockups, and pricing placeholders are not contractual commitments. Scope, availability, fees, intellectual property, and support are agreed in a separate written contract. Contact Axirova for clarification before relying on published information.",
   },

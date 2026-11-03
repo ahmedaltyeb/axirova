@@ -5,6 +5,7 @@ import { useContent } from "../content";
 import { services } from "../content/catalog";
 import { SITE } from "../utils/siteData";
 import BrandLogo from "./BrandLogo";
+import AssistantLauncher from "./AssistantLauncher";
 
 export default function SiteLayout() {
   const { c, pick } = useContent();
@@ -183,6 +184,7 @@ export default function SiteLayout() {
           />
         </svg>
       </a>
+      <AssistantLauncher />
     </>
   );
 }

@@ -5,13 +5,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContent } from "../content";
 import { services, products } from "../content/catalog";
 import { createLeadSchema } from "../../shared/leadSchema";
-export default function QuoteForm({ demo = false }) {
+export default function QuoteForm({
+  demo = false,
+  intent = "project",
+  initialMessage = "",
+}) {
   const { c, lang, pick } = useContent();
   const id = useId();
   const submission = useRef(null);
   const [status, setStatus] = useState("");
   const [params] = useSearchParams();
   const selected = params.get("product");
+  const support = intent === "support";
   const {
     register,
     handleSubmit,
@@ -26,8 +31,9 @@ export default function QuoteForm({ demo = false }) {
       whatsapp: "",
       service:
         demo && products.some((p) => p.slug === selected) ? selected : "",
-      budget: "",
-      message: "",
+      budget: support ? "not-applicable" : "",
+      urgency: "normal",
+      message: initialMessage,
       website: "",
       consent: false,
     },
@@ -43,9 +49,13 @@ export default function QuoteForm({ demo = false }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
+          message:
+            intent !== "project"
+              ? `[${intent.toUpperCase()}]${support ? ` Priority: ${values.urgency}` : ""}\n\n${values.message}`
+              : values.message,
           submissionId: submission.current.id,
           lang,
-          type: demo ? "demo" : "project",
+          type: demo ? "demo" : intent,
         }),
       });
       if (!response.ok) throw new Error();
@@ -93,7 +103,7 @@ export default function QuoteForm({ demo = false }) {
         {field("whatsapp", "tel")}
         <div className="field">
           <label htmlFor={id + "service"}>
-            {demo ? c.nav.products : c.form.service} *
+            {demo || support ? c.nav.products : c.form.service} *
           </label>
           <select
             id={id + "service"}
@@ -102,7 +112,7 @@ export default function QuoteForm({ demo = false }) {
             aria-describedby={errors.service ? id + "service-error" : undefined}
           >
             <option value="">{c.form.choose}</option>
-            {(demo ? products : services).map((s) => (
+            {(demo || support ? products : services).map((s) => (
               <option key={s.slug} value={s.slug}>
                 {pick(s.title)}
               </option>
@@ -114,27 +124,40 @@ export default function QuoteForm({ demo = false }) {
             </span>
           )}
         </div>
-        <div className="field">
-          <label htmlFor={id + "budget"}>{c.form.budget} *</label>
-          <select
-            id={id + "budget"}
-            {...register("budget")}
-            aria-invalid={!!errors.budget}
-            aria-describedby={errors.budget ? id + "budget-error" : undefined}
-          >
-            <option value="">{c.form.choose}</option>
-            {c.form.budgets.map((b, i) => (
-              <option key={b} value={String(i)}>
-                {b}
-              </option>
-            ))}
-          </select>
-          {errors.budget && (
-            <span id={id + "budget-error"} className="error">
-              {errors.budget.message}
-            </span>
-          )}
-        </div>
+        {support ? (
+          <div className="field">
+            <label htmlFor={id + "urgency"}>{c.form.urgency}</label>
+            <select id={id + "urgency"} {...register("urgency")}>
+              {c.form.priorities.map((label, i) => (
+                <option key={label} value={["low", "normal", "high"][i]}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <div className="field">
+            <label htmlFor={id + "budget"}>{c.form.budget} *</label>
+            <select
+              id={id + "budget"}
+              {...register("budget")}
+              aria-invalid={!!errors.budget}
+              aria-describedby={errors.budget ? id + "budget-error" : undefined}
+            >
+              <option value="">{c.form.choose}</option>
+              {c.form.budgets.map((b, i) => (
+                <option key={b} value={String(i)}>
+                  {b}
+                </option>
+              ))}
+            </select>
+            {errors.budget && (
+              <span id={id + "budget-error"} className="error">
+                {errors.budget.message}
+              </span>
+            )}
+          </div>
+        )}
       </div>
       <div className="field">
         <label htmlFor={id + "message"}>{c.form.message} *</label>
