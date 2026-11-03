@@ -23,7 +23,7 @@ After changing script code later, use **Deploy → Manage deployments → Edit �
 
 ## 3. Connect Netlify
 
-Open the `axirova-ai` site's environment settings and add these variables for **Production**, with **Functions** scope:
+Open the `axirova-ai` site's environment settings and add these variables for **Production**, keeping **All scopes** selected (the default, supported by the current Netlify plan):
 
 | Name | Value |
 | --- | --- |
