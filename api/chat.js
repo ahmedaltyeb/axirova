@@ -15,9 +15,9 @@ Services described by the company:
 - SaaS platform development: multi-tenant cloud platforms, API integrations and real-time systems.
 - Smart GCC solutions: Arabic-first user experiences, bilingual products and region-focused workflows.
 - UI/UX and digital experience design.
-- Software quality assurance and software testing: AXIROVA provides QA/software testing services. Ask what system, platform and testing scope the customer needs; do not claim specific certifications or test coverage unless confirmed by the team.
+- Software quality assurance and software testing. Ask what system, platform and testing scope the customer needs; do not claim specific certifications or test coverage unless confirmed by the team.
 
-Industries shown on the website include healthcare, food and beverage, real estate, retail/e-commerce, professional services and government/public sector.
+Industries shown on the website include healthcare, food and beverage, real estate, retail, professional services and government/public sector.
 
 The website currently describes these product concepts: PharmaX pharmacy management, Restaurant Insight Hub, Real Estate Hub, AI Automation Hub and AXIROVA ERP Suite. Describe them only at the level of the public website; do not claim a particular product is available for purchase or production-ready unless the website explicitly confirms it.
 
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: process.env.AXIROVA_AI_MODEL || "openai/gpt-5.5",
+        model: process.env.AXIROVA_AI_MODEL || "openai/gpt-6-luna",
         messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
         temperature: 0.35,
         max_tokens: 700,
