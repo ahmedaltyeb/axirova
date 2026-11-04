@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import { useContent } from "../content";
@@ -119,7 +119,17 @@ export default function SiteLayout() {
         </div>
       </header>
       <main id="main" tabIndex={-1} ref={main}>
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className="route-placeholder shell" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
       <SiteFooter />
       <a

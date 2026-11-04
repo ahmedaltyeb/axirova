@@ -1084,12 +1084,6 @@ img {
 .not-found .button {
   margin-top: 30px;
 }
-.page-loading {
-  min-height: 80vh;
-  display: grid;
-  place-items: center;
-  color: var(--blue2);
-}
 #scroll-bar {
   position: fixed;
   top: 0;
@@ -2218,5 +2212,61 @@ img {
   .footer-project,
   .footer-socials a {
     transition: none;
+  }
+}
+
+.route-placeholder {
+  min-height: 55vh;
+  padding-block: 70px;
+}
+.route-placeholder span {
+  display: block;
+  width: min(640px, 90%);
+  height: 18px;
+  border-radius: 6px;
+  background: var(--glass);
+  margin-bottom: 18px;
+}
+.route-placeholder span:first-child {
+  width: min(420px, 80%);
+  height: 42px;
+  margin-bottom: 30px;
+}
+.route-placeholder span:last-child {
+  width: min(480px, 70%);
+}
+.deferred-form,
+.form-preview {
+  min-height: 450px;
+}
+.form-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  padding-top: 24px;
+}
+.form-preview-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px 12px;
+}
+.form-preview-fields span {
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.form-preview-fields span:last-child {
+  height: 86px;
+  grid-column: 1 / -1;
+}
+.form-preview .button {
+  width: 100%;
+}
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .site-header {
+    backdrop-filter: none;
+    background: var(--bg);
   }
 }

@@ -10,6 +10,7 @@ npm run dev
 npm test
 npm run lint
 npm run build
+npm run test:performance
 npm run preview
 ```
 
@@ -63,7 +64,7 @@ The existing Pages workflow builds with `GH_PAGES=true` and `VITE_GH_PAGES=true`
 
 Keyboard-accessible navigation and services disclosure, skip link, route focus handling, visible focus states, labeled validated fields, live form status, native form controls, logical CSS spacing, and Cairo Arabic typography are included. Light/dark and EN/AR preferences persist locally.
 
-Routes and effects are lazy loaded. Particle hero, aurora, custom cursor, and the technology canvas are retained; canvases and cursor are mounted only on wide screens with a fine pointer and no reduced-motion preference. Technology canvas loads near the viewport. Mobile retains a native cursor and static technology list. The autoplay video, splash delay, unsupported statistics, and scripted chatbot are omitted from active pages.
+The homepage is in the initial bundle; other routes load within the persistent header/footer shell without a full-page loading message. Home enquiry forms load near the viewport or on request. Shared sections render immediately without the animation library. Desktop-only canvases and cursor stay optional; the technology canvas loads near the viewport. Fonts load without blocking rendering, and hashed Netlify assets use immutable caching. There is no splash delay. `npm run test:performance` checks the built manifest for a 110 kB gzip initial JavaScript budget, dependency cycles, and unwanted eager form/animation downloads. This is a download-budget check, not a measured mobile Lighthouse score.
 
 ## Owner input before production launch
 

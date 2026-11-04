@@ -1,25 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
 import { useContent } from "../content";
 import ProductVisual from "./ProductVisual";
 export function Section({ title, sub, eyebrow, children, className = "" }) {
-  const reduced = useReducedMotion();
   return (
-    <motion.section
-      className={`section shell ${className}`}
-      initial={reduced ? false : { opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduced ? 0 : 0.45 }}
-      viewport={{ once: true }}
-    >
+    <section className={`section shell ${className}`}>
       <div className="section-heading">
         {eyebrow && <span className="eyebrow">{eyebrow}</span>}
         {title && <h2>{title}</h2>}
         {sub && <p>{sub}</p>}
       </div>
       {children}
-    </motion.section>
+    </section>
   );
 }
 export function Cards({ items, base }) {

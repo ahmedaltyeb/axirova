@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContent } from "../content";
 import { services, products, work } from "../content/catalog";
 import { Cards, Section, PricingCards, FAQs } from "../components/Marketing";
-import QuoteForm from "../components/QuoteForm";
+import DeferredQuoteForm from "../components/DeferredQuoteForm";
 import SEO from "../components/SEO";
 import useRichEffects from "../hooks/useRichEffects";
 import ClientLogos from "../components/ClientLogos";
@@ -71,7 +71,7 @@ export default function Home() {
               <span className="eyebrow">{c.home.next}</span>
               <h2>{c.home.quote}</h2>
             </div>
-            <QuoteForm />
+            <DeferredQuoteForm />
           </div>
         </div>
         <div className="shell metrics-strip">
@@ -212,7 +212,7 @@ export default function Home() {
         title={c.home.final}
         sub={c.home.finalSub}
       >
-        <QuoteForm />
+        <DeferredQuoteForm />
       </Section>
     </>
   );
