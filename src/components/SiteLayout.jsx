@@ -6,6 +6,7 @@ import { services } from "../content/catalog";
 import { SITE } from "../utils/siteData";
 import BrandLogo from "./BrandLogo";
 import AssistantLauncher from "./AssistantLauncher";
+import SiteFooter from "./SiteFooter";
 
 export default function SiteLayout() {
   const { c, pick } = useContent();
@@ -120,51 +121,7 @@ export default function SiteLayout() {
       <main id="main" tabIndex={-1} ref={main}>
         <Outlet />
       </main>
-      <footer className="site-footer shell">
-        <div className="footer-grid">
-          <div>
-            <Link to="/">
-              <BrandLogo height={42} />
-            </Link>
-            <h2>{c.footer}</h2>
-            <p>{c.region}</p>
-          </div>
-          <div>
-            <h3>{c.links}</h3>
-            {[
-              "services",
-              "products",
-              "industries",
-              "work",
-              "insights",
-              "about",
-              "pricing",
-            ].map((k) => (
-              <Link key={k} to={`/${k}`}>
-                {c.nav[k]}
-              </Link>
-            ))}
-          </div>
-          <div>
-            <h3>{c.contactUs}</h3>
-            <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            <a dir="ltr" href={`tel:${SITE.phone.replace(/\s/g, "")}`}>
-              {SITE.phone}
-            </a>
-            <Link to="/request-demo">{c.demo}</Link>
-            <Link to="/calculator">{c.estimator.title}</Link>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>
-            © {new Date().getFullYear()} {SITE.name}. {c.rights}
-          </span>
-          <div>
-            <Link to="/privacy">{c.nav.privacy}</Link>
-            <Link to="/terms">{c.nav.terms}</Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
       <a
         className="whatsapp-float"
         href={`https://wa.me/${SITE.phone.replace(/\D/g, "")}`}
