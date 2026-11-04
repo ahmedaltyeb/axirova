@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   };
 
   const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
-  if (!lead.name || !emailIsValid || !lead.service || lead.details.length < 15 || !lead.consent) {
+  if (!lead.name || (!lead.email && !lead.whatsapp) || (lead.email && !emailIsValid) || !lead.service || lead.message.length < 15 || !lead.consent) {
     return res.status(400).json({ error: "Please complete the required fields and accept the privacy notice." });
   }
 
