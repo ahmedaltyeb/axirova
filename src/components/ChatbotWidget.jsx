@@ -185,7 +185,7 @@ export default function ChatbotWidget() {
                   <>
                     <input required maxLength={120} autoComplete="name" placeholder={t.name} value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} style={fieldStyle} />
                     <input maxLength={160} autoComplete="organization" placeholder={t.company} value={lead.company} onChange={(e) => setLead({ ...lead, company: e.target.value })} style={fieldStyle} />
-                    <input required type="email" maxLength={180} autoComplete="email" placeholder={t.email} value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} style={fieldStyle} />
+                    <input type="email" maxLength={180} autoComplete="email" placeholder={t.email} value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} style={fieldStyle} />
                     <input maxLength={60} autoComplete="tel" placeholder={t.phone} value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} style={fieldStyle} />
                     <select required value={lead.service} onChange={(e) => setLead({ ...lead, service: e.target.value })} style={fieldStyle}>
                       <option value="">{t.chooseService}</option>
