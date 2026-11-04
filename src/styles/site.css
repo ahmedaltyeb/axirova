@@ -2230,14 +2230,46 @@ img {
   min-height: 100dvh;
   background: radial-gradient(ellipse at center, var(--bg3), var(--bg) 65%);
   color: var(--muted);
+  animation: website-intro-exit 1s ease both;
 }
 .website-intro-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 26px;
+  gap: 22px;
   padding: 24px;
   width: min(100%, 400px);
+}
+.website-intro-mark {
+  position: relative;
+  isolation: isolate;
+  max-width: 100%;
+  padding: 18px 12px;
+  overflow: hidden;
+  animation: website-intro-logo 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.website-intro-mark::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #1a9fff25, transparent 70%);
+  filter: blur(12px);
+}
+.website-intro-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    #6bbfff30 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  animation: website-intro-shine 0.65s 0.15s ease-out both;
 }
 .website-intro .brand-logo {
   max-width: 100%;
@@ -2248,7 +2280,7 @@ img {
   max-height: 64px;
 }
 .website-intro-line {
-  width: 180px;
+  width: 112px;
   height: 2px;
   overflow: hidden;
   background: var(--border);
@@ -2259,15 +2291,41 @@ img {
   height: 100%;
   background: linear-gradient(90deg, var(--blue), var(--blue2));
   transform-origin: left;
-  animation: website-intro-progress 3s linear both;
+  animation: website-intro-progress 1s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
 [dir="rtl"] .website-intro-line span {
   transform-origin: right;
 }
 .website-intro p {
   margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+@keyframes website-intro-logo {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes website-intro-shine {
+  to {
+    transform: translateX(120%);
+  }
+}
+@keyframes website-intro-exit {
+  0%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes website-intro-progress {
   from {
@@ -2278,7 +2336,13 @@ img {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .website-intro,
+  .website-intro-mark,
+  .website-intro-mark::after,
   .website-intro-line span {
     animation: none;
+  }
+  .website-intro-mark::after {
+    display: none;
   }
 }

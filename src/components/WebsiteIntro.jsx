@@ -6,7 +6,7 @@ export default function WebsiteIntro({ children }) {
   const { lang } = useContent();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timeout = window.setTimeout(() => setLoading(false), 3000);
+    const timeout = window.setTimeout(() => setLoading(false), 1000);
     return () => window.clearTimeout(timeout);
   }, []);
   return (
@@ -19,7 +19,9 @@ export default function WebsiteIntro({ children }) {
           dir={lang === "ar" ? "rtl" : "ltr"}
         >
           <div className="website-intro-content">
-            <BrandLogo height={64} />
+            <div className="website-intro-mark">
+              <BrandLogo height={64} />
+            </div>
             <div className="website-intro-line" aria-hidden="true">
               <span />
             </div>
