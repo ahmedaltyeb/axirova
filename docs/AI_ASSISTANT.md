@@ -15,7 +15,7 @@ The browser never receives the AI Gateway key or the lead webhook token. The ass
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `AI_GATEWAY_API_KEY` | Yes | Private Vercel AI Gateway API key |
-| `AXIROVA_AI_MODEL` | No | Model identifier; defaults to `openai/gpt-5.5` |
+| `AXIROVA_AI_MODEL` | Yes | Explicit supported model identifier enabled for the Vercel AI Gateway project |
 | `AXIROVA_LEADS_WEBHOOK_URL` | For lead submissions | HTTPS endpoint receiving qualified enquiries |
 | `AXIROVA_LEADS_WEBHOOK_TOKEN` | Recommended | Shared secret sent in the Authorization header, X-Webhook-Token header and JSON token field |
 
