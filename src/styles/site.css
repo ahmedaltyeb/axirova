@@ -2220,3 +2220,65 @@ img {
     transition: none;
   }
 }
+
+.website-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at center, var(--bg3), var(--bg) 65%);
+  color: var(--muted);
+}
+.website-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 24px;
+  width: min(100%, 400px);
+}
+.website-intro .brand-logo {
+  max-width: 100%;
+}
+.website-intro .brand-logo img {
+  max-width: 100%;
+  height: auto !important;
+  max-height: 64px;
+}
+.website-intro-line {
+  width: 180px;
+  height: 2px;
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 2px;
+}
+.website-intro-line span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue2));
+  transform-origin: left;
+  animation: website-intro-progress 3s linear both;
+}
+[dir="rtl"] .website-intro-line span {
+  transform-origin: right;
+}
+.website-intro p {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+@keyframes website-intro-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .website-intro-line span {
+    animation: none;
+  }
+}

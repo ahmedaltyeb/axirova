@@ -10,6 +10,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { MotionConfig } from "framer-motion";
 import { LanguageProvider } from "./context/LanguageContext";
 import SiteLayout from "./components/SiteLayout";
+import WebsiteIntro from "./components/WebsiteIntro";
 import useRichEffects from "./hooks/useRichEffects";
 import { useContent } from "./content";
 const Home = lazy(() => import("./pages/Home"));
@@ -80,7 +81,9 @@ export default function App() {
       <LanguageProvider>
         <MotionConfig reducedMotion="user">
           <Router>
-            <AppRoutes />
+            <WebsiteIntro>
+              <AppRoutes />
+            </WebsiteIntro>
           </Router>
         </MotionConfig>
       </LanguageProvider>
