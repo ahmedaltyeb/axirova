@@ -14,17 +14,17 @@ export default async function handler(req, res) {
   if (clean(body.website, 200)) return res.status(200).json({ success: true });
 
   const lead = {
-    source: "AXIROVA Website AI Assistant",
-    submittedAt: new Date().toISOString(),
-    language: body.language === "ar" ? "ar" : "en",
+    submissionId: crypto.randomUUID(),
+    type: "demo",
+    
+    lang: body.language === "ar" ? "ar" : "en",
     name: clean(body.name, 120),
     company: clean(body.company, 160),
     email: clean(body.email, 180).toLowerCase(),
-    phone: clean(body.phone, 60),
+    whatsapp: clean(body.phone, 60),
     service: clean(body.service, 120),
     budget: clean(body.budget, 100),
-    timeline: clean(body.timeline, 100),
-    details: clean(body.details, 3000),
+    message: [clean(body.details, 2600), body.timeline ? "Timeline: " + clean(body.timeline, 100) : ""].filter(Boolean).join("\n"),
     consent: body.consent === true,
   };
 
@@ -33,12 +33,12 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Please complete the required fields and accept the privacy notice." });
   }
 
-  const webhookUrl = process.env.AXIROVA_LEADS_WEBHOOK_URL;
+  const webhookUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
   if (!webhookUrl) {
     return res.status(503).json({ error: "The enquiry form is not connected yet. Please email info@axirova.ae or contact us on WhatsApp." });
   }
 
-  const token = process.env.AXIROVA_LEADS_WEBHOOK_TOKEN || "";
+  const token = process.env.GOOGLE_APPS_SCRIPT_TOKEN || "";
   try {
     const response = await fetch(webhookUrl, {
       method: "POST",
