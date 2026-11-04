@@ -17,20 +17,17 @@ The browser never receives the AI Gateway key or the lead webhook token. The ass
 | `AI_GATEWAY_API_KEY` | Yes | Private Vercel AI Gateway API key |
 | `AXIROVA_AI_MODEL` | Yes | Explicit supported model identifier enabled for the Vercel AI Gateway project |
 | `AXIROVA_LEADS_WEBHOOK_URL` | For lead submissions | HTTPS endpoint receiving qualified enquiries |
-| `AXIROVA_LEADS_WEBHOOK_TOKEN` | Recommended | Shared secret sent in the Authorization header, X-Webhook-Token header and JSON token field |
+| `GOOGLE_APPS_SCRIPT_TOKEN` | Recommended | Shared token validated against the Apps Script `WEBHOOK_TOKEN` Script Property |
 
 Set variables for the Production environment (and Preview if desired), then redeploy. Never commit secret values to Git.
 
 ## Google Apps Script webhook contract
 
-The lead endpoint sends a JSON POST containing:
+The lead endpoint reuses the existing Apps Script JSON contract:
 
-- `source`, `submittedAt`, `language`
-- `name`, `company`, `email`, `phone`
-- `service`, `budget`, `timeline`, `details`
-- `consent`, and `token` when configured
+`submissionId`, `token`, `type`, `lang`, `name`, `company`, `email`, `whatsapp`, `service`, `budget`, `message`, and `consent`.
 
-The Apps Script Web App should validate the shared token, append the lead to a dedicated Google Sheet, and send a notification to the AXIROVA sales inbox. Deploy it as a Web App accessible to the Vercel function. Do not expose the deployment token in frontend variables.
+The existing Apps Script flow validates the token against Script Property `WEBHOOK_TOKEN`, appends to the `Enquiries` tab in `Axirova Website Enquiries`, and sends a notification email. Configure the existing `/exec` URL and matching token as Vercel server-side environment variables; do not expose either value in frontend variables.
 
 ## Local development
 
