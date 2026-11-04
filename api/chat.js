@@ -81,7 +81,7 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: "Too many messages. Please wait a few minutes and try again." });
   }
 
-  if (!process.env.AI_GATEWAY_API_KEY) {
+  if (!process.env.AI_GATEWAY_API_KEY || !process.env.AXIROVA_AI_MODEL) {
     return res.status(503).json({ error: "The AI assistant is not configured yet. Please contact AXIROVA by email or WhatsApp." });
   }
 
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: process.env.AXIROVA_AI_MODEL || "openai/gpt-6-luna",
+        model: process.env.AXIROVA_AI_MODEL,
         messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
         temperature: 0.35,
         max_tokens: 700,
