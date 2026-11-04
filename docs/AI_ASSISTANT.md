@@ -6,7 +6,7 @@
 - Same-origin Vercel serverless chat endpoint: `api/chat.js`
 - Same-origin Vercel serverless lead endpoint: `api/leads.js`
 - AI provider: Vercel AI Gateway using its OpenAI-compatible Chat Completions endpoint.
-- Lead destination: an HTTPS webhook (for example, the existing Google Apps Script Web App) configured only in Vercel environment variables.
+- Lead destination: the existing Google Apps Script Web App configured only in Vercel environment variables.
 
 The browser never receives the AI Gateway key or the lead webhook token. The assistant uses a server-authored company knowledge prompt and does not browse the internet or invent quotations.
 
@@ -16,7 +16,7 @@ The browser never receives the AI Gateway key or the lead webhook token. The ass
 | --- | --- | --- |
 | `AI_GATEWAY_API_KEY` | Yes | Private Vercel AI Gateway API key |
 | `AXIROVA_AI_MODEL` | Yes | Explicit supported model identifier enabled for the Vercel AI Gateway project |
-| `AXIROVA_LEADS_WEBHOOK_URL` | For lead submissions | HTTPS endpoint receiving qualified enquiries |
+| `GOOGLE_APPS_SCRIPT_URL` | For lead submissions | Existing Apps Script `/exec` Web App URL |
 | `GOOGLE_APPS_SCRIPT_TOKEN` | Recommended | Shared token validated against the Apps Script `WEBHOOK_TOKEN` Script Property |
 
 Set variables for the Production environment (and Preview if desired), then redeploy. Never commit secret values to Git.
