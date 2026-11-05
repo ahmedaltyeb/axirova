@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <url>
-    <loc>https://axirova.ae/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://axirova.ae/"/>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://axirova.netlify.app/</loc></url>
+  <url><loc>https://axirova.netlify.app/services</loc></url>
+  <url><loc>https://axirova.netlify.app/products</loc></url>
+  <url><loc>https://axirova.netlify.app/industries</loc></url>
+  <url><loc>https://axirova.netlify.app/work</loc></url>
+  <url><loc>https://axirova.netlify.app/insights</loc></url>
+  <url><loc>https://axirova.netlify.app/pricing</loc></url>
+  <url><loc>https://axirova.netlify.app/about</loc></url>
+  <url><loc>https://axirova.netlify.app/contact</loc></url>
+  <url><loc>https://axirova.netlify.app/request-demo</loc></url>
+  <url><loc>https://axirova.netlify.app/calculator</loc></url>
+  <url><loc>https://axirova.netlify.app/privacy</loc></url>
+  <url><loc>https://axirova.netlify.app/terms</loc></url>
+  <url><loc>https://axirova.netlify.app/services/custom-software</loc></url>
+  <url><loc>https://axirova.netlify.app/services/web-design-ui-ux</loc></url>
+  <url><loc>https://axirova.netlify.app/services/saas-product-development</loc></url>
+  <url><loc>https://axirova.netlify.app/services/erp-pos-systems</loc></url>
+  <url><loc>https://axirova.netlify.app/services/ai-automation</loc></url>
+  <url><loc>https://axirova.netlify.app/services/digital-marketing-seo</loc></url>
+  <url><loc>https://axirova.netlify.app/services/business-consulting</loc></url>
+  <url><loc>https://axirova.netlify.app/products/pharmexa</loc></url>
+  <url><loc>https://axirova.netlify.app/products/pharmaxpsm</loc></url>
+  <url><loc>https://axirova.netlify.app/products/udrive</loc></url>
+  <url><loc>https://axirova.netlify.app/products/solarerp</loc></url>
+  <url><loc>https://axirova.netlify.app/products/mohamina</loc></url>
+  <url><loc>https://axirova.netlify.app/products/axirova-fleet</loc></url>
+  <url><loc>https://axirova.netlify.app/products/axirova-os</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/pharmacy</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/car-rental</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/solar-field-services</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/legal</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/logistics-fleet</loc></url>
+  <url><loc>https://axirova.netlify.app/industries/retail</loc></url>
+  <url><loc>https://axirova.netlify.app/work/rental-workspace</loc></url>
 </urlset>

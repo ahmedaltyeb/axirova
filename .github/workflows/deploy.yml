@@ -31,9 +31,11 @@ jobs:
         run: npm ci
 
       - name: Build for GitHub Pages
+        # GitHub Pages is a static preview; enquiry delivery requires Vercel.
         run: npm run build
         env:
           GH_PAGES: 'true'
+          VITE_GH_PAGES: 'true'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

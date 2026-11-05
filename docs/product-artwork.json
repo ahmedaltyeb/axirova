@@ -1,0 +1,42 @@
+{
+  "generator": "Built-in image_gen tool",
+  "purpose": "Concept artwork, not actual product screenshots",
+  "encoding": "JPEG quality 85, original dimensions preserved",
+  "assets": [
+    {
+      "slug": "pharmexa",
+      "path": "public/images/products/pharmexa.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product card illustration for Axirova's Pharmexa pharmacy POS. Premium cinematic 3D product illustration: an elegant tablet checkout terminal with abstract blue interface blocks beside unbranded medicine cartons and a small glass capsule, on a dark navy studio surface. Electric blue rim lighting, restrained frosted glass materials, realistic soft shadows, cohesive dark navy #050d1a and blue #3b9eff palette. Centered composition with generous breathing room, landscape 3:2. No readable text, no logos, no people, no invented product screenshots or numerical metrics. This is conceptual product artwork."
+    },
+    {
+      "slug": "pharmaxpsm",
+      "path": "public/images/products/pharmaxpsm.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's PharmaxPSM pharmacy management. Premium cinematic 3D illustration of a central floating desktop display with abstract inventory rows and small chart bars, flanked by neatly organized unbranded pharmacy cartons and a translucent storage grid. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    },
+    {
+      "slug": "udrive",
+      "path": "public/images/products/udrive.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's UDrive car rental. Premium cinematic 3D illustration of an elegant unbranded silver sedan miniature on a circular plinth beside a floating smartphone showing only abstract booking blocks and a car key. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    },
+    {
+      "slug": "solarerp",
+      "path": "public/images/products/solarerp.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's SolarERP field-service ERP. Premium cinematic 3D illustration of a miniature array of solar panels with a field-service tablet and a subtle translucent scheduling grid, clean architectural forms. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    },
+    {
+      "slug": "mohamina",
+      "path": "public/images/products/mohamina.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's Mohamina legal-tech SaaS. Premium cinematic 3D illustration of an elegant brushed-metal balance scale beside a glass document folder and a tablet displaying abstract document blocks. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    },
+    {
+      "slug": "axirova-fleet",
+      "path": "public/images/products/axirova-fleet.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's AXIROVA Fleet GPS tracking. Premium cinematic 3D illustration of three miniature unbranded delivery vehicles on a stylized glass street map, blue location pins and delicate route lines. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    },
+    {
+      "slug": "axirova-os",
+      "path": "public/images/products/axirova-os.jpg",
+      "prompt": "Use case: stylized-concept. Asset type: landscape website product artwork for Axirova's Axirova OS agency operating system. Premium cinematic 3D illustration of a floating ultrawide workspace display with abstract kanban columns, task cards and connected frosted glass project tiles. Dark navy studio backdrop and plinth, electric blue rim lighting, restrained frosted glass and brushed metal, realistic soft shadows, cohesive palette #050d1a navy and #3b9eff blue with silver highlights. Polished editorial product photography of a 3D conceptual scene. Centered wide 3:2 composition, generous margins so subject fits a card crop. No readable text, no logos, no people, no metrics, no fake actual product screenshots. One single cohesive scene."
+    }
+  ]
+}

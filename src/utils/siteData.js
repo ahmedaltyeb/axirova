@@ -2,6 +2,10 @@ export const SITE = {
   name: 'Axirova Technology',
   tagline: 'AI-Powered Solutions & Digital Transformation for the GCC.',
   ceo: 'Ahmed Eltyeb Khalifa',
+  founders: [
+    { name: 'Ahmed Eltyeb Khalifa', portrait: 'images/team/founder-portrait.jpeg', width: 1122, height: 1402 },
+    { name: 'Altayeb Khalifa', portrait: 'images/team/altayeb-khalifa.jpeg', width: 1145, height: 1374 },
+  ],
   email: 'info@axirova.ae',
   phone: '+971 52 930 7250',
   social: {

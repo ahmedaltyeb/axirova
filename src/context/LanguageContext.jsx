@@ -5,7 +5,7 @@ const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(
-    () => localStorage.getItem('axirova-lang') || 'en'
+    () => localStorage.getItem('axirova-lang') === 'ar' ? 'ar' : 'en'
   );
 
   const dir = lang === 'ar' ? 'rtl' : 'ltr';

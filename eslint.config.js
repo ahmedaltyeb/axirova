@@ -9,7 +9,7 @@ import globals from 'globals';
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -26,7 +26,7 @@ export default [
     },
   },
   {
-    files: ['*.config.js'],
+    files: ['*.config.js', 'api/**/*.js', 'scripts/**/*.js', 'tests/**/*.js'],
     languageOptions: {
       globals: { ...globals.node },
     },

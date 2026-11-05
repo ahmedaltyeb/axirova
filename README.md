@@ -1,119 +1,80 @@
-# Axirova Technology — React + Vite Website
+# Axirova Technology
 
-Production-ready React frontend for Axirova Technology.  
-**Stack:** React 18 · Vite 5 · Tailwind CSS 3 · Framer Motion 11
+A bilingual, conversion-focused company website built with React 18, Vite 5, Tailwind CSS 3, Framer Motion 11, and React Router. Netlify and Vercel support clean URLs and enquiry functions. The existing GitHub Pages workflow remains available as a static hash-router preview.
 
----
-
-## Quick Start
+## Development
 
 ```bash
-# 1. Navigate into the project
-cd axirova-website
-
-# 2. Install dependencies
-npm install
-
-# 3. Start development server
+npm ci
 npm run dev
-
-# 4. Open in browser
-# http://localhost:5173
+npm test
+npm run lint
+npm run build
+npm run test:performance
+npm run preview
 ```
 
-## Build for Production
+Node 20 or newer is recommended. Vite serves the frontend only. Test the `/api/enquiry` function using Vercel development tooling or a Vercel preview deployment; `npm run dev` does not send enquiries.
 
-```bash
-npm run build       # outputs to /dist
-npm run preview     # preview production build locally
-```
+## Editing content
 
----
+- `src/content/en.js` and `src/content/ar.js`: shared UI and page copy, forms, pricing, FAQs, estimator, and draft legal notices.
+- `src/content/catalog.js`: bilingual services, products, industries, illustrative work, and draft insights. Slugs create detail routes automatically. Product feature lists are discussion areas pending product-owner confirmation.
+- `src/utils/siteData.js`: retained company contact details and legacy component data. Active pages use the new catalog; update the contact details here once for the navbar, footer, WhatsApp link, and contact page.
+- `src/utils/translations.js`: retained Vision, Values, and technology-canvas copy.
+- `src/styles/site.css`: active design system, logical spacing, responsive layouts, RTL, reduced motion, and theme tokens. The old stylesheet and unused legacy components remain available as references but are not loaded into active pages.
 
-## Project Structure
+Do not publish unverified client metrics, logos, testimonials, case-study results, prices, or product screenshots. The new pages deliberately label these placeholders. Work and insight detail placeholders are excluded from the sitemap and marked `noindex`.
 
-```
-axirova-website/
-├── public/
-│   └── (static assets, favicon, og-image)
-├── src/
-│   ├── components/
-│   │   ├── PageEnter.jsx       # Animated intro overlay
-│   │   ├── Cursor.jsx          # Custom cursor + scroll bar
-│   │   ├── ScrollProgress.jsx  # Side dot navigation
-│   │   ├── Navbar.jsx          # Fixed nav with scroll state
-│   │   ├── Hero.jsx            # Full hero: canvas, aurora, 3D tilt
-│   │   ├── About.jsx           # About section with data-flow canvas
-│   │   ├── Services.jsx        # 6-card service grid
-│   │   ├── Industries.jsx      # Draggable industry carousel
-│   │   ├── Products.jsx        # Auto-cycling product carousel
-│   │   ├── Counters.jsx        # Animated stats on scroll
-│   │   ├── TechStack.jsx       # Interactive tech node canvas
-│   │   ├── Vision.jsx          # Vision & Mission cards
-│   │   ├── Values.jsx          # Core values grid
-│   │   ├── CTA.jsx             # Call to action section
-│   │   └── Footer.jsx          # Footer with links and socials
-│   ├── hooks/
-│   │   ├── useScrollReveal.js  # IntersectionObserver reveal hook
-│   │   └── useCounter.js       # Animated number counter hook
-│   ├── pages/
-│   │   └── Home.jsx            # (reserved for routing)
-│   ├── styles/
-│   │   └── globals.css         # Design tokens, base styles, keyframes
-│   ├── utils/
-│   │   ├── siteData.js         # All content data (services, products, etc.)
-│   │   └── logoData.js         # Base64 encoded logo (auto-generated)
-│   ├── App.jsx                 # Root component with lazy loading
-│   └── main.jsx                # React DOM entry point
-├── index.html                  # Full SEO metadata + schema.org JSON-LD
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-└── package.json
-```
+To add a language, add a matching content module, register it in `src/content/index.js`, extend the language provider/switcher and supported schema languages, translate retained component strings, and add an appropriate font and direction. Run the content parity tests after changing either locale.
 
----
+## Pages
 
-## Company Info
+Home; seven service details; seven product details; six industry details; three illustrative work details; three draft insight details; pricing; about; contact; request-demo; project estimator; privacy; terms; and a catch-all 404. Legacy `/blog` and `/case-studies` index links redirect to the new collections.
 
-| Field | Value |
-|-------|-------|
-| **Company** | Axirova Technology |
-| **Email** | info@axirova.ae |
-| **Phone** | +971 52 930 7250 |
-| **Twitter** | @axirovaa |
-| **Region** | UAE / GCC |
+The estimator uses explicitly illustrative rules: scope and integrations choose Launch, Growth, or Custom. Language is collected for the discussion. It does not calculate prices or promise delivery dates.
 
-All content is centralized in `src/utils/siteData.js` — edit there to update the entire site.
+## Vercel deployment
 
----
+1. Import this repository into Vercel with the Vite preset, `npm run build`, and output directory `dist`.
+2. Copy values from `.env.example` into the Vercel environment settings. Set `VITE_SITE_URL` to the canonical production origin. Never expose secret keys through `VITE_` variables.
+3. Configure either `ENQUIRY_WEBHOOK_URL` (optional bearer token) OR `RESEND_API_KEY`, `ENQUIRY_FROM_EMAIL`, and `ENQUIRY_TO_EMAIL`. Resend requires a verified sender domain.
+4. Set `VITE_BOOKING_URL` only after confirming your Calendly/Cal.com embed URL. Until then the page displays a booking placeholder and the demo enquiry form.
+5. Deploy a preview and test a real enquiry with permission before launch. No external messages were sent during automated verification.
 
-## Key Features
+`vercel.json` retains the SPA fallback; filesystem functions take precedence over the fallback. The function uses shared Zod validation, a honeypot, a same-origin check, bounded payloads, a provider timeout, and a basic five-attempt / ten-minute per-IP limit. The in-memory limiter is per function instance and resets on cold starts; use durable shared limiting or Vercel protections when stronger abuse resistance is needed. Provider errors and missing configuration produce an error, never a false success.
 
-- **Custom cursor** with lerp interpolation and hover/click states
-- **Hero canvas** with interactive particle network (mouse attraction + click bursts)
-- **Aurora background** with layered CSS animations
-- **3D tilt** on hero content, responding to mouse position
-- **Scan line** sweep effect
-- **Lazy loading** — all below-fold sections loaded on demand
-- **Framer Motion** for all entrance animations and hover effects
-- **Animated counters** triggered by IntersectionObserver
-- **Draggable** industry carousel (mouse + touch)
-- **Auto-cycling** product carousel with manual dot control
-- **Tech stack canvas** with orbiting nodes
-- **Responsive** across 1440px, 1024px, 768px, 480px breakpoints
-- **SEO**: full meta tags, Open Graph, Twitter cards, schema.org JSON-LD
+`npm run build` generates `public/sitemap.xml` and `public/robots.txt` from the catalog. Each route sets title, description, canonical, Open Graph, Organization, and relevant Service/FAQ JSON-LD using Helmet. The language choice is stored locally; both languages share canonical URLs. This SPA uses client-rendered metadata; validate crawler requirements before relying on language-specific discovery or social unfurling. Dedicated locale URLs and prerendering are possible follow-up work within Vite.
 
----
+## Netlify deployment
 
-## To Update Content
+The homepage includes the original **The Brands That Trust Us** logo section. All enquiry forms share `/api/enquiry`. For combined Google Sheets storage and notification emails to `axirova26@gmail.com`, use the prepared script and setup instructions in `integrations/google-apps-script/`. Configure `GOOGLE_APPS_SCRIPT_URL` and `GOOGLE_APPS_SCRIPT_TOKEN` on the hosting platform after authorizing and publishing the Google web app. Until configured, this Google integration is not active.
 
-Edit **`src/utils/siteData.js`** — single source of truth for:
-- `SITE` — company info, contact, social links
-- `NAV_LINKS` — navigation items
-- `SERVICES` — service cards
-- `INDUSTRIES` — industry carousel
-- `PRODUCTS` — product carousel
-- `VALUES` — core values
-- `STATS` / `COUNTER_STATS` — animated numbers
-- `TECH_NODES` / `CAT_COLOR` — tech stack canvas nodes
+`netlify.toml` configures `npm run build`, the `dist` publish folder, the enquiry function rewrite, and the SPA fallback. `netlify/functions/enquiry.mjs` adapts Netlify requests to the same validated enquiry handler used by Vercel.
+
+Set `VITE_SITE_URL` to the public production origin in Netlify's production environment. Configure the same Resend or webhook delivery variables listed in `.env.example` with Functions scope. The booking URL remains optional. Deploy with the official Netlify CLI or connect the GitHub repository using these build settings. Never set `VITE_GH_PAGES=true` for Netlify.
+
+The existing Netlify project is `axirova-ai` (`https://axirova-ai.netlify.app`). Production deployments from the local feature branch do not merge the GitHub pull request; the connected repository's default deployment branch remains `main`.
+
+## GitHub Actions
+
+The existing Pages workflow builds with `GH_PAGES=true` and `VITE_GH_PAGES=true`; asset paths and hash routing are compatible with `/axirova/`. GitHub Pages cannot execute Vercel functions, so use Vercel for working enquiry delivery. The quality workflow checks tests, lint, and production compilation on pull requests.
+
+## Accessibility and performance
+
+Keyboard-accessible navigation and services disclosure, skip link, route focus handling, visible focus states, labeled validated fields, live form status, native form controls, logical CSS spacing, and Cairo Arabic typography are included. Light/dark and EN/AR preferences persist locally.
+
+The homepage is in the initial bundle; other routes load within the persistent header/footer shell without a full-page loading message. Home enquiry forms load near the viewport or on request. Shared sections render immediately without the animation library. Desktop-only canvases and cursor stay optional; the technology canvas loads near the viewport. Fonts load without blocking rendering, and hashed Netlify assets use immutable caching. There is no splash delay. `npm run test:performance` checks the built manifest for a 110 kB gzip initial JavaScript budget, dependency cycles, and unwanted eager form/animation downloads. This is a download-budget check, not a measured mobile Lighthouse score.
+
+## Owner input before production launch
+
+Automated verification covers bilingual content parity, all route templates and catalog detail slugs (including unknown-slug fallbacks), and enquiry validation/delivery/abuse controls. Browser automation could not confidently determine the browser URL, so visual QA and Lighthouse measurement remain pending. Installation reports 16 dependency advisories (8 moderate, 8 high); review them before production, preserving the requested major stack versions.
+
+- Verified project metrics and client-approved case studies / logos.
+- Approved product capabilities, availability, screenshots, and final marketing copy.
+- Prices and included tier features; approved engagement terms.
+- Resend or webhook delivery configuration and confirmed booking URL.
+- Legal review, retention periods, and provider details for privacy/terms drafts.
+- Browser/RTL checks across every route and a measured Lighthouse run on deployment. No Lighthouse 90+ claim is made without measurement.
+
+Work is on `feat/multipage-conversion`, separate from `main`, with the changes tracked in GitHub PR #3. A manual Netlify deployment does not merge the pull request.
