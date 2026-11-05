@@ -2270,3 +2270,20 @@ img {
     background: var(--bg);
   }
 }
+
+.product-visual--presentation figcaption {
+  position: static;
+  padding: 10px 16px;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg2);
+  color: var(--muted);
+  backdrop-filter: none;
+}
+.product-visual--presentation.product-visual--detail img {
+  max-height: none;
+}
+.product-card:hover .product-visual--presentation img {
+  transform: none;
+}

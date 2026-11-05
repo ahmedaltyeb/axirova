@@ -7,7 +7,7 @@ export default function ProductVisual({ product, detail = false }) {
     detail && product.image.detail ? product.image.detail : product.image;
   return (
     <figure
-      className={`product-visual${detail ? " product-visual--detail" : ""}${product.image.actual ? " product-visual--actual" : ""}`}
+      className={`product-visual${detail ? " product-visual--detail" : ""}${product.image.actual ? " product-visual--actual" : ""}${product.image.presentation ? " product-visual--presentation" : ""}`}
     >
       <img
         src={`${import.meta.env.BASE_URL}${pick(media.src)}`}

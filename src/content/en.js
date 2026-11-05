@@ -94,7 +94,7 @@ export default {
       "Purpose-built products for specialized operations. Explore the direction, then talk to us about fit and availability.",
     industries:
       "Technology that understands the context behind your operations.",
-    work: "Illustrative case-study templates. Client names, evidence, and approved outcomes are still to be supplied.",
+    work: "Explore our product interfaces and illustrative project directions.",
     insights:
       "Draft perspectives on software, automation, and building for the region. Editorial placeholders awaiting review.",
     about:

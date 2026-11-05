@@ -154,6 +154,70 @@ const pharmexaGallery = [
   width: 2400,
   height: 1500,
 }));
+const udriveImage = {
+  presentation: true,
+  src: "images/products/udrive/showcase-card.jpg",
+  alt: pair(
+    "UDrive car rental system presentation showing the customer portal, vehicle booking, dashboard, and vehicle administration.",
+    "عرض نظام يو درايف لتأجير السيارات يضم بوابة العملاء والحجز ولوحة التحكم وإدارة المركبات.",
+  ),
+  width: 768,
+  height: 512,
+  caption: pair(
+    "Screenshot-based product presentation",
+    "عرض تقديمي مبني على لقطات النظام",
+  ),
+  detail: {
+    src: "images/products/udrive/showcase.jpg",
+    alt: pair(
+      "UDrive customer and administration interface showcase.",
+      "عرض واجهات العملاء والإدارة في يو درايف.",
+    ),
+    width: 1536,
+    height: 1024,
+  },
+};
+const udriveGalleryCaption = pair(
+  "Original application screenshots · sample data. Open a preview to see the full capture.",
+  "لقطات أصلية من النظام · بيانات للعرض. افتح المعاينة لعرض اللقطة كاملة.",
+);
+const udriveGallery = [
+  [
+    "storefront",
+    "Customer portal & car listings",
+    "بوابة العملاء وقائمة السيارات",
+    5760,
+    750,
+  ],
+  [
+    "booking",
+    "Vehicle details & booking request",
+    "تفاصيل المركبة وطلب الحجز",
+    3829,
+    750,
+  ],
+  ["dashboard", "Administration dashboard", "لوحة تحكم الإدارة", 1038, 649],
+  ["vehicles", "Vehicle management", "إدارة المركبات", 1143, 714],
+].map(([screen, en, ar, height, previewHeight]) => ({
+  title: pair(en, ar),
+  src: pair(
+    `images/products/udrive/${screen}.png`,
+    `images/products/udrive/${screen}.png`,
+  ),
+  preview: pair(
+    `images/products/udrive/${screen}-preview.jpg`,
+    `images/products/udrive/${screen}-preview.jpg`,
+  ),
+  alt: pair(
+    `UDrive ${en.toLowerCase()} application screenshot.`,
+    `لقطة من نظام يو درايف: ${ar}.`,
+  ),
+  width: 1920,
+  height,
+  previewWidth: 1200,
+  previewHeight,
+}));
+
 export const products = [
   [
     "pharmexa",
@@ -187,11 +251,19 @@ export const products = [
     "udrive",
     "UDrive",
     "يو درايف",
-    "Arabic-first car rental",
-    "تأجير السيارات بالعربية أولاً",
+    "Car listings, vehicle details, booking requests, and an admin workspace.",
+    "قائمة السيارات وتفاصيل المركبات وطلبات الحجز ومساحة عمل للإدارة.",
     "car-rental",
-    ["Rental agreements", "Vehicle availability", "RTL workspace"],
-    ["عقود التأجير", "توفر المركبات", "واجهة عربية"],
+    [
+      "Car listings & booking requests",
+      "Vehicle & brand management",
+      "Administration dashboard",
+    ],
+    [
+      "قائمة السيارات وطلبات الحجز",
+      "إدارة المركبات والعلامات",
+      "لوحة تحكم الإدارة",
+    ],
   ],
   [
     "solarerp",
@@ -242,8 +314,13 @@ export const products = [
   image:
     slug === "pharmexa"
       ? pharmexaImage
-      : { src: `images/products/${slug}.jpg`, alt: productArtwork[slug] },
+      : slug === "udrive"
+        ? udriveImage
+        : { src: `images/products/${slug}.jpg`, alt: productArtwork[slug] },
   ...(slug === "pharmexa" ? { gallery: pharmexaGallery } : {}),
+  ...(slug === "udrive"
+    ? { gallery: udriveGallery, galleryCaption: udriveGalleryCaption }
+    : {}),
 }));
 export const industries = [
   [
@@ -303,10 +380,10 @@ export const work = [
   ],
   [
     "rental-workspace",
-    "An Arabic-first rental workspace",
-    "مساحة تأجير عربية أولاً",
-    "From scattered booking records to an organized rental journey.",
-    "من حجوزات متفرقة إلى رحلة تأجير منظمة.",
+    "UDrive · Car rental system",
+    "يو درايف · نظام تأجير السيارات",
+    "A customer booking portal and an administration workspace for vehicles, brands, and rental requests.",
+    "بوابة لحجوزات العملاء ومساحة إدارة للمركبات والعلامات التجارية وطلبات التأجير.",
   ],
   [
     "field-service",
@@ -319,7 +396,16 @@ export const work = [
   slug,
   title: pair(en, ar),
   desc: pair(de, da),
-  placeholder: true,
+  placeholder: slug !== "rental-workspace",
+  ...(slug === "rental-workspace"
+    ? {
+        showcase: true,
+        image: udriveImage,
+        gallery: udriveGallery,
+        galleryCaption: udriveGalleryCaption,
+        productSlug: "udrive",
+      }
+    : {}),
 }));
 export const insights = [
   [

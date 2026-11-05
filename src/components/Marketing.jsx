@@ -20,11 +20,13 @@ export function Cards({ items, base }) {
     <div className="card-grid">
       {items.map((item, i) => (
         <Link
-          className={`feature-card ${base === "products" ? "product-card" : ""}`}
+          className={`feature-card ${base === "products" || item.image ? "product-card" : ""}`}
           key={item.slug}
           to={`/${base}/${item.slug}`}
         >
-          {base === "products" && <ProductVisual product={item} />}
+          {(base === "products" || item.image) && (
+            <ProductVisual product={item} />
+          )}
           <div className="card-top">
             <span className="card-number">
               {String(i + 1).padStart(2, "0")}
