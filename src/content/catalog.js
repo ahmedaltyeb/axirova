@@ -175,8 +175,8 @@ export const products = [
   ],
   [
     "pharmaxpsm",
-    "PharmaxPSM",
-    "فارماكس PSM",
+    "PharmaDesk",
+    "فارما ديسك",
     "Pharmacy management",
     "إدارة الصيدليات",
     "pharmacy",

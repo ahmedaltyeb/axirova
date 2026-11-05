@@ -70,7 +70,7 @@ export function guidedReply(input) {
     intent = "lead";
   const aliases = {
     pharmexa: ["pharmexa", "فارمكسا", "فارمكسا", "صيدلي", "pharmacy"],
-    pharmaxpsm: ["pharmaxpsm", "فارماكس"],
+    pharmaxpsm: ["pharmadesk", "فارما ديسك", "pharmaxpsm", "فارماكس"],
     udrive: ["udrive", "يو درايف", "car rental", "تأجير"],
     solarerp: ["solarerp", "سولار", "solar", "ميداني"],
     mohamina: ["mohamina", "محامينا", "legal", "قانون"],
